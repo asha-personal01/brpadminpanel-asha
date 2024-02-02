@@ -424,7 +424,7 @@ namespace D1WebApp.BussinessLogicLayer.Controllers
                         }
                     }
                 }
-                return CompanyProfilemanager.UpdateItemDocumentBulk (memRefNo, documentList, IMType);
+                return CompanyProfilemanager.UpdateItemDocumentBulk(memRefNo, documentList, IMType);
             }
             catch (Exception ex)
             {
