@@ -1,0 +1,4 @@
+GetItemDetailsListCounts-memRefNo >>>>>krayden
+GetItemDetailsListCounts-db connection done
+GetItemDetailsListCounts-got counts >>>>>38473
+GetItemDetailsListCounts-got Item Doc List

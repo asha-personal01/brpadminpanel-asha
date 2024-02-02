@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d72131798cae402db5c67e5fea2d11e1" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="D1WebAppModel.Configuration" Width="1.5" PointX="0.75" PointY="4" />
+        <EntityTypeShape EntityType="D1WebAppModel.ErrorLog" Width="1.5" PointX="5.75" PointY="1" />
+        <EntityTypeShape EntityType="D1WebAppModel.Notification" Width="1.5" PointX="8.75" PointY="6" />
+        <EntityTypeShape EntityType="D1WebAppModel.ProcessTime" Width="1.5" PointX="3.75" PointY="19.375" />
+        <EntityTypeShape EntityType="D1WebAppModel.ProjectType" Width="1.5" PointX="6.75" PointY="18.375" />
+        <EntityTypeShape EntityType="D1WebAppModel.AuditTrailMaster" Width="1.5" PointX="3.75" PointY="11.375" />
+        <EntityTypeShape EntityType="D1WebAppModel.AuditTrail" Width="1.5" PointX="6" PointY="11.875" />
+        <EntityTypeShape EntityType="D1WebAppModel.SchedulerConfig" Width="1.5" PointX="10.75" PointY="6" />
+        <EntityTypeShape EntityType="D1WebAppModel.MailBox" Width="1.5" PointX="8.75" PointY="1.5" />
+        <EntityTypeShape EntityType="D1WebAppModel.MailQueue" Width="1.5" PointX="11" PointY="1.25" />
+        <EntityTypeShape EntityType="D1WebAppModel.MailTemplate" Width="1.5" PointX="10.75" PointY="9" />
+        <EntityTypeShape EntityType="D1WebAppModel.UserMailBox" Width="1.5" PointX="3" PointY="14.5" />
+        <EntityTypeShape EntityType="D1WebAppModel.RightGroup" Width="1.5" PointX="1.5" PointY="1.375" />
+        <EntityTypeShape EntityType="D1WebAppModel.RightRoleMapping" Width="1.5" PointX="6" PointY="5" />
+        <EntityTypeShape EntityType="D1WebAppModel.Right" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="D1WebAppModel.Role" Width="1.5" PointX="3.75" PointY="5" />
+        <EntityTypeShape EntityType="D1WebAppModel.SettingMaster" Width="1.5" PointX="11.75" PointY="12" />
+        <EntityTypeShape EntityType="D1WebAppModel.UniqueSession" Width="1.5" PointX="12.75" PointY="6" />
+        <EntityTypeShape EntityType="D1WebAppModel.UserLog" Width="1.5" PointX="13.75" PointY="1" />
+        <EntityTypeShape EntityType="D1WebAppModel.UserProcessTime" Width="1.5" PointX="6" PointY="15.125" />
+        <EntityTypeShape EntityType="D1WebAppModel.UserProjectMapping" Width="1.5" PointX="9" PointY="12.125" />
+        <EntityTypeShape EntityType="D1WebAppModel.UserRole" Width="1.5" PointX="6" PointY="8" />
+        <EntityTypeShape EntityType="D1WebAppModel.User" Width="1.5" PointX="0.75" PointY="9.375" />
+        <EntityTypeShape EntityType="D1WebAppModel.UserSession" Width="1.5" PointX="3" PointY="8" />
+        <EntityTypeShape EntityType="D1WebAppModel.UserVisit" Width="1.5" PointX="13.75" PointY="9" />
+        <EntityTypeShape EntityType="D1WebAppModel.VendorUserLoginDetail" Width="1.5" PointX="3" PointY="27.375" />
+        <AssociationConnector Association="D1WebAppModel.FK_UserProcessTimes_ProcessTimes" />
+        <AssociationConnector Association="D1WebAppModel.FK_UserProjectMapping_ProjectTypes" />
+        <AssociationConnector Association="D1WebAppModel.FK_AuditTrails_AuditTrailMaster" />
+        <AssociationConnector Association="D1WebAppModel.FK_AuditTrails_Users" />
+        <AssociationConnector Association="D1WebAppModel.FK_MailQueue_MailBoxes" />
+        <AssociationConnector Association="D1WebAppModel.FK_UserMailBoxes_Users" />
+        <AssociationConnector Association="D1WebAppModel.FK_Menus_MenuGroups" />
+        <AssociationConnector Association="D1WebAppModel.FK_MenuRoles_Menus" />
+        <AssociationConnector Association="D1WebAppModel.FK_MenuRoles_ModifiedBy" />
+        <AssociationConnector Association="D1WebAppModel.FK_MenuRoles_Roles" />
+        <AssociationConnector Association="D1WebAppModel.FK_UserRoles_Roles" />
+        <AssociationConnector Association="D1WebAppModel.FK_UserProcessTimes_Users" />
+        <AssociationConnector Association="D1WebAppModel.FK_UserProjectMapping_Users" />
+        <AssociationConnector Association="D1WebAppModel.FK_UserRoles_Users" />
+        <AssociationConnector Association="D1WebAppModel.FK_UserSession_Users" />
+        <AssociationConnector Association="D1WebAppModel.FK_VendorUserLoginDetails_Users" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

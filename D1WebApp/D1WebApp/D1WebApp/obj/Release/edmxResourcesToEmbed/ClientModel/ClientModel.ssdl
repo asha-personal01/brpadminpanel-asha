@@ -1,0 +1,2932 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ClientModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ActivityLog">
+    <Key>
+      <PropertyRef Name="ActivityLogId" />
+    </Key>
+    <Property Name="ActivityLogId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LogType" Type="varchar" MaxLength="500" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="SearchKeyword" Type="varchar(max)" />
+    <Property Name="CustID" Type="varchar" MaxLength="500" />
+    <Property Name="UserId" Type="varchar" MaxLength="500" />
+    <Property Name="ClientIP" Type="varchar" MaxLength="500" />
+    <Property Name="LogDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AllImages">
+    <Key>
+      <PropertyRef Name="reference" />
+    </Key>
+    <Property Name="reference" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KeyName" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="KeyType" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Image" Type="varchar" MaxLength="1000" />
+    <Property Name="ImageHash" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="businesstypes">
+    <Key>
+      <PropertyRef Name="Businesstypeid" />
+    </Key>
+    <Property Name="Businesstypeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="businesstypename" Type="varchar" MaxLength="300" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CardDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="500" />
+    <Property Name="LastName" Type="varchar" MaxLength="500" />
+    <Property Name="CardType" Type="varchar" MaxLength="500" />
+    <Property Name="CardNumber" Type="varchar" MaxLength="500" />
+    <Property Name="ExpirationMonth" Type="varchar" MaxLength="500" />
+    <Property Name="ExpirationYear" Type="varchar" MaxLength="500" />
+    <Property Name="SecurityCode" Type="varchar" MaxLength="500" />
+    <Property Name="Customer" Type="varchar" MaxLength="200" />
+    <Property Name="adr1" Type="varchar" MaxLength="500" />
+    <Property Name="adr2" Type="varchar" MaxLength="500" />
+    <Property Name="city" Type="varchar" MaxLength="500" />
+    <Property Name="state" Type="varchar" MaxLength="500" />
+    <Property Name="country" Type="varchar" MaxLength="500" />
+    <Property Name="zip" Type="varchar" MaxLength="500" />
+    <Property Name="Email" Type="varchar" MaxLength="500" />
+    <Property Name="cu_userid" Type="varchar" MaxLength="500" />
+    <Property Name="profileid" Type="varchar" MaxLength="500" />
+    <Property Name="iscreditcard" Type="bit" />
+  </EntityType>
+  <EntityType Name="CardTypes">
+    <Key>
+      <PropertyRef Name="CardTypeID" />
+    </Key>
+    <Property Name="CardTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CardTypeName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="CardTypeCode" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ColorConfigurations">
+    <Key>
+      <PropertyRef Name="ColorConfigID" />
+    </Key>
+    <Property Name="ColorConfigID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ColorConfigKey" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="ColorValue" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="1500" />
+  </EntityType>
+  <EntityType Name="CompanySettingForMulti">
+    <Key>
+      <PropertyRef Name="SettingID" />
+    </Key>
+    <Property Name="SettingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApiEndPoint" Type="varchar" MaxLength="1000" />
+    <Property Name="AuthonticationToken" Type="varchar" MaxLength="500" />
+    <Property Name="client" Type="varchar" MaxLength="500" />
+    <Property Name="company" Type="varchar" MaxLength="500" />
+    <Property Name="username" Type="varchar" MaxLength="500" />
+    <Property Name="password" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Configs">
+    <Key>
+      <PropertyRef Name="ConfigId" />
+    </Key>
+    <Property Name="ConfigId" Type="int" Nullable="false" />
+    <Property Name="ConfigKey" Type="nvarchar" MaxLength="100" />
+    <Property Name="ConfigValue" Type="nvarchar(max)" />
+    <Property Name="descr" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="cu_contact">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="birthday" Type="varchar" MaxLength="500" />
+    <Property Name="company_cu" Type="varchar" MaxLength="500" />
+    <Property Name="contact" Type="varchar" MaxLength="500" />
+    <Property Name="customer" Type="varchar" MaxLength="500" />
+    <Property Name="email" Type="varchar" MaxLength="500" />
+    <Property Name="fax" Type="varchar" MaxLength="500" />
+    <Property Name="job_code" Type="varchar" MaxLength="500" />
+    <Property Name="name" Type="varchar" MaxLength="500" />
+    <Property Name="phone" Type="varchar" MaxLength="500" />
+    <Property Name="phone_ext" Type="varchar" MaxLength="500" />
+    <Property Name="titled" Type="varchar" MaxLength="500" />
+    <Property Name="image" Type="varchar" MaxLength="500" />
+    <Property Name="note" Type="varchar" MaxLength="500" />
+    <Property Name="cell" Type="varchar" MaxLength="500" />
+    <Property Name="adr" Type="nvarchar(max)" />
+    <Property Name="country_code" Type="varchar" MaxLength="500" />
+    <Property Name="state" Type="varchar" MaxLength="500" />
+    <Property Name="postal_code" Type="varchar" MaxLength="500" />
+    <Property Name="web_passwd" Type="varchar" MaxLength="500" />
+    <Property Name="web_permissions" Type="varchar" MaxLength="500" />
+    <Property Name="web_parent" Type="bit" />
+    <Property Name="date_added" Type="varchar" MaxLength="500" />
+    <Property Name="first_name" Type="varchar" MaxLength="500" />
+    <Property Name="last_name" Type="varchar" MaxLength="500" />
+    <Property Name="prefix" Type="varchar" MaxLength="500" />
+    <Property Name="suffix" Type="varchar" MaxLength="500" />
+    <Property Name="middle_name" Type="varchar" MaxLength="500" />
+    <Property Name="last_update_date" Type="varchar" MaxLength="500" />
+    <Property Name="ship_id" Type="varchar" MaxLength="500" />
+    <Property Name="marketing_code" Type="varchar" MaxLength="500" />
+    <Property Name="mail_type" Type="varchar" MaxLength="500" />
+    <Property Name="sy_lookup" Type="varchar" MaxLength="500" />
+    <Property Name="last_update" Type="varchar" MaxLength="500" />
+    <Property Name="crm_priority" Type="float" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cu_prcitem">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_cu" Type="nvarchar" MaxLength="500" />
+    <Property Name="cu_ref" Type="nvarchar" MaxLength="500" />
+    <Property Name="item" Type="nvarchar" MaxLength="500" />
+    <Property Name="cu_item" Type="nvarchar" MaxLength="500" />
+    <Property Name="warehouse" Type="nvarchar" MaxLength="500" />
+    <Property Name="cu_item_desc" Type="nvarchar" MaxLength="1500" />
+    <Property Name="price_flag" Type="nvarchar" MaxLength="500" />
+    <Property Name="eff_date" Type="nvarchar" MaxLength="500" />
+    <Property Name="exp_date" Type="nvarchar" MaxLength="500" />
+    <Property Name="__rowids" Type="nvarchar" MaxLength="500" />
+    <Property Name="__seq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cu_prospect">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_cu" Type="varchar" MaxLength="500" />
+    <Property Name="customer" Type="varchar" MaxLength="500" />
+    <Property Name="name" Type="varchar" MaxLength="1000" />
+    <Property Name="country_code" Type="varchar" MaxLength="500" />
+    <Property Name="adr" Type="nvarchar(max)" />
+    <Property Name="postal_code" Type="varchar" MaxLength="500" />
+    <Property Name="phone" Type="varchar" MaxLength="500" />
+    <Property Name="phone_ext" Type="varchar" MaxLength="500" />
+    <Property Name="fax" Type="varchar" MaxLength="500" />
+    <Property Name="salesman1" Type="varchar" MaxLength="500" />
+    <Property Name="salesman2" Type="varchar" MaxLength="500" />
+    <Property Name="salesman3" Type="varchar" MaxLength="500" />
+    <Property Name="primary_contact" Type="varchar" MaxLength="500" />
+    <Property Name="web_page" Type="varchar" MaxLength="500" />
+    <Property Name="profile" Type="nvarchar(max)" />
+    <Property Name="user_code" Type="nvarchar(max)" />
+    <Property Name="source_code" Type="varchar" MaxLength="500" />
+    <Property Name="Date_created" Type="varchar" MaxLength="500" />
+    <Property Name="time_created" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="stat" Type="varchar" MaxLength="500" />
+    <Property Name="last_act_date" Type="varchar" MaxLength="500" />
+    <Property Name="last_act_time" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="type" Type="varchar" MaxLength="500" />
+    <Property Name="state" Type="varchar" MaxLength="500" />
+    <Property Name="email_address" Type="varchar" MaxLength="1000" />
+    <Property Name="copy_changes" Type="bit" />
+    <Property Name="territory" Type="varchar" MaxLength="500" />
+    <Property Name="busn_class" Type="varchar" MaxLength="500" />
+    <Property Name="price_code" Type="varchar" MaxLength="500" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="sy_lookup" Type="varchar" MaxLength="1000" />
+    <Property Name="terms_code" Type="varchar" MaxLength="500" />
+    <Property Name="tax_code" Type="varchar" MaxLength="500" />
+    <Property Name="customer_flag" Type="bit" />
+    <Property Name="activity_code" Type="varchar" MaxLength="500" />
+    <Property Name="sales_active_flag" Type="bit" />
+    <Property Name="email_solicitation" Type="bit" />
+    <Property Name="fax_solicitation" Type="bit" />
+    <Property Name="voice_solicitation" Type="bit" />
+    <Property Name="sic_code" Type="varchar" MaxLength="500" />
+    <Property Name="profile2" Type="nvarchar(max)" />
+    <Property Name="profile3" Type="nvarchar(max)" />
+    <Property Name="parent_customer" Type="varchar" MaxLength="500" />
+    <Property Name="best_time" Type="varchar" MaxLength="500" />
+    <Property Name="priority" Type="bit" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cu_shipto">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="atn" Type="varchar" MaxLength="500" />
+    <Property Name="blnkt_po" Type="varchar" MaxLength="500" />
+    <Property Name="com_split2" Type="float" />
+    <Property Name="company_cu" Type="varchar" MaxLength="500" />
+    <Property Name="com_split1" Type="float" />
+    <Property Name="country_code" Type="varchar" MaxLength="500" />
+    <Property Name="cu_tax_class" Type="varchar" MaxLength="500" />
+    <Property Name="customer" Type="varchar" MaxLength="500" />
+    <Property Name="delivery_route" Type="varchar" MaxLength="500" />
+    <Property Name="delivery_terms" Type="varchar" MaxLength="500" />
+    <Property Name="fax" Type="varchar" MaxLength="500" />
+    <Property Name="freight_zone" Type="varchar" MaxLength="500" />
+    <Property Name="name" Type="varchar" MaxLength="500" />
+    <Property Name="oe_instr" Type="nvarchar(max)" />
+    <Property Name="phone" Type="varchar" MaxLength="500" />
+    <Property Name="salesman1" Type="varchar" MaxLength="500" />
+    <Property Name="salesman2" Type="varchar" MaxLength="500" />
+    <Property Name="ship_id" Type="varchar" MaxLength="500" />
+    <Property Name="salesman3" Type="varchar" MaxLength="500" />
+    <Property Name="ship_via_code" Type="varchar" MaxLength="500" />
+    <Property Name="state" Type="varchar" MaxLength="500" />
+    <Property Name="stop" Type="float" />
+    <Property Name="tax_code" Type="varchar" MaxLength="500" />
+    <Property Name="tax_exempt" Type="varchar" MaxLength="500" />
+    <Property Name="warehouse" Type="varchar" MaxLength="500" />
+    <Property Name="postal_code" Type="varchar" MaxLength="500" />
+    <Property Name="sy_lookup" Type="varchar" MaxLength="500" />
+    <Property Name="image" Type="varchar" MaxLength="500" />
+    <Property Name="territory" Type="varchar" MaxLength="500" />
+    <Property Name="taxable_flag" Type="varchar" MaxLength="500" />
+    <Property Name="adr" Type="nvarchar(max)" />
+    <Property Name="phone_ext" Type="varchar" MaxLength="500" />
+    <Property Name="ship_via_acct" Type="varchar" MaxLength="500" />
+    <Property Name="manifest_adr1" Type="varchar" MaxLength="500" />
+    <Property Name="manifest_adr2" Type="varchar" MaxLength="500" />
+    <Property Name="manifest_adr3" Type="varchar" MaxLength="500" />
+    <Property Name="manifest_adr4" Type="varchar" MaxLength="500" />
+    <Property Name="manifest_adr5" Type="varchar" MaxLength="500" />
+    <Property Name="manifest_adr6" Type="varchar" MaxLength="500" />
+    <Property Name="residential" Type="bit" />
+    <Property Name="active" Type="bit" />
+    <Property Name="dist_ctr" Type="varchar" MaxLength="500" />
+    <Property Name="carr_fac_cd" Type="varchar" MaxLength="500" />
+    <Property Name="com_class" Type="varchar" MaxLength="500" />
+    <Property Name="currency_code" Type="varchar" MaxLength="500" />
+    <Property Name="profile" Type="nvarchar(max)" />
+    <Property Name="oe_default" Type="bit" />
+    <Property Name="email" Type="varchar" MaxLength="500" />
+    <Property Name="web_passwd" Type="varchar" MaxLength="500" />
+    <Property Name="web_show_price" Type="bit" />
+    <Property Name="company_oe" Type="varchar" MaxLength="500" />
+    <Property Name="cu_group" Type="varchar" MaxLength="500" />
+    <Property Name="department" Type="varchar" MaxLength="500" />
+    <Property Name="customer_ext" Type="varchar" MaxLength="500" />
+    <Property Name="sic_code" Type="varchar" MaxLength="500" />
+    <Property Name="delivery_route_wd" Type="nvarchar(max)" />
+    <Property Name="stop_wd" Type="nvarchar(max)" />
+    <Property Name="blind_ship" Type="bit" />
+    <Property Name="form_quote_dest" Type="varchar" MaxLength="500" />
+    <Property Name="form_ackn_dest" Type="varchar" MaxLength="500" />
+    <Property Name="form_inv_dest" Type="varchar" MaxLength="500" />
+    <Property Name="profile2" Type="nvarchar(max)" />
+    <Property Name="fob" Type="varchar" MaxLength="500" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="terms_code" Type="varchar" MaxLength="500" />
+    <Property Name="profile3" Type="nvarchar(max)" />
+    <Property Name="vmi_ship_id" Type="bit" />
+    <Property Name="last_update" Type="varchar" MaxLength="500" />
+    <Property Name="mail_flag" Type="bit" />
+    <Property Name="DOB" Type="varchar" MaxLength="500" />
+    <Property Name="mail_type" Type="varchar" MaxLength="500" />
+    <Property Name="frt_forwarder" Type="varchar" MaxLength="500" />
+    <Property Name="use_cust_tax" Type="varchar" MaxLength="500" />
+    <Property Name="cons_to_wh" Type="varchar" MaxLength="500" />
+    <Property Name="user_code" Type="nvarchar(max)" />
+    <Property Name="DOD" Type="varchar" MaxLength="500" />
+    <Property Name="DOR" Type="varchar" MaxLength="500" />
+    <Property Name="ssc" Type="varchar" MaxLength="500" />
+    <Property Name="form_ackn_hard_copy" Type="bit" />
+    <Property Name="form_inv_hard_copy" Type="bit" />
+    <Property Name="form_quote_hard_copy" Type="bit" />
+    <Property Name="license" Type="varchar" MaxLength="500" />
+    <Property Name="license_exp_date" Type="varchar" MaxLength="500" />
+    <Property Name="license_recv_date" Type="varchar" MaxLength="500" />
+    <Property Name="license_lookup" Type="varchar" MaxLength="500" />
+    <Property Name="DOB_date" Type="varchar" MaxLength="500" />
+    <Property Name="region" Type="nvarchar(max)" />
+    <Property Name="last_sale_date" Type="varchar" MaxLength="500" />
+    <Property Name="last_sale_amount" Type="float" />
+    <Property Name="ord_class" Type="varchar" MaxLength="500" />
+    <Property Name="price_code" Type="varchar" MaxLength="500" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cu_taxmst">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_cu" Type="varchar" MaxLength="500" />
+    <Property Name="tax_code" Type="varchar" MaxLength="500" />
+    <Property Name="descr" Type="varchar" MaxLength="1000" />
+    <Property Name="pct" Type="decimal" Precision="10" Scale="5" />
+    <Property Name="gl_account" Type="varchar" MaxLength="500" />
+    <Property Name="state" Type="varchar" MaxLength="500" />
+    <Property Name="state_pct" Type="decimal" Precision="10" Scale="5" />
+    <Property Name="jur_code" Type="varchar" MaxLength="1000" />
+    <Property Name="jur_pct" Type="varchar" MaxLength="1000" />
+    <Property Name="jur_gl_account" Type="varchar" MaxLength="1000" />
+    <Property Name="no_pc_tax" Type="bit" />
+    <Property Name="last_update" Type="varchar" MaxLength="50" />
+    <Property Name="__rowids" Type="varchar" MaxLength="50" />
+    <Property Name="__seq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cu_user">
+    <Key>
+      <PropertyRef Name="customer" />
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="customer" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="userId" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="password" Type="varchar(max)" />
+    <Property Name="name" Type="varchar" MaxLength="500" />
+    <Property Name="email" Type="varchar" MaxLength="500" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="permissions" Type="varchar" MaxLength="500" />
+    <Property Name="session_id" Type="varchar" MaxLength="500" />
+    <Property Name="IsManager" Type="bit" />
+    <Property Name="ParentID" Type="varchar" MaxLength="500" />
+    <Property Name="Titled" Type="varchar" MaxLength="500" />
+    <Property Name="first_name" Type="varchar" MaxLength="500" />
+    <Property Name="last_name" Type="varchar" MaxLength="500" />
+    <Property Name="adr1" Type="varchar" MaxLength="500" />
+    <Property Name="adr2" Type="varchar" MaxLength="500" />
+    <Property Name="adr3" Type="varchar" MaxLength="500" />
+    <Property Name="adr4" Type="varchar" MaxLength="500" />
+    <Property Name="state" Type="varchar" MaxLength="500" />
+    <Property Name="county_code" Type="varchar" MaxLength="500" />
+    <Property Name="postal_code" Type="varchar" MaxLength="500" />
+    <Property Name="Company_cu" Type="varchar" MaxLength="500" />
+    <Property Name="IsNoLonger" Type="bit" />
+    <Property Name="phone" Type="varchar" MaxLength="500" />
+    <Property Name="phone_ext" Type="varchar" MaxLength="1500" />
+    <Property Name="cell" Type="varchar" MaxLength="1500" />
+    <Property Name="profile_log" Type="varchar" MaxLength="2000" />
+    <Property Name="timestamp" Type="datetime" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="cr_aging_limit" Type="float" />
+    <Property Name="aging" Type="nvarchar(max)" />
+    <Property Name="ar_customer" Type="varchar" MaxLength="500" />
+    <Property Name="atn" Type="varchar" MaxLength="500" />
+    <Property Name="avg_pay_days" Type="float" />
+    <Property Name="blanket_po" Type="varchar" MaxLength="500" />
+    <Property Name="bo_flag" Type="bit" />
+    <Property Name="busn_class" Type="varchar" MaxLength="500" />
+    <Property Name="buyer" Type="varchar" MaxLength="500" />
+    <Property Name="buyer_email" Type="varchar" MaxLength="500" />
+    <Property Name="buyer_ext" Type="varchar" MaxLength="500" />
+    <Property Name="buyer_fax" Type="varchar" MaxLength="500" />
+    <Property Name="buyer_phone" Type="varchar" MaxLength="500" />
+    <Property Name="buying_group" Type="nvarchar(max)" />
+    <Property Name="buying_pct" Type="nvarchar(max)" />
+    <Property Name="cc_flag" Type="bit" />
+    <Property Name="com_class" Type="varchar" MaxLength="500" />
+    <Property Name="com_min_flag" Type="bit" />
+    <Property Name="com_pct" Type="float" />
+    <Property Name="com_split1" Type="float" />
+    <Property Name="com_split2" Type="float" />
+    <Property Name="company_cu" Type="varchar" MaxLength="500" />
+    <Property Name="company_oe" Type="varchar" MaxLength="500" />
+    <Property Name="country_code" Type="varchar" MaxLength="500" />
+    <Property Name="cr_atn" Type="varchar" MaxLength="500" />
+    <Property Name="cr_limit" Type="float" />
+    <Property Name="cr_mgr" Type="varchar" MaxLength="500" />
+    <Property Name="cu_acct_class" Type="varchar" MaxLength="500" />
+    <Property Name="cu_group" Type="varchar" MaxLength="500" />
+    <Property Name="tax_class" Type="varchar" MaxLength="500" />
+    <Property Name="customer" Type="varchar" MaxLength="500" />
+    <Property Name="db_rateing" Type="varchar" MaxLength="500" />
+    <Property Name="delivery_route" Type="varchar" MaxLength="500" />
+    <Property Name="delivery_terms" Type="varchar" MaxLength="500" />
+    <Property Name="deposit" Type="float" />
+    <Property Name="discount_exclude" Type="varchar" MaxLength="500" />
+    <Property Name="discount_pct" Type="float" />
+    <Property Name="dunning_code" Type="varchar" MaxLength="500" />
+    <Property Name="dunning_flag" Type="bit" />
+    <Property Name="email_address" Type="varchar" MaxLength="500" />
+    <Property Name="finance_flag" Type="bit" />
+    <Property Name="freight_zone" Type="varchar" MaxLength="500" />
+    <Property Name="invoice_group" Type="varchar" MaxLength="500" />
+    <Property Name="last_pay_amount" Type="float" />
+    <Property Name="last_sale_date" Type="varchar" MaxLength="500" />
+    <Property Name="last_pay_date" Type="varchar" MaxLength="500" />
+    <Property Name="mail_flag" Type="bit" />
+    <Property Name="last_sale_amount" Type="float" />
+    <Property Name="name" Type="varchar" MaxLength="500" />
+    <Property Name="old_customer" Type="varchar" MaxLength="500" />
+    <Property Name="opn_date" Type="varchar" MaxLength="500" />
+    <Property Name="ord_class" Type="varchar" MaxLength="500" />
+    <Property Name="parent_customer" Type="varchar" MaxLength="500" />
+    <Property Name="payment_trend" Type="varchar" MaxLength="500" />
+    <Property Name="phone_ext" Type="varchar" MaxLength="500" />
+    <Property Name="po_flag" Type="bit" />
+    <Property Name="price_code" Type="varchar" MaxLength="500" />
+    <Property Name="profile" Type="nvarchar(max)" />
+    <Property Name="rating_code" Type="varchar" MaxLength="500" />
+    <Property Name="sales_ytd" Type="float" />
+    <Property Name="salesman1" Type="varchar" MaxLength="500" />
+    <Property Name="salesman2" Type="varchar" MaxLength="500" />
+    <Property Name="salesman3" Type="varchar" MaxLength="500" />
+    <Property Name="ship_complete" Type="bit" />
+    <Property Name="ship_via_code" Type="varchar" MaxLength="500" />
+    <Property Name="sic_code" Type="varchar" MaxLength="500" />
+    <Property Name="state" Type="varchar" MaxLength="500" />
+    <Property Name="statement_type" Type="bit" />
+    <Property Name="stat" Type="bit" />
+    <Property Name="stop" Type="float" />
+    <Property Name="tax_code" Type="varchar" MaxLength="500" />
+    <Property Name="tax_exempt" Type="varchar" MaxLength="500" />
+    <Property Name="terms_code" Type="varchar" MaxLength="500" />
+    <Property Name="tot_orders" Type="float" />
+    <Property Name="web_page" Type="varchar" MaxLength="500" />
+    <Property Name="warehouse" Type="varchar" MaxLength="500" />
+    <Property Name="sy_lookup" Type="varchar" MaxLength="500" />
+    <Property Name="territory" Type="varchar" MaxLength="500" />
+    <Property Name="taxable_flag" Type="varchar" MaxLength="500" />
+    <Property Name="image" Type="varchar" MaxLength="500" />
+    <Property Name="user_code" Type="nvarchar(max)" />
+    <Property Name="cr_pass_fail" Type="varchar" MaxLength="500" />
+    <Property Name="cr_pct_past_due" Type="float" />
+    <Property Name="postal_code" Type="varchar" MaxLength="500" />
+    <Property Name="phone" Type="varchar" MaxLength="500" />
+    <Property Name="fax" Type="varchar" MaxLength="500" />
+    <Property Name="adr" Type="nvarchar(max)" />
+    <Property Name="high_ar_ytd" Type="float" />
+    <Property Name="high_ar_lyr" Type="float" />
+    <Property Name="high_ar" Type="float" />
+    <Property Name="high_ar_ytd_dt" Type="varchar" MaxLength="500" />
+    <Property Name="high_ar_lyr_dt" Type="varchar" MaxLength="500" />
+    <Property Name="high_ar_dt" Type="varchar" MaxLength="500" />
+    <Property Name="rating_cd" Type="varchar" MaxLength="500" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="statement_print" Type="bit" />
+    <Property Name="pick_method" Type="varchar" MaxLength="500" />
+    <Property Name="ship_via_acct" Type="varchar" MaxLength="500" />
+    <Property Name="manifest_adr1" Type="varchar" MaxLength="500" />
+    <Property Name="manifest_adr2" Type="varchar" MaxLength="500" />
+    <Property Name="manifest_adr3" Type="varchar" MaxLength="500" />
+    <Property Name="manifest_adr4" Type="varchar" MaxLength="500" />
+    <Property Name="manifest_adr5" Type="varchar" MaxLength="500" />
+    <Property Name="manifest_adr6" Type="varchar" MaxLength="500" />
+    <Property Name="web_passwd" Type="varchar" MaxLength="500" />
+    <Property Name="pick_sort" Type="varchar" MaxLength="500" />
+    <Property Name="invc_sort" Type="varchar" MaxLength="500" />
+    <Property Name="residential" Type="bit" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="in_use" Type="bit" />
+    <Property Name="in_use_by" Type="varchar" MaxLength="500" />
+    <Property Name="in_use_date" Type="varchar" MaxLength="500" />
+    <Property Name="in_use_time" Type="float" />
+    <Property Name="tax_exp_date" Type="varchar" MaxLength="500" />
+    <Property Name="dunning_letter_file" Type="varchar" MaxLength="500" />
+    <Property Name="print_ackn_flag" Type="bit" />
+    <Property Name="form_quote_dest" Type="varchar" MaxLength="500" />
+    <Property Name="form_ackn_dest" Type="varchar" MaxLength="500" />
+    <Property Name="form_inv_dest" Type="varchar" MaxLength="500" />
+    <Property Name="form_stmt_dest" Type="varchar" MaxLength="500" />
+    <Property Name="cancel_days" Type="float" />
+    <Property Name="form_file_pick" Type="varchar" MaxLength="500" />
+    <Property Name="form_file_pack" Type="varchar" MaxLength="500" />
+    <Property Name="region" Type="nvarchar(max)" />
+    <Property Name="oe_label" Type="varchar" MaxLength="500" />
+    <Property Name="cu_label" Type="varchar" MaxLength="500" />
+    <Property Name="it_label" Type="varchar" MaxLength="500" />
+    <Property Name="dup_po_allowed" Type="bit" />
+    <Property Name="currency_code" Type="varchar" MaxLength="500" />
+    <Property Name="form_file_inv" Type="varchar" MaxLength="500" />
+    <Property Name="finance_charge" Type="float" />
+    <Property Name="price_by" Type="varchar" MaxLength="500" />
+    <Property Name="form_inv_copies" Type="float" />
+    <Property Name="cu_rebate_class" Type="varchar" MaxLength="500" />
+    <Property Name="cr_atn_email" Type="varchar" MaxLength="500" />
+    <Property Name="cr_atn_fax" Type="varchar" MaxLength="500" />
+    <Property Name="return_days" Type="float" />
+    <Property Name="email_src_oa" Type="varchar" MaxLength="500" />
+    <Property Name="email_src_pps" Type="varchar" MaxLength="500" />
+    <Property Name="email_src_qu" Type="varchar" MaxLength="500" />
+    <Property Name="email_src_inv" Type="varchar" MaxLength="500" />
+    <Property Name="email_src_st" Type="varchar" MaxLength="500" />
+    <Property Name="fax_src_oa" Type="varchar" MaxLength="500" />
+    <Property Name="fax_src_pps" Type="varchar" MaxLength="500" />
+    <Property Name="fax_src_qu" Type="varchar" MaxLength="500" />
+    <Property Name="fax_src_inv" Type="varchar" MaxLength="500" />
+    <Property Name="fax_src_st" Type="varchar" MaxLength="500" />
+    <Property Name="email_src_oa_manual" Type="varchar" MaxLength="500" />
+    <Property Name="email_src_pps_manual" Type="varchar" MaxLength="500" />
+    <Property Name="email_src_qu_manual" Type="varchar" MaxLength="500" />
+    <Property Name="email_src_inv_manual" Type="varchar" MaxLength="500" />
+    <Property Name="email_src_st_manual" Type="varchar" MaxLength="500" />
+    <Property Name="fax_src_st_manual" Type="varchar" MaxLength="500" />
+    <Property Name="fax_src_inv_manual" Type="varchar" MaxLength="500" />
+    <Property Name="fax_src_qu_manual" Type="varchar" MaxLength="500" />
+    <Property Name="fax_src_pps_manual" Type="varchar" MaxLength="500" />
+    <Property Name="fax_src_oa_manual" Type="varchar" MaxLength="500" />
+    <Property Name="no_auto_bill_manifest" Type="bit" />
+    <Property Name="prospect_flag" Type="bit" />
+    <Property Name="cr_order_limit" Type="float" />
+    <Property Name="invc_cons_group" Type="varchar" MaxLength="500" />
+    <Property Name="second_invoice_req" Type="varchar" MaxLength="500" />
+    <Property Name="blanket_po_exp" Type="varchar" MaxLength="500" />
+    <Property Name="pack_sort" Type="varchar" MaxLength="500" />
+    <Property Name="pay_code" Type="nvarchar(max)" />
+    <Property Name="form_file_quote" Type="varchar" MaxLength="500" />
+    <Property Name="form_file_ackn" Type="varchar" MaxLength="500" />
+    <Property Name="c_tot_code" Type="nvarchar(max)" />
+    <Property Name="c_tot_code_amt" Type="nvarchar(max)" />
+    <Property Name="ship_confirmation" Type="bit" />
+    <Property Name="buying_group_basis" Type="nvarchar(max)" />
+    <Property Name="absorb_disc" Type="bit" />
+    <Property Name="notes_req" Type="bit" />
+    <Property Name="apply_amount" Type="float" />
+    <Property Name="apply_pct" Type="float" />
+    <Property Name="applied_amount" Type="float" />
+    <Property Name="department" Type="varchar" MaxLength="500" />
+    <Property Name="form_file_stmt" Type="varchar" MaxLength="500" />
+    <Property Name="customer_ext" Type="varchar" MaxLength="500" />
+    <Property Name="bookto" Type="varchar" MaxLength="500" />
+    <Property Name="oesg_autobill" Type="bit" />
+    <Property Name="pallet_gun_pick" Type="bit" />
+    <Property Name="pct_of_freight" Type="float" />
+    <Property Name="pct_of_freight_sr" Type="float" />
+    <Property Name="blind_ship" Type="bit" />
+    <Property Name="blanket_po_cr_limit" Type="float" />
+    <Property Name="buying_group_2" Type="nvarchar(max)" />
+    <Property Name="buying_pct_2" Type="nvarchar(max)" />
+    <Property Name="buying_group_basis_2" Type="nvarchar(max)" />
+    <Property Name="location" Type="varchar" MaxLength="500" />
+    <Property Name="num_locs" Type="float" />
+    <Property Name="un_sale" Type="bit" />
+    <Property Name="delivery_route_wd" Type="nvarchar(max)" />
+    <Property Name="stop_wd" Type="nvarchar(max)" />
+    <Property Name="referred_by_customer" Type="varchar" MaxLength="500" />
+    <Property Name="date_referred" Type="varchar" MaxLength="500" />
+    <Property Name="email_solicitation" Type="bit" />
+    <Property Name="fax_solicitation" Type="bit" />
+    <Property Name="voice_solicitation" Type="bit" />
+    <Property Name="pick_and_hold" Type="bit" />
+    <Property Name="source" Type="varchar" MaxLength="500" />
+    <Property Name="points_per_unit" Type="float" />
+    <Property Name="points_flag" Type="bit" />
+    <Property Name="points_basis" Type="varchar" MaxLength="500" />
+    <Property Name="credit_phone" Type="varchar" MaxLength="500" />
+    <Property Name="credit_phone_ext" Type="varchar" MaxLength="500" />
+    <Property Name="distrib" Type="varchar" MaxLength="500" />
+    <Property Name="web_login" Type="varchar" MaxLength="500" />
+    <Property Name="web_item_check" Type="bit" />
+    <Property Name="oa_ch_msg" Type="bit" />
+    <Property Name="profile2" Type="nvarchar(max)" />
+    <Property Name="atn_first_name" Type="varchar" MaxLength="500" />
+    <Property Name="atn_last_name" Type="varchar" MaxLength="500" />
+    <Property Name="atn_suffix" Type="varchar" MaxLength="500" />
+    <Property Name="mod_date" Type="varchar" MaxLength="500" />
+    <Property Name="mod_time" Type="float" />
+    <Property Name="bill_method" Type="varchar" MaxLength="500" />
+    <Property Name="fax_src_st_man_cc" Type="varchar" MaxLength="500" />
+    <Property Name="fax_src_inv_man_cc" Type="varchar" MaxLength="500" />
+    <Property Name="fax_src_qu_man_cc" Type="varchar" MaxLength="500" />
+    <Property Name="fax_src_pps_man_cc" Type="varchar" MaxLength="500" />
+    <Property Name="fax_src_oa_man_cc" Type="varchar" MaxLength="500" />
+    <Property Name="fob" Type="varchar" MaxLength="500" />
+    <Property Name="trans_bill_method" Type="varchar" MaxLength="500" />
+    <Property Name="collections_date" Type="varchar" MaxLength="500" />
+    <Property Name="in_collections" Type="bit" />
+    <Property Name="Collections_amt" Type="float" />
+    <Property Name="collections_paid" Type="bit" />
+    <Property Name="cell_phone" Type="varchar" MaxLength="500" />
+    <Property Name="profile3" Type="nvarchar(max)" />
+    <Property Name="bill_hold_flag" Type="bit" />
+    <Property Name="ipad_extract" Type="bit" />
+    <Property Name="last_update" Type="varchar" MaxLength="500" />
+    <Property Name="cu_restrict_group" Type="varchar" MaxLength="500" />
+    <Property Name="ch_grace_date" Type="varchar" MaxLength="500" />
+    <Property Name="ch_grace_days" Type="float" />
+    <Property Name="req_date_ovrd_days" Type="float" />
+    <Property Name="DOD" Type="varchar" MaxLength="500" />
+    <Property Name="DOR" Type="varchar" MaxLength="500" />
+    <Property Name="tot_payments" Type="float" />
+    <Property Name="tot_days_to_pay" Type="float" />
+    <Property Name="future_ovrd" Type="bit" />
+    <Property Name="form_ackn_hard_copy" Type="bit" />
+    <Property Name="form_inv_hard_copy" Type="bit" />
+    <Property Name="form_quote_hard_copy" Type="bit" />
+    <Property Name="form_stmt_hard_copy" Type="bit" />
+    <Property Name="license" Type="varchar" MaxLength="500" />
+    <Property Name="license_exp_date" Type="varchar" MaxLength="500" />
+    <Property Name="license_recv_date" Type="varchar" MaxLength="500" />
+    <Property Name="license_lookup" Type="varchar" MaxLength="500" />
+    <Property Name="imp_oe_header" Type="varchar" MaxLength="500" />
+    <Property Name="imp_oe_line" Type="varchar" MaxLength="500" />
+    <Property Name="hold_bill_flag" Type="bit" />
+    <Property Name="wanted_days" Type="float" />
+    <Property Name="tax_id" Type="varchar" MaxLength="500" />
+    <Property Name="ovrd_oechrg" Type="bit" />
+    <Property Name="factory_grp" Type="nvarchar(max)" />
+    <Property Name="fact_grp_dt" Type="nvarchar(max)" />
+    <Property Name="factory_grp_email" Type="nvarchar(max)" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="customermethodname">
+    <Key>
+      <PropertyRef Name="customerid" />
+    </Key>
+    <Property Name="customerid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="methodname" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="DynamicPages">
+    <Key>
+      <PropertyRef Name="PageID" />
+    </Key>
+    <Property Name="PageID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PageName" Type="varchar" MaxLength="500" />
+    <Property Name="PageTitle" Type="varchar" MaxLength="500" />
+    <Property Name="PageDescription" Type="varchar" MaxLength="500" />
+    <Property Name="PageKeywords" Type="varchar" MaxLength="500" />
+    <Property Name="PageContent" Type="nvarchar(max)" />
+    <Property Name="ptype" Type="varchar" MaxLength="500" />
+    <Property Name="imageurl" Type="nvarchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="Sequence" Type="bigint" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="EMailTemplates">
+    <Key>
+      <PropertyRef Name="MailTemplateID" />
+    </Key>
+    <Property Name="MailTemplateID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MailTemplateName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="MailTemplateSubject" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="MailTemplateContent" Type="varchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="MailType" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="errorlog">
+    <Key>
+      <PropertyRef Name="index" />
+    </Key>
+    <Property Name="index" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="errnum" Type="varchar" MaxLength="255" />
+    <Property Name="descr" Type="varchar" MaxLength="255" />
+    <Property Name="source" Type="varchar" MaxLength="255" />
+    <Property Name="sqlstate" Type="varchar" MaxLength="255" />
+    <Property Name="nativeerror" Type="varchar" MaxLength="255" />
+    <Property Name="comments" Type="varchar" MaxLength="1500" />
+    <Property Name="edate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="headerlinks">
+    <Key>
+      <PropertyRef Name="linkid" />
+    </Key>
+    <Property Name="linkid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="linkname" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="linkurl" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="seq" Type="int" />
+    <Property Name="popover" Type="bit" />
+    <Property Name="types" Type="varchar" MaxLength="500" />
+    <Property Name="parent_seq" Type="int" />
+    <Property Name="ismenu" Type="int" />
+  </EntityType>
+  <EntityType Name="it_compl">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="comp_item" Type="varchar" MaxLength="500" />
+    <Property Name="company_it" Type="varchar" MaxLength="500" />
+    <Property Name="item" Type="varchar" MaxLength="500" />
+    <Property Name="last_update" Type="varchar" MaxLength="500" />
+    <Property Name="related" Type="bit" />
+    <Property Name="similar" Type="bit" />
+    <Property Name="use_in_poe" Type="bit" />
+    <Property Name="warehouse" Type="varchar" MaxLength="500" />
+    <Property Name="use_in_web_grouping" Type="bit" />
+    <Property Name="alpha_sort" Type="varchar" MaxLength="500" />
+    <Property Name="web_descr" Type="varchar" MaxLength="1500" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="it_component">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="comp_item" Type="varchar" MaxLength="500" />
+    <Property Name="comp_qty" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="company_it" Type="varchar" MaxLength="500" />
+    <Property Name="kit_item" Type="varchar" MaxLength="500" />
+    <Property Name="um" Type="varchar" MaxLength="500" />
+    <Property Name="variable_item" Type="bit" />
+    <Property Name="vendor_supplied_flag" Type="bit" />
+    <Property Name="vendor_process_seq" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="bd_priority" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="last_update" Type="varchar" MaxLength="500" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="it_majcls">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_it" Type="varchar" MaxLength="500" />
+    <Property Name="descr" Type="varchar" MaxLength="500" />
+    <Property Name="it_acct_class" Type="varchar" MaxLength="500" />
+    <Property Name="it_maj_class" Type="varchar" MaxLength="500" />
+    <Property Name="ltl_nmfc" Type="varchar" MaxLength="500" />
+    <Property Name="ltl_class" Type="varchar" MaxLength="500" />
+    <Property Name="alpha_sort" Type="varchar" MaxLength="500" />
+    <Property Name="web_descr" Type="varchar" MaxLength="1000" />
+    <Property Name="web_image" Type="varchar" MaxLength="1000" />
+    <Property Name="meta_descr" Type="nvarchar(max)" />
+    <Property Name="meta" Type="nvarchar(max)" />
+    <Property Name="title_tag" Type="varchar" MaxLength="500" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="it_prodline">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="meta" Type="varchar(max)" />
+    <Property Name="title_tag" Type="varchar" MaxLength="1500" />
+    <Property Name="company_it" Type="varchar" MaxLength="500" />
+    <Property Name="descr" Type="varchar" MaxLength="1500" />
+    <Property Name="discount_flag" Type="bit" />
+    <Property Name="force_cost" Type="bit" />
+    <Property Name="maj_class" Type="varchar" MaxLength="500" />
+    <Property Name="tax_class" Type="varchar" MaxLength="500" />
+    <Property Name="product_line" Type="varchar" MaxLength="500" />
+    <Property Name="cogs" Type="varchar" MaxLength="500" />
+    <Property Name="w_cost" Type="varchar" MaxLength="500" />
+    <Property Name="use_item_req" Type="bit" />
+    <Property Name="alpha_sort" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_label" Type="nvarchar(max)" />
+    <Property Name="ord_class" Type="varchar" MaxLength="500" />
+    <Property Name="new_item_cost_multiple" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="cost_multiplier" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="rental_depr_pct" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="rental_depr_days" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="rental_list_pct" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="supplier_class" Type="varchar" MaxLength="500" />
+    <Property Name="comm_class" Type="varchar" MaxLength="500" />
+    <Property Name="msds_required" Type="bit" />
+    <Property Name="vend_gsc" Type="varchar" MaxLength="500" />
+    <Property Name="vend_generic_item" Type="varchar" MaxLength="500" />
+    <Property Name="um" Type="varchar" MaxLength="500" />
+    <Property Name="profile" Type="nvarchar(max)" />
+    <Property Name="web_descr" Type="varchar" MaxLength="1500" />
+    <Property Name="web_image" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_label_1" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_label_2" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_label_3" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_label_4" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_label_5" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_label_6" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_label_7" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_label_8" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_label_9" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_label_10" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_label_11" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_label_12" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_label_13" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_label_14" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_label_15" Type="varchar" MaxLength="500" />
+    <Property Name="meta_descr" Type="nvarchar(max)" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="it_sales_restriction">
+    <Key>
+      <PropertyRef Name="__rowids" />
+    </Key>
+    <Property Name="company_it" Type="varchar" MaxLength="500" />
+    <Property Name="company_oe" Type="varchar" MaxLength="500" />
+    <Property Name="item" Type="varchar" MaxLength="1000" />
+    <Property Name="region" Type="varchar" MaxLength="1000" />
+    <Property Name="product_line" Type="varchar" MaxLength="1000" />
+    <Property Name="restriction_type" Type="varchar" MaxLength="1000" />
+    <Property Name="customer" Type="varchar" MaxLength="1000" />
+    <Property Name="restriction_flag" Type="varchar" MaxLength="1000" />
+    <Property Name="ord_class" Type="varchar" MaxLength="500" />
+    <Property Name="last_update" Type="varchar" MaxLength="1000" />
+    <Property Name="eff_date" Type="varchar" MaxLength="1000" />
+    <Property Name="exp_date" Type="varchar" MaxLength="1000" />
+    <Property Name="country_code" Type="varchar" MaxLength="1000" />
+    <Property Name="state" Type="varchar" MaxLength="1000" />
+    <Property Name="warehouse" Type="varchar" MaxLength="1000" />
+    <Property Name="__rowids" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="__seq" Type="bigint" />
+  </EntityType>
+  <EntityType Name="it_tree_link">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_it" Type="varchar" MaxLength="500" />
+    <Property Name="tree_node" Type="varchar" MaxLength="500" />
+    <Property Name="item" Type="varchar" MaxLength="500" />
+    <Property Name="sequence" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="last_update" Type="varchar" MaxLength="500" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="it_tree_node">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_it" Type="varchar" MaxLength="500" />
+    <Property Name="tree_node" Type="varchar" MaxLength="500" />
+    <Property Name="name" Type="varchar" MaxLength="500" />
+    <Property Name="descr" Type="nvarchar(max)" />
+    <Property Name="image" Type="nvarchar(max)" />
+    <Property Name="sequence" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="parent_node" Type="varchar" MaxLength="500" />
+    <Property Name="left_node" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="right_node" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="last_update" Type="varchar" MaxLength="500" />
+    <Property Name="hidden" Type="bit" />
+    <Property Name="web_id" Type="nvarchar" MaxLength="500" />
+    <Property Name="meta" Type="varchar(max)" />
+    <Property Name="title_tag" Type="varchar" MaxLength="1500" />
+    <Property Name="meta_descr" Type="nvarchar(max)" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="it_xref">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_it" Type="varchar" MaxLength="500" />
+    <Property Name="item" Type="varchar" MaxLength="500" />
+    <Property Name="xref_id" Type="varchar" MaxLength="500" />
+    <Property Name="descr" Type="nvarchar(max)" />
+    <Property Name="type" Type="varchar" MaxLength="500" />
+    <Property Name="vendor" Type="varchar" MaxLength="500" />
+    <Property Name="vendor_avg_lead_time" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="last_rcpt_date" Type="varchar" MaxLength="500" />
+    <Property Name="vendor_purch_mult" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="vendor_price" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="vendor_price_per" Type="varchar" MaxLength="500" />
+    <Property Name="customer" Type="varchar" MaxLength="500" />
+    <Property Name="company_cu" Type="varchar" MaxLength="500" />
+    <Property Name="company_ve" Type="varchar" MaxLength="500" />
+    <Property Name="last_update" Type="varchar" MaxLength="500" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="assort_code" Type="nvarchar(max)" />
+    <Property Name="com_pct" Type="float" />
+    <Property Name="company_it" Type="nvarchar" MaxLength="500" />
+    <Property Name="date_added" Type="varchar" MaxLength="500" />
+    <Property Name="descr" Type="nvarchar(max)" />
+    <Property Name="it_group" Type="nvarchar(max)" />
+    <Property Name="haz_class" Type="nvarchar(max)" />
+    <Property Name="haz_id" Type="nvarchar(max)" />
+    <Property Name="haz_group" Type="nvarchar(max)" />
+    <Property Name="haz_placard" Type="nvarchar(max)" />
+    <Property Name="haz_shipping" Type="nvarchar(max)" />
+    <Property Name="haz_technical" Type="nvarchar(max)" />
+    <Property Name="item" Type="nvarchar" MaxLength="500" />
+    <Property Name="lot_type" Type="nvarchar(max)" />
+    <Property Name="manufacturer" Type="nvarchar(max)" />
+    <Property Name="msds_sheet" Type="nvarchar(max)" />
+    <Property Name="msds_date" Type="varchar" MaxLength="500" />
+    <Property Name="old_item" Type="nvarchar(max)" />
+    <Property Name="product_line" Type="nvarchar" MaxLength="500" />
+    <Property Name="rebate_class" Type="nvarchar(max)" />
+    <Property Name="stat" Type="nvarchar(max)" />
+    <Property Name="tax_flag" Type="bit" />
+    <Property Name="um" Type="nvarchar(max)" />
+    <Property Name="um_display" Type="nvarchar(max)" />
+    <Property Name="um_piece" Type="nvarchar(max)" />
+    <Property Name="um_po" Type="nvarchar(max)" />
+    <Property Name="um_qty" Type="nvarchar(max)" />
+    <Property Name="um_rep" Type="nvarchar(max)" />
+    <Property Name="upc1" Type="nvarchar(max)" />
+    <Property Name="upc2" Type="nvarchar(max)" />
+    <Property Name="upc3" Type="nvarchar(max)" />
+    <Property Name="upc4" Type="nvarchar(max)" />
+    <Property Name="upc5" Type="nvarchar(max)" />
+    <Property Name="vendor" Type="nvarchar(max)" />
+    <Property Name="vendor_aux" Type="nvarchar(max)" />
+    <Property Name="vendor_item" Type="nvarchar(max)" />
+    <Property Name="vendor_item_aux" Type="nvarchar(max)" />
+    <Property Name="image" Type="nvarchar(max)" />
+    <Property Name="ship_length" Type="float" />
+    <Property Name="ship_width" Type="float" />
+    <Property Name="ship_height" Type="float" />
+    <Property Name="um_ship" Type="nvarchar(max)" />
+    <Property Name="ship_volumn" Type="float" />
+    <Property Name="sy_lookup" Type="nvarchar(max)" />
+    <Property Name="weight" Type="float" />
+    <Property Name="weight_per" Type="nvarchar(max)" />
+    <Property Name="freeform" Type="nvarchar(max)" />
+    <Property Name="um_lot" Type="nvarchar(max)" />
+    <Property Name="web_item" Type="bit" />
+    <Property Name="it_acct_class" Type="nvarchar(max)" />
+    <Property Name="loc_flag" Type="bit" />
+    <Property Name="keep_inventory" Type="bit" />
+    <Property Name="replenish" Type="bit" />
+    <Property Name="components_on_invoice" Type="bit" />
+    <Property Name="components_on_picktick" Type="bit" />
+    <Property Name="price_by_components" Type="bit" />
+    <Property Name="auto_print_wo" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="discontinued" Type="bit" />
+    <Property Name="loc_type" Type="nvarchar(max)" />
+    <Property Name="use_lot_loc_cost" Type="bit" />
+    <Property Name="lead_time_calc_range" Type="float" />
+    <Property Name="qty_um" Type="nvarchar(max)" />
+    <Property Name="vendor_price_aux" Type="nvarchar(max)" />
+    <Property Name="vendor_price_per_aux" Type="nvarchar(max)" />
+    <Property Name="user_code" Type="nvarchar(max)" />
+    <Property Name="profile" Type="nvarchar(max)" />
+    <Property Name="company_ve" Type="nvarchar(max)" />
+    <Property Name="royalty_value" Type="float" />
+    <Property Name="royalty_type" Type="nvarchar(max)" />
+    <Property Name="royalty_class" Type="nvarchar(max)" />
+    <Property Name="load" Type="float" />
+    <Property Name="it_cost_group" Type="nvarchar(max)" />
+    <Property Name="spec_group" Type="nvarchar(max)" />
+    <Property Name="vendor_purch_mult" Type="nvarchar(max)" />
+    <Property Name="req_date" Type="varchar" MaxLength="500" />
+    <Property Name="msds_image" Type="nvarchar(max)" />
+    <Property Name="country_origin" Type="nvarchar(max)" />
+    <Property Name="com_class" Type="nvarchar(max)" />
+    <Property Name="it_group_sale_price" Type="nvarchar(max)" />
+    <Property Name="discontinued_date" Type="varchar" MaxLength="500" />
+    <Property Name="style" Type="nvarchar(max)" />
+    <Property Name="style_master_rec" Type="bit" />
+    <Property Name="commodity_code" Type="nvarchar(max)" />
+    <Property Name="cu_it_group" Type="nvarchar(max)" />
+    <Property Name="um_po_cost" Type="nvarchar(max)" />
+    <Property Name="commodity_units" Type="float" />
+    <Property Name="hold_flag" Type="bit" />
+    <Property Name="mod_date" Type="varchar" MaxLength="500" />
+    <Property Name="mod_time" Type="float" />
+    <Property Name="msds_exp_date" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_1" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_2" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_3" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_4" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_5" Type="varchar" MaxLength="500" />
+    <Property Name="um_pick" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_6" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_7" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_8" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_9" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_10" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_11" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_12" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_13" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_14" Type="varchar" MaxLength="500" />
+    <Property Name="sa_group_15" Type="varchar" MaxLength="500" />
+    <Property Name="sp_item_flag" Type="nvarchar(max)" />
+    <Property Name="customer" Type="nvarchar(max)" />
+    <Property Name="company_cu" Type="nvarchar(max)" />
+    <Property Name="print_labels" Type="bit" />
+    <Property Name="core_item" Type="nvarchar(max)" />
+    <Property Name="merge_next" Type="bit" />
+    <Property Name="rc_value" Type="nvarchar(max)" />
+    <Property Name="rc_type" Type="nvarchar(max)" />
+    <Property Name="rc_publisher" Type="nvarchar(max)" />
+    <Property Name="rc_artist" Type="nvarchar(max)" />
+    <Property Name="ship_length2" Type="float" />
+    <Property Name="ship_width2" Type="float" />
+    <Property Name="ship_height2" Type="float" />
+    <Property Name="um_ship2" Type="nvarchar(max)" />
+    <Property Name="ship_volumn2" Type="float" />
+    <Property Name="weight2" Type="float" />
+    <Property Name="weight_per2" Type="nvarchar(max)" />
+    <Property Name="department" Type="nvarchar(max)" />
+    <Property Name="life_span_days" Type="float" />
+    <Property Name="duty_pay" Type="bit" />
+    <Property Name="um_wo_comp" Type="nvarchar(max)" />
+    <Property Name="breakdown_allowed" Type="bit" />
+    <Property Name="cofc_flag" Type="bit" />
+    <Property Name="marketing" Type="nvarchar(max)" />
+    <Property Name="tax_code" Type="nvarchar(max)" />
+    <Property Name="allow_comp_chg" Type="bit" />
+    <Property Name="tax_class" Type="nvarchar(max)" />
+    <Property Name="spoil_pct" Type="float" />
+    <Property Name="spoil_item" Type="nvarchar(max)" />
+    <Property Name="sample_limit" Type="float" />
+    <Property Name="sample_limit_flag" Type="bit" />
+    <Property Name="life_span_ship" Type="bit" />
+    <Property Name="extra_points" Type="float" />
+    <Property Name="extra_points_basis" Type="nvarchar(max)" />
+    <Property Name="extra_points_eff_date" Type="varchar" MaxLength="500" />
+    <Property Name="extra_points_exp_date" Type="varchar" MaxLength="500" />
+    <Property Name="vendor_comment_aux" Type="nvarchar(max)" />
+    <Property Name="print_on_invoice" Type="bit" />
+    <Property Name="print_on_quote" Type="bit" />
+    <Property Name="print_on_ackn" Type="bit" />
+    <Property Name="print_on_ps" Type="bit" />
+    <Property Name="print_on_pk" Type="bit" />
+    <Property Name="auto_wo" Type="bit" />
+    <Property Name="def_warehouse" Type="nvarchar(max)" />
+    <Property Name="profile2" Type="nvarchar(max)" />
+    <Property Name="profile3" Type="nvarchar(max)" />
+    <Property Name="label_qty" Type="float" />
+    <Property Name="ipad_extract" Type="bit" />
+    <Property Name="last_update" Type="varchar" MaxLength="500" />
+    <Property Name="req_date_ovrd" Type="bit" />
+    <Property Name="original_release_date" Type="varchar" MaxLength="500" />
+    <Property Name="nafta" Type="bit" />
+    <Property Name="cash_disc_pct" Type="float" />
+    <Property Name="image_thumb" Type="nvarchar(max)" />
+    <Property Name="components_on_quote" Type="bit" />
+    <Property Name="sales_allocate" Type="bit" />
+    <Property Name="freight_percent" Type="float" />
+    <Property Name="add_on_method" Type="nvarchar(max)" />
+    <Property Name="style_group" Type="nvarchar(max)" />
+    <Property Name="auto_mrev" Type="bit" />
+    <Property Name="freight_class" Type="nvarchar(max)" />
+    <Property Name="sc_code" Type="varchar" MaxLength="500" />
+    <Property Name="web_id" Type="nvarchar" MaxLength="500" />
+    <Property Name="mater_grade" Type="varchar" MaxLength="500" />
+    <Property Name="mater_class" Type="varchar" MaxLength="500" />
+    <Property Name="mechanic_code" Type="varchar" MaxLength="500" />
+    <Property Name="free_freight_level" Type="varchar" MaxLength="500" />
+    <Property Name="meta" Type="varchar" MaxLength="500" />
+    <Property Name="title_tag" Type="varchar" MaxLength="500" />
+    <Property Name="sq_unit_fact" Type="decimal" Precision="18" Scale="8" />
+    <Property Name="kc_round_up_in" Type="bit" />
+    <Property Name="meta_descr" Type="nvarchar(max)" />
+    <Property Name="__rowids" Type="nvarchar(max)" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="itemdetails">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="item" Type="varchar" MaxLength="500" />
+    <Property Name="type" Type="varchar" MaxLength="500" />
+    <Property Name="name" Type="varchar" MaxLength="500" />
+    <Property Name="details_or_url" Type="nvarchar(max)" />
+    <Property Name="sequence" Type="int" />
+    <Property Name="IMType" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemSummery">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="sum_qty" Type="int" />
+    <Property Name="sum_sum_key_1" Type="varchar" MaxLength="500" />
+    <Property Name="sum_sum_year" Type="int" />
+    <Property Name="sum_company_sy" Type="varchar" MaxLength="500" />
+    <Property Name="sum_sum_name" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="MailConfigs">
+    <Key>
+      <PropertyRef Name="MailBoxID" />
+    </Key>
+    <Property Name="MailBoxID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MailBoxName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SMTPServer" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="SMTPPort" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsSSL" Type="bit" Nullable="false" />
+    <Property Name="MailFrom" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="ReplyTo" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="DisplayName" Type="varchar" MaxLength="500" />
+    <Property Name="Company" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="oe_class">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="ar_flag" Type="bit" />
+    <Property Name="blanket" Type="bit" />
+    <Property Name="bo_ord_class" Type="varchar" MaxLength="500" />
+    <Property Name="company_oe" Type="varchar" MaxLength="500" />
+    <Property Name="descr" Type="varchar" MaxLength="1000" />
+    <Property Name="demand_pct" Type="float" />
+    <Property Name="hold_flag" Type="bit" />
+    <Property Name="hit_inventory" Type="bit" />
+    <Property Name="load" Type="float" />
+    <Property Name="max_gp" Type="float" />
+    <Property Name="min_gp" Type="float" />
+    <Property Name="op_flag" Type="bit" />
+    <Property Name="ord_class" Type="varchar" MaxLength="500" />
+    <Property Name="pct_stock" Type="float" />
+    <Property Name="prt_ext" Type="bit" />
+    <Property Name="prt_ord_tot" Type="bit" />
+    <Property Name="prt_price" Type="bit" />
+    <Property Name="quote_flag" Type="bit" />
+    <Property Name="rent_flag" Type="bit" />
+    <Property Name="sample_flag" Type="bit" />
+    <Property Name="ship_ord" Type="bit" />
+    <Property Name="transfer_flag" Type="bit" />
+    <Property Name="po_ord_class" Type="varchar" MaxLength="500" />
+    <Property Name="print_ni_ps" Type="bit" />
+    <Property Name="oe_totals_flag" Type="bit" />
+    <Property Name="sa_totals_flag" Type="bit" />
+    <Property Name="oe_forms_flag" Type="bit" />
+    <Property Name="print_sample_price" Type="bit" />
+    <Property Name="post_ar_gl" Type="bit" />
+    <Property Name="season_start_date" Type="varchar" MaxLength="500" />
+    <Property Name="season_end_date" Type="varchar" MaxLength="500" />
+    <Property Name="points_active" Type="bit" />
+    <Property Name="from_units" Type="nvarchar(max)" />
+    <Property Name="to_units" Type="nvarchar(max)" />
+    <Property Name="extra_points" Type="nvarchar(max)" />
+    <Property Name="always_bo" Type="bit" />
+    <Property Name="bill_hold_flag" Type="bit" />
+    <Property Name="hold_bill_flag" Type="bit" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="oe_totcodes">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_oe" Type="varchar" MaxLength="500" />
+    <Property Name="tot_cd" Type="varchar" MaxLength="500" />
+    <Property Name="descr" Type="varchar" MaxLength="500" />
+    <Property Name="gl_account" Type="varchar" MaxLength="500" />
+    <Property Name="tax_flg" Type="bit" />
+    <Property Name="cash_disc_flg" Type="bit" />
+    <Property Name="hist_flg" Type="bit" />
+    <Property Name="comm_flg" Type="bit" />
+    <Property Name="frt_sc_flg" Type="bit" />
+    <Property Name="cost_from_manifest" Type="bit" />
+    <Property Name="amt_from_manifest" Type="bit" />
+    <Property Name="prop_by_shipment" Type="bit" />
+    <Property Name="every_shipment" Type="bit" />
+    <Property Name="rounding" Type="bit" />
+    <Property Name="cu_acct_class" Type="varchar" MaxLength="500" />
+    <Property Name="taxable_by_state" Type="bit" />
+    <Property Name="tax_class" Type="varchar" MaxLength="500" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ordereditems">
+    <Key>
+      <PropertyRef Name="orderindex" />
+      <PropertyRef Name="line" />
+    </Key>
+    <Property Name="orderindex" Type="int" Nullable="false" />
+    <Property Name="productline" Type="varchar" MaxLength="200" />
+    <Property Name="itemnumber" Type="varchar" MaxLength="50" />
+    <Property Name="image" Type="varchar" MaxLength="500" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="price" Type="decimal" Precision="19" Scale="4" />
+    <Property Name="priceExt" Type="decimal" Precision="19" Scale="4" />
+    <Property Name="descr" Type="varchar" MaxLength="255" />
+    <Property Name="warehouse" Type="varchar" MaxLength="10" />
+    <Property Name="line" Type="int" Nullable="false" />
+    <Property Name="um_o" Type="varchar" MaxLength="10" />
+    <Property Name="note" Type="varchar" MaxLength="1500" />
+    <Property Name="spoil_line_add" Type="int" />
+    <Property Name="override_price" Type="smallint" />
+    <Property Name="tax_flag" Type="smallint" />
+  </EntityType>
+  <EntityType Name="orderhead">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderStatus" Type="bit" />
+    <Property Name="response" Type="varchar" MaxLength="500" />
+    <Property Name="customer" Type="varchar" MaxLength="500" />
+    <Property Name="rec_type" Type="varchar" MaxLength="500" />
+    <Property Name="ord_class" Type="varchar" MaxLength="500" />
+    <Property Name="warehouse" Type="varchar" MaxLength="500" />
+    <Property Name="ship_id" Type="varchar" MaxLength="500" />
+    <Property Name="ship_via_code" Type="varchar" MaxLength="500" />
+    <Property Name="order_by" Type="varchar" MaxLength="500" />
+    <Property Name="terms_code" Type="varchar" MaxLength="500" />
+    <Property Name="email" Type="varchar" MaxLength="500" />
+    <Property Name="source_code" Type="varchar" MaxLength="500" />
+    <Property Name="wanted_date" Type="varchar" MaxLength="500" />
+    <Property Name="cu_po" Type="varchar" MaxLength="500" />
+    <Property Name="notes" Type="varchar" MaxLength="500" />
+    <Property Name="echo" Type="bit" />
+    <Property Name="complete" Type="bit" />
+    <Property Name="orderby_phone" Type="varchar" MaxLength="100" />
+    <Property Name="ship_via_acct" Type="varchar" MaxLength="200" />
+    <Property Name="bill_phone" Type="varchar" MaxLength="50" />
+    <Property Name="bill_fax" Type="varchar" MaxLength="50" />
+    <Property Name="bill_adr" Type="varchar" MaxLength="500" />
+    <Property Name="o_tot_taxable_it" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="o_tot_tax_amt" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="o_tot_net_ar" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CardNumber" Type="varchar" MaxLength="100" />
+    <Property Name="ExpirationDate" Type="varchar" MaxLength="500" />
+    <Property Name="SecurityCode" Type="varchar" MaxLength="50" />
+    <Property Name="ExpirationMonth" Type="int" />
+    <Property Name="ExpirationYear" Type="int" />
+    <Property Name="CardType" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ordermethod">
+    <Key>
+      <PropertyRef Name="ordermethodid" />
+    </Key>
+    <Property Name="ordermethodid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ordermethodname" Type="varchar" MaxLength="300" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderProduct">
+    <Key>
+      <PropertyRef Name="ProductOrderID" />
+    </Key>
+    <Property Name="ProductOrderID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderID" Type="bigint" Nullable="false" />
+    <Property Name="response" Type="varbinary" MaxLength="500" />
+    <Property Name="reference" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="item" Type="varchar" MaxLength="500" />
+    <Property Name="quantity" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="um_o" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="index" />
+    </Key>
+    <Property Name="index" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ordernumber" Type="varchar" MaxLength="50" />
+    <Property Name="custid" Type="varchar" MaxLength="50" />
+    <Property Name="shipmethod" Type="varchar" MaxLength="50" />
+    <Property Name="shipviacode" Type="varchar" MaxLength="30" />
+    <Property Name="shipComplete" Type="smallint" Nullable="false" />
+    <Property Name="shipcost" Type="varchar" MaxLength="50" />
+    <Property Name="shipDiscount" Type="decimal" Precision="19" Scale="4" />
+    <Property Name="subtotal" Type="varchar" MaxLength="50" />
+    <Property Name="tax" Type="varchar" MaxLength="50" />
+    <Property Name="total" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="odate" Type="varchar" MaxLength="50" />
+    <Property Name="otime" Type="varchar" MaxLength="50" />
+    <Property Name="sdate" Type="varchar" MaxLength="50" />
+    <Property Name="contact" Type="varchar" MaxLength="100" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="emailCC" Type="varchar" MaxLength="1500" />
+    <Property Name="emailTemplate" Type="varchar" MaxLength="1500" />
+    <Property Name="shipnum" Type="varchar" MaxLength="50" />
+    <Property Name="wantedDate" Type="varchar" MaxLength="10" />
+    <Property Name="cancelDate" Type="varchar" MaxLength="10" />
+    <Property Name="billadr" Type="int" />
+    <Property Name="shipadr" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="cname" Type="varchar" MaxLength="50" />
+    <Property Name="address" Type="varchar" MaxLength="185" />
+    <Property Name="state" Type="varchar" MaxLength="30" />
+    <Property Name="postal" Type="varchar" MaxLength="30" />
+    <Property Name="country" Type="varchar" MaxLength="10" />
+    <Property Name="phone" Type="varchar" MaxLength="11" />
+    <Property Name="phext" Type="varchar" MaxLength="10" />
+    <Property Name="fax" Type="varchar" MaxLength="11" />
+    <Property Name="residential" Type="smallint" Nullable="false" />
+    <Property Name="cartName" Type="varchar" MaxLength="50" />
+    <Property Name="ffContact" Type="varchar" MaxLength="30" />
+    <Property Name="ffPhone" Type="varchar" MaxLength="30" />
+    <Property Name="ffInstr" Type="varchar" MaxLength="1500" />
+    <Property Name="checkoutPage" Type="int" />
+    <Property Name="discountAmt" Type="varchar" MaxLength="255" />
+    <Property Name="discountCd" Type="varchar" MaxLength="255" />
+    <Property Name="discountDescr" Type="varchar" MaxLength="1500" />
+    <Property Name="ordInstr" Type="varchar" MaxLength="1500" />
+    <Property Name="frVolDisCustTotal" Type="decimal" Precision="19" Scale="4" />
+    <Property Name="promoCode" Type="varchar" MaxLength="20" />
+    <Property Name="promoCodeAmt" Type="varchar" MaxLength="20" />
+    <Property Name="terms_code" Type="varchar" MaxLength="10" />
+    <Property Name="cu_po" Type="varchar" MaxLength="25" />
+    <Property Name="pay_code" Type="varchar" MaxLength="2" />
+    <Property Name="pay_code_card" Type="varchar" MaxLength="20" />
+    <Property Name="warehouse" Type="varchar" MaxLength="10" />
+    <Property Name="ord_class" Type="varchar" MaxLength="2" />
+    <Property Name="wanted_date_range" Type="varchar" MaxLength="1" />
+    <Property Name="punchout_id" Type="varchar" MaxLength="16" />
+    <Property Name="resubmit" Type="smallint" />
+    <Property Name="job_rel" Type="varchar" MaxLength="50" />
+    <Property Name="v2_order" Type="int" />
+    <Property Name="cell_phone" Type="varchar" MaxLength="20" />
+    <Property Name="ship_fob" Type="varchar" MaxLength="3" />
+    <Property Name="ship_fob_carrier" Type="varchar" MaxLength="4" />
+    <Property Name="ship_fob_account" Type="varchar" MaxLength="25" />
+    <Property Name="total_weight" Type="decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="payment">
+    <Key>
+      <PropertyRef Name="orderindex" />
+      <PropertyRef Name="seq" />
+    </Key>
+    <Property Name="orderindex" Type="int" Nullable="false" />
+    <Property Name="method" Type="varchar" MaxLength="50" />
+    <Property Name="cardtype" Type="varchar" MaxLength="4" />
+    <Property Name="ccardnum" Type="varchar" MaxLength="32" />
+    <Property Name="cfname" Type="varchar" MaxLength="50" />
+    <Property Name="clname" Type="varchar" MaxLength="50" />
+    <Property Name="cexdatey" Type="varchar" MaxLength="4" />
+    <Property Name="cexdatem" Type="varchar" MaxLength="2" />
+    <Property Name="cvv2" Type="varchar" MaxLength="4" />
+    <Property Name="POnum" Type="varchar" MaxLength="25" />
+    <Property Name="seq" Type="int" Nullable="false" />
+    <Property Name="pay_cd" Type="varchar" MaxLength="20" />
+    <Property Name="pay_amount" Type="decimal" Precision="10" Scale="4" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="PermissionId" />
+    </Key>
+    <Property Name="PermissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PermissionCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="price">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_ip" Type="varchar" MaxLength="500" />
+    <Property Name="cost_price_flg" Type="varchar" MaxLength="500" />
+    <Property Name="it_group" Type="varchar" MaxLength="500" />
+    <Property Name="item" Type="varchar" MaxLength="500" />
+    <Property Name="cu_group" Type="varchar" MaxLength="500" />
+    <Property Name="customer" Type="varchar" MaxLength="500" />
+    <Property Name="ve_group" Type="varchar" MaxLength="500" />
+    <Property Name="vendor" Type="varchar" MaxLength="500" />
+    <Property Name="sched_code" Type="varchar" MaxLength="500" />
+    <Property Name="base" Type="varchar" MaxLength="500" />
+    <Property Name="col_mult_prc" Type="nvarchar(max)" />
+    <Property Name="col_qty_brk" Type="nvarchar(max)" />
+    <Property Name="col_qty_level" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="col_label" Type="nvarchar(max)" />
+    <Property Name="fut_mult_prc" Type="nvarchar(max)" />
+    <Property Name="fut_qty_brk" Type="nvarchar(max)" />
+    <Property Name="fut_label" Type="nvarchar(max)" />
+    <Property Name="fut_eff_date" Type="varchar" MaxLength="500" />
+    <Property Name="col_man_prc" Type="nvarchar(max)" />
+    <Property Name="fut_man_prc" Type="nvarchar(max)" />
+    <Property Name="com_pct" Type="nvarchar(max)" />
+    <Property Name="fut_com_pct" Type="nvarchar(max)" />
+    <Property Name="company_it" Type="varchar" MaxLength="500" />
+    <Property Name="company_cu" Type="varchar" MaxLength="500" />
+    <Property Name="company_ve" Type="varchar" MaxLength="500" />
+    <Property Name="col_base_2" Type="nvarchar(max)" />
+    <Property Name="col_label_2" Type="nvarchar(max)" />
+    <Property Name="col_mult_prc_2" Type="nvarchar(max)" />
+    <Property Name="col_qty_brk_2" Type="nvarchar(max)" />
+    <Property Name="fut_base_2" Type="nvarchar(max)" />
+    <Property Name="fut_label_2" Type="nvarchar(max)" />
+    <Property Name="fut_mult_prc_2" Type="nvarchar(max)" />
+    <Property Name="fut_qty_brk_2" Type="nvarchar(max)" />
+    <Property Name="com_pct_2" Type="nvarchar(max)" />
+    <Property Name="fut_com_pct_2" Type="nvarchar(max)" />
+    <Property Name="currency_code" Type="varchar" MaxLength="500" />
+    <Property Name="ord_class" Type="varchar" MaxLength="500" />
+    <Property Name="pricing_terms" Type="varchar" MaxLength="500" />
+    <Property Name="last_fut_update" Type="varchar" MaxLength="500" />
+    <Property Name="warehouse" Type="varchar" MaxLength="500" />
+    <Property Name="col_qty_level_2" Type="nvarchar(max)" />
+    <Property Name="last_update" Type="varchar" MaxLength="500" />
+    <Property Name="broken_pack_pricing" Type="bit" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="price_sale">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_ip" Type="varchar" MaxLength="500" />
+    <Property Name="it_group" Type="varchar" MaxLength="500" />
+    <Property Name="item" Type="varchar" MaxLength="500" />
+    <Property Name="base" Type="varchar" MaxLength="500" />
+    <Property Name="mult_prc" Type="float" />
+    <Property Name="price_per" Type="varchar" MaxLength="500" />
+    <Property Name="always_use_price" Type="bit" />
+    <Property Name="disc_usual_price" Type="bit" />
+    <Property Name="cost" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="cost_per" Type="varchar" MaxLength="500" />
+    <Property Name="eff_date" Type="varchar" MaxLength="500" />
+    <Property Name="exp_date" Type="varchar" MaxLength="500" />
+    <Property Name="com_pct" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="company_it" Type="varchar" MaxLength="500" />
+    <Property Name="cu_group" Type="varchar" MaxLength="500" />
+    <Property Name="customer" Type="varchar" MaxLength="500" />
+    <Property Name="company_cu" Type="varchar" MaxLength="500" />
+    <Property Name="use_sale_price_group" Type="bit" />
+    <Property Name="currency_code" Type="varchar" MaxLength="500" />
+    <Property Name="col_base_2" Type="nvarchar(max)" />
+    <Property Name="col_label_2" Type="nvarchar(max)" />
+    <Property Name="col_mult_prc_2" Type="nvarchar(max)" />
+    <Property Name="col_qty_brk_2" Type="nvarchar(max)" />
+    <Property Name="col_qty_level" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="use_qty_breaks" Type="bit" />
+    <Property Name="warehouse" Type="varchar" MaxLength="500" />
+    <Property Name="ord_class" Type="varchar" MaxLength="500" />
+    <Property Name="col_qty_level_2" Type="nvarchar(max)" />
+    <Property Name="web_only" Type="bit" />
+    <Property Name="last_update" Type="varchar" MaxLength="500" />
+    <Property Name="reference" Type="varchar" MaxLength="500" />
+    <Property Name="retail_price" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="broken_pack_pricing" Type="bit" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PunchoutSessionDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="varchar" MaxLength="500" />
+    <Property Name="UserId" Type="varchar" MaxLength="500" />
+    <Property Name="ShipTo" Type="varchar(max)" />
+    <Property Name="DeliverTo" Type="varchar(max)" />
+    <Property Name="ReturnURL" Type="varchar(max)" />
+    <Property Name="jsonobject" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="PunchOutTerritory">
+    <Key>
+      <PropertyRef Name="AccountId" />
+    </Key>
+    <Property Name="AccountId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TerritoryCode" Type="varchar" MaxLength="500" />
+    <Property Name="Type" Type="int" />
+  </EntityType>
+  <EntityType Name="RegistrationControls">
+    <Key>
+      <PropertyRef Name="controlid" />
+    </Key>
+    <Property Name="controlid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="controlname" Type="varchar" MaxLength="500" />
+    <Property Name="controltype" Type="varchar" MaxLength="500" />
+    <Property Name="isrequired" Type="bit" />
+    <Property Name="isemail" Type="bit" />
+    <Property Name="dropdowntype" Type="varchar" MaxLength="500" />
+    <Property Name="dropdowndetails" Type="varchar" MaxLength="2000" />
+    <Property Name="isactive" Type="bit" />
+    <Property Name="sequence" Type="int" />
+    <Property Name="DefaultValues" Type="varchar" MaxLength="500" />
+    <Property Name="IsDisabled" Type="bit" />
+  </EntityType>
+  <EntityType Name="safilterorder">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="stype" Type="int" Nullable="false" />
+    <Property Name="sorder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="salesman">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="adr1" Type="varchar" MaxLength="500" />
+    <Property Name="adr2" Type="varchar" MaxLength="500" />
+    <Property Name="city" Type="varchar" MaxLength="500" />
+    <Property Name="com_load_pct" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="com_min_amount" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="com_min_flag" Type="bit" />
+    <Property Name="com_min_gp" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="com_pct" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="com_type" Type="bit" />
+    <Property Name="company_cu" Type="varchar" MaxLength="500" />
+    <Property Name="company_oe" Type="varchar" MaxLength="500" />
+    <Property Name="employ_date" Type="varchar" MaxLength="500" />
+    <Property Name="name" Type="varchar" MaxLength="500" />
+    <Property Name="phone" Type="varchar" MaxLength="500" />
+    <Property Name="salesman" Type="varchar" MaxLength="500" />
+    <Property Name="state" Type="varchar" MaxLength="500" />
+    <Property Name="user_id" Type="varchar" MaxLength="500" />
+    <Property Name="postal_code" Type="varchar" MaxLength="500" />
+    <Property Name="image" Type="varchar" MaxLength="500" />
+    <Property Name="fax" Type="varchar" MaxLength="500" />
+    <Property Name="email_address" Type="varchar" MaxLength="500" />
+    <Property Name="country_code" Type="varchar" MaxLength="500" />
+    <Property Name="adr" Type="nvarchar(max)" />
+    <Property Name="alt_email_address" Type="varchar" MaxLength="500" />
+    <Property Name="web_passwd" Type="varchar" MaxLength="500" />
+    <Property Name="territory" Type="varchar" MaxLength="500" />
+    <Property Name="sales_group" Type="varchar" MaxLength="500" />
+    <Property Name="warehouse" Type="varchar" MaxLength="500" />
+    <Property Name="excl_oa_email_sale" Type="bit" />
+    <Property Name="excl_qu_email_sale" Type="bit" />
+    <Property Name="zone" Type="varchar" MaxLength="500" />
+    <Property Name="al_cr_activity" Type="bit" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ship_rates">
+    <Key>
+      <PropertyRef Name="ship_via_code" />
+      <PropertyRef Name="zone" />
+      <PropertyRef Name="weightMin" />
+      <PropertyRef Name="weightMax" />
+    </Key>
+    <Property Name="ship_via_code" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="zone" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="weightMin" Type="int" Nullable="false" />
+    <Property Name="weightMax" Type="int" Nullable="false" />
+    <Property Name="rate" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="type" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="shipvia_mapping">
+    <Key>
+      <PropertyRef Name="shipmatchid" />
+    </Key>
+    <Property Name="shipmatchid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="shipvia_code" Type="varchar" MaxLength="500" />
+    <Property Name="name" Type="varchar" MaxLength="500" />
+    <Property Name="provider" Type="varchar" MaxLength="500" />
+    <Property Name="providercode" Type="varchar" MaxLength="500" />
+    <Property Name="Markup" Type="int" />
+    <Property Name="type" Type="int" />
+  </EntityType>
+  <EntityType Name="SouthernPunchOutSession">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerId" Type="varchar" MaxLength="200" />
+    <Property Name="BuyerCookie" Type="varchar(max)" />
+    <Property Name="SupplierPartID" Type="varchar" MaxLength="500" />
+    <Property Name="DeliverTo" Type="varchar" MaxLength="500" />
+    <Property Name="Street" Type="varchar(max)" />
+    <Property Name="City" Type="varchar" MaxLength="500" />
+    <Property Name="State" Type="varchar" MaxLength="500" />
+    <Property Name="PostalCode" Type="varchar" MaxLength="100" />
+    <Property Name="Country" Type="varchar" MaxLength="500" />
+    <Property Name="ReturnURL" Type="varchar(max)" />
+    <Property Name="FromId" Type="varchar" MaxLength="500" />
+    <Property Name="ToId" Type="varchar" MaxLength="500" />
+    <Property Name="SenderId" Type="varchar" MaxLength="500" />
+    <Property Name="UserAgent" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="states">
+    <Key>
+      <PropertyRef Name="country" />
+      <PropertyRef Name="state" />
+    </Key>
+    <Property Name="country" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="state" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="descr" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ERP_TO_ECOMMERCE.dbo.SubUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="sy_codes">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_sy" Type="varchar" MaxLength="500" />
+    <Property Name="descr" Type="varchar" MaxLength="500" />
+    <Property Name="code" Type="varchar" MaxLength="500" />
+    <Property Name="code_type" Type="varchar" MaxLength="500" />
+    <Property Name="code_fld" Type="nvarchar(max)" />
+    <Property Name="last_update" Type="varchar" MaxLength="500" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sy_company">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="name" Type="varchar" MaxLength="500" />
+    <Property Name="adr" Type="nvarchar(max)" />
+    <Property Name="state" Type="varchar" MaxLength="500" />
+    <Property Name="postal_code" Type="varchar" MaxLength="500" />
+    <Property Name="country_code" Type="varchar" MaxLength="500" />
+    <Property Name="phone" Type="varchar" MaxLength="500" />
+    <Property Name="fax" Type="varchar" MaxLength="500" />
+    <Property Name="company_oe" Type="varchar" MaxLength="500" />
+    <Property Name="company_sa" Type="varchar" MaxLength="500" />
+    <Property Name="company_ar" Type="varchar" MaxLength="500" />
+    <Property Name="gl_yr" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="company_cu" Type="varchar" MaxLength="500" />
+    <Property Name="company_it" Type="varchar" MaxLength="500" />
+    <Property Name="company_ap" Type="varchar" MaxLength="500" />
+    <Property Name="company_gl" Type="varchar" MaxLength="500" />
+    <Property Name="company_sy" Type="varchar" MaxLength="500" />
+    <Property Name="co_wh_dflt" Type="varchar" MaxLength="500" />
+    <Property Name="gl_intf" Type="bit" />
+    <Property Name="beg_fisc_mo" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="company_ip" Type="varchar" MaxLength="500" />
+    <Property Name="gl_ret_earn" Type="varchar" MaxLength="500" />
+    <Property Name="co_email" Type="varchar" MaxLength="500" />
+    <Property Name="co_web" Type="varchar" MaxLength="500" />
+    <Property Name="manuf_id" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="company_po" Type="varchar" MaxLength="500" />
+    <Property Name="company_ve" Type="varchar" MaxLength="500" />
+    <Property Name="acctg_year" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="acctg_month" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="SMTPServer" Type="varchar" MaxLength="500" />
+    <Property Name="POPUsername" Type="varchar" MaxLength="500" />
+    <Property Name="POPPassword" Type="varchar" MaxLength="500" />
+    <Property Name="residential" Type="bit" />
+    <Property Name="bank_account" Type="varchar" MaxLength="500" />
+    <Property Name="ed_serial" Type="varchar" MaxLength="500" />
+    <Property Name="SMTPAuth" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="ein" Type="varchar" MaxLength="500" />
+    <Property Name="remitto_name" Type="varchar" MaxLength="500" />
+    <Property Name="remitto_adr" Type="nvarchar(max)" />
+    <Property Name="remitto_state" Type="varchar" MaxLength="500" />
+    <Property Name="remitto_postal_code" Type="varchar" MaxLength="500" />
+    <Property Name="remitto_country_code" Type="varchar" MaxLength="500" />
+    <Property Name="remitto_phone" Type="varchar" MaxLength="500" />
+    <Property Name="remitto_fax" Type="varchar" MaxLength="500" />
+    <Property Name="email_receipt" Type="bit" />
+    <Property Name="customer" Type="varchar" MaxLength="500" />
+    <Property Name="go_live_date" Type="varchar" MaxLength="500" />
+    <Property Name="gl_post_receipts" Type="bit" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sy_contact">
+    <Key>
+      <PropertyRef Name="contact_type" />
+      <PropertyRef Name="contact" />
+      <PropertyRef Name="key1" />
+    </Key>
+    <Property Name="contact_type" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="company_sy" Type="varchar" MaxLength="1500" />
+    <Property Name="contact" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="key1" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="key2" Type="varchar" MaxLength="1500" />
+    <Property Name="birthday" Type="varchar" MaxLength="1500" />
+    <Property Name="email" Type="varchar" MaxLength="1500" />
+    <Property Name="fax" Type="varchar" MaxLength="1500" />
+    <Property Name="job_code" Type="varchar" MaxLength="1500" />
+    <Property Name="name" Type="varchar" MaxLength="1500" />
+    <Property Name="phone" Type="varchar" MaxLength="1500" />
+    <Property Name="phone_ext" Type="varchar" MaxLength="1500" />
+    <Property Name="titled" Type="varchar" MaxLength="1500" />
+    <Property Name="image" Type="varchar" MaxLength="1500" />
+    <Property Name="note" Type="varchar" MaxLength="1500" />
+    <Property Name="cell" Type="varchar" MaxLength="1500" />
+    <Property Name="adr" Type="varchar(max)" />
+    <Property Name="country_code" Type="varchar" MaxLength="1500" />
+    <Property Name="state" Type="varchar" MaxLength="1500" />
+    <Property Name="postal_code" Type="varchar" MaxLength="1500" />
+    <Property Name="web_passwd" Type="varchar" MaxLength="1500" />
+    <Property Name="web_permissions" Type="varchar" MaxLength="1500" />
+    <Property Name="web_parent" Type="bit" />
+    <Property Name="date_added" Type="varchar" MaxLength="1500" />
+    <Property Name="first_name" Type="varchar" MaxLength="1500" />
+    <Property Name="last_name" Type="varchar" MaxLength="1500" />
+    <Property Name="prefix" Type="varchar" MaxLength="1500" />
+    <Property Name="suffix" Type="varchar" MaxLength="1500" />
+    <Property Name="middle_name" Type="varchar" MaxLength="1500" />
+    <Property Name="last_update_date" Type="varchar" MaxLength="1500" />
+    <Property Name="marketing_code" Type="varchar" MaxLength="1500" />
+    <Property Name="mail_type" Type="varchar" MaxLength="1500" />
+    <Property Name="sy_lookup" Type="varchar" MaxLength="1500" />
+    <Property Name="last_update" Type="varchar" MaxLength="1500" />
+    <Property Name="crm_priority" Type="int" />
+    <Property Name="profile" Type="varchar(max)" />
+    <Property Name="profile_log" Type="varchar" MaxLength="2000" />
+    <Property Name="__rowids" Type="varchar" MaxLength="150" />
+    <Property Name="__seq" Type="int" />
+  </EntityType>
+  <EntityType Name="sy_country">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="country_descr" Type="nvarchar(max)" />
+    <Property Name="country_code" Type="varchar" MaxLength="500" />
+    <Property Name="fmt_postal" Type="varchar" MaxLength="500" />
+    <Property Name="fmt_address" Type="nvarchar(max)" />
+    <Property Name="use_address" Type="nvarchar(max)" />
+    <Property Name="fmt_phone" Type="varchar" MaxLength="500" />
+    <Property Name="label_address" Type="nvarchar(max)" />
+    <Property Name="currency_code" Type="varchar" MaxLength="500" />
+    <Property Name="label_postal" Type="varchar" MaxLength="500" />
+    <Property Name="fmt_state" Type="varchar" MaxLength="500" />
+    <Property Name="use_state" Type="bit" />
+    <Property Name="label_state" Type="varchar" MaxLength="500" />
+    <Property Name="validate_state" Type="bit" />
+    <Property Name="region" Type="varchar" MaxLength="500" />
+    <Property Name="adr_format" Type="varchar" MaxLength="500" />
+    <Property Name="use_adr_fmt" Type="bit" />
+    <Property Name="fmt_faxdial" Type="varchar" MaxLength="500" />
+    <Property Name="adr_no_city" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="country_code_iso" Type="varchar" MaxLength="500" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sy_currency">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_sy" Type="varchar" MaxLength="500" />
+    <Property Name="currency_code" Type="varchar" MaxLength="500" />
+    <Property Name="descr" Type="varchar" MaxLength="100" />
+    <Property Name="exchange_rate" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="organization_default" Type="bit" />
+    <Property Name="exchange_gl" Type="varchar" MaxLength="500" />
+    <Property Name="Last_mod_user_id" Type="varchar" MaxLength="500" />
+    <Property Name="Last_mod_date" Type="varchar" MaxLength="500" />
+    <Property Name="last_mod_time" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="bank_gl" Type="varchar" MaxLength="500" />
+    <Property Name="bank_in_currency" Type="bit" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sy_default">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="user_id" Type="varchar" MaxLength="500" />
+    <Property Name="company_sy" Type="varchar" MaxLength="500" />
+    <Property Name="pgm" Type="varchar" MaxLength="500" />
+    <Property Name="name_list" Type="varchar" MaxLength="1000" />
+    <Property Name="value_list" Type="varchar" MaxLength="1500" />
+    <Property Name="type_list" Type="varchar" MaxLength="1500" />
+    <Property Name="select_list" Type="varchar" MaxLength="1500" />
+    <Property Name="name" Type="varchar" MaxLength="1000" />
+    <Property Name="default_options" Type="bit" />
+    <Property Name="last_used_date" Type="varchar" MaxLength="500" />
+    <Property Name="last_used_dt" Type="varchar" MaxLength="500" />
+    <Property Name="last_used_by" Type="varchar" MaxLength="500" />
+    <Property Name="created_dt" Type="varchar" MaxLength="500" />
+    <Property Name="created_by" Type="varchar" MaxLength="500" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sy_notes">
+    <Key>
+      <PropertyRef Name="type" />
+      <PropertyRef Name="table_key" />
+      <PropertyRef Name="seq" />
+    </Key>
+    <Property Name="type" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="table_key" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="seq" Type="int" Nullable="false" />
+    <Property Name="start_date" Type="datetime" />
+    <Property Name="end_date" Type="datetime" />
+    <Property Name="sync_date" Type="datetime" />
+    <Property Name="note" Type="varchar" MaxLength="1500" />
+    <Property Name="image" Type="varchar" MaxLength="255" />
+    <Property Name="check" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sy_numctrl">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_sy" Type="varchar" MaxLength="500" />
+    <Property Name="sequence" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="type" Type="varchar" MaxLength="500" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sy_param">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_sy" Type="varchar" MaxLength="500" />
+    <Property Name="par" Type="varchar" MaxLength="500" />
+    <Property Name="descr" Type="varchar" MaxLength="1000" />
+    <Property Name="cat" Type="varchar" MaxLength="500" />
+    <Property Name="par_format" Type="varchar" MaxLength="500" />
+    <Property Name="par_type" Type="varchar" MaxLength="500" />
+    <Property Name="par_value" Type="varchar" MaxLength="500" />
+    <Property Name="valid_entries" Type="varchar" MaxLength="500" />
+    <Property Name="help_text" Type="varchar" MaxLength="1500" />
+    <Property Name="date_added" Type="varchar" MaxLength="500" />
+    <Property Name="sy_lookup" Type="varchar" MaxLength="1500" />
+    <Property Name="priority" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="last_update" Type="varchar" MaxLength="500" />
+    <Property Name="sensitive" Type="bit" />
+    <Property Name="allow_user_ovrd" Type="bit" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sy_paycodes">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="auth_flag" Type="bit" />
+    <Property Name="card_flag" Type="bit" />
+    <Property Name="cash_flag" Type="bit" />
+    <Property Name="company_sy" Type="varchar" MaxLength="500" />
+    <Property Name="descr" Type="varchar" MaxLength="500" />
+    <Property Name="gl" Type="varchar" MaxLength="500" />
+    <Property Name="pay_code" Type="varchar" MaxLength="500" />
+    <Property Name="sec_code_flag" Type="bit" />
+    <Property Name="print_cc_receipt" Type="bit" />
+    <Property Name="cc_receipt_copies" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sy_postal_code">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="country_code" Type="varchar" MaxLength="500" />
+    <Property Name="postal_code" Type="varchar" MaxLength="500" />
+    <Property Name="city" Type="varchar" MaxLength="500" />
+    <Property Name="state" Type="varchar" MaxLength="500" />
+    <Property Name="tax_code" Type="varchar" MaxLength="500" />
+    <Property Name="warehouse" Type="varchar" MaxLength="500" />
+    <Property Name="territory" Type="varchar" MaxLength="500" />
+    <Property Name="last_update" Type="varchar" MaxLength="500" />
+    <Property Name="time_zone" Type="varchar" MaxLength="500" />
+    <Property Name="delivery_route" Type="varchar" MaxLength="500" />
+    <Property Name="from_plus_four" Type="varchar" MaxLength="500" />
+    <Property Name="to_plus_four" Type="varchar" MaxLength="500" />
+    <Property Name="salesman1" Type="varchar" MaxLength="500" />
+    <Property Name="busn_class" Type="varchar" MaxLength="500" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sy_prof_label">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_sy" Type="varchar" MaxLength="500" />
+    <Property Name="pgm" Type="varchar" MaxLength="500" />
+    <Property Name="prof_label" Type="nvarchar(max)" />
+    <Property Name="table_lookup" Type="varchar" MaxLength="1500" />
+    <Property Name="prof_label2" Type="nvarchar(max)" />
+    <Property Name="table_lookup2" Type="varchar" MaxLength="1500" />
+    <Property Name="prof_label3" Type="nvarchar(max)" />
+    <Property Name="table_lookup3" Type="varchar" MaxLength="1500" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sy_shipvia">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="ship_via_code" Type="varchar" MaxLength="500" />
+    <Property Name="descr" Type="varchar" MaxLength="500" />
+    <Property Name="label_code" Type="varchar" MaxLength="500" />
+    <Property Name="consignee" Type="varchar" MaxLength="500" />
+    <Property Name="type" Type="bit" />
+    <Property Name="carrier" Type="varchar" MaxLength="500" />
+    <Property Name="scac_code" Type="varchar" MaxLength="500" />
+    <Property Name="prepaid" Type="bit" />
+    <Property Name="service_type" Type="varchar" MaxLength="500" />
+    <Property Name="billing_opt" Type="varchar" MaxLength="500" />
+    <Property Name="hand_charge_type" Type="varchar" MaxLength="500" />
+    <Property Name="return_service_type" Type="varchar" MaxLength="500" />
+    <Property Name="pack_type" Type="varchar" MaxLength="500" />
+    <Property Name="oversize" Type="varchar" MaxLength="500" />
+    <Property Name="flex_parcel_ins_type" Type="varchar" MaxLength="500" />
+    <Property Name="hand_charge_opt" Type="bit" />
+    <Property Name="hand_charge_flat_rate" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="hand_charge_pct" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="return_service_opt" Type="bit" />
+    <Property Name="saturday_deliv_opt" Type="bit" />
+    <Property Name="saturday_pickup_opt" Type="bit" />
+    <Property Name="add_hand_opt" Type="bit" />
+    <Property Name="insured_val_opt" Type="bit" />
+    <Property Name="flex_parcel_ins_opt" Type="bit" />
+    <Property Name="deliv_conf_opt" Type="bit" />
+    <Property Name="deliv_conf_type" Type="varchar" MaxLength="500" />
+    <Property Name="haz_material_opt" Type="bit" />
+    <Property Name="verbal_conf_opt" Type="bit" />
+    <Property Name="verbal_conf_name" Type="varchar" MaxLength="500" />
+    <Property Name="verbal_conf_phone" Type="varchar" MaxLength="500" />
+    <Property Name="priority_level" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="cc_preauth_mul" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="zone_code" Type="varchar" MaxLength="500" />
+    <Property Name="printer_oe" Type="varchar" MaxLength="500" />
+    <Property Name="dhl_local_product_code" Type="varchar" MaxLength="500" />
+    <Property Name="dhl_account_no" Type="varchar" MaxLength="500" />
+    <Property Name="dhl_default_service" Type="varchar" MaxLength="500" />
+    <Property Name="dhl_services_list" Type="varchar" MaxLength="500" />
+    <Property Name="dhl_shipper_id" Type="varchar" MaxLength="500" />
+    <Property Name="free_ship" Type="bit" />
+    <Property Name="web" Type="bit" />
+    <Property Name="web_descr" Type="varchar" MaxLength="500" />
+    <Property Name="expedite" Type="bit" />
+    <Property Name="packing_station" Type="varchar" MaxLength="500" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sy_terms">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="descr" Type="varchar" MaxLength="500" />
+    <Property Name="disc_grace" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="dsc_days" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="due_days" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="nxt_terms_code" Type="varchar" MaxLength="500" />
+    <Property Name="due_addm" Type="nvarchar(max)" />
+    <Property Name="due_day" Type="nvarchar(max)" />
+    <Property Name="due_per_end" Type="nvarchar(max)" />
+    <Property Name="price_op" Type="bit" />
+    <Property Name="t_dsc_pct" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="terms_code" Type="varchar" MaxLength="500" />
+    <Property Name="use_in_ship" Type="bit" />
+    <Property Name="disc_addm" Type="nvarchar(max)" />
+    <Property Name="disc_day" Type="nvarchar(max)" />
+    <Property Name="disc_per_end" Type="nvarchar(max)" />
+    <Property Name="cod_opt" Type="bit" />
+    <Property Name="ccheck_mo_only" Type="bit" />
+    <Property Name="add_shipping_to_cod" Type="bit" />
+    <Property Name="tot_qp" Type="bit" />
+    <Property Name="due_date" Type="varchar" MaxLength="500" />
+    <Property Name="disc_date" Type="varchar" MaxLength="500" />
+    <Property Name="split_billing" Type="bit" />
+    <Property Name="allow_cod_payments" Type="bit" />
+    <Property Name="split_total_payments" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sy_trans_notes">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_sy" Type="varchar" MaxLength="500" />
+    <Property Name="trans_no" Type="float" />
+    <Property Name="trans_line" Type="float" />
+    <Property Name="trans_seq" Type="float" />
+    <Property Name="note" Type="varchar" MaxLength="500" />
+    <Property Name="print_where" Type="varchar" MaxLength="500" />
+    <Property Name="pop_up" Type="bit" />
+    <Property Name="last_mod_date" Type="varchar" MaxLength="500" />
+    <Property Name="last_mod_time" Type="float" />
+    <Property Name="enter_by" Type="varchar" MaxLength="250" />
+    <Property Name="note_seq" Type="float" />
+    <Property Name="note_type" Type="varchar" MaxLength="500" />
+    <Property Name="master_note_seq" Type="float" />
+    <Property Name="master_note_type" Type="varchar" MaxLength="500" />
+    <Property Name="table_key" Type="varchar" MaxLength="500" />
+    <Property Name="master_company_sy" Type="varchar" MaxLength="500" />
+    <Property Name="disp_method" Type="varchar" MaxLength="500" />
+    <Property Name="disp_where" Type="varchar" MaxLength="500" />
+    <Property Name="enter_date" Type="varchar" MaxLength="500" />
+    <Property Name="enter_time" Type="float" />
+    <Property Name="last_mod_user_id" Type="varchar" MaxLength="500" />
+    <Property Name="spec_group" Type="varchar" MaxLength="500" />
+    <Property Name="spec" Type="varchar" MaxLength="500" />
+    <Property Name="copied_master_note" Type="bit" />
+    <Property Name="note_image" Type="varchar" MaxLength="500" />
+    <Property Name="spec_answer" Type="nvarchar(max)" />
+    <Property Name="spec_question" Type="nvarchar(max)" />
+    <Property Name="html_note" Type="bit" />
+    <Property Name="priority" Type="bit" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sy_url_alias">
+    <Key>
+      <PropertyRef Name="alias_id" />
+    </Key>
+    <Property Name="alias_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="alias_str" Type="varchar" MaxLength="100" />
+    <Property Name="record_type" Type="varchar" MaxLength="30" />
+    <Property Name="record_key" Type="varchar" MaxLength="100" />
+    <Property Name="redirect" Type="int" />
+    <Property Name="last_update" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblBanner">
+    <Key>
+      <PropertyRef Name="BannerId" />
+    </Key>
+    <Property Name="BannerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="500" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="ImageUrl" Type="varchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="targeturl" Type="varchar" MaxLength="500" />
+    <Property Name="types" Type="varchar" MaxLength="500" />
+    <Property Name="linkname" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tblCart">
+    <Key>
+      <PropertyRef Name="CartId" />
+    </Key>
+    <Property Name="CartId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="itemnumber" Type="nvarchar" MaxLength="500" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="MeasureUnit" Type="nvarchar" MaxLength="500" />
+    <Property Name="Price" Type="nvarchar" MaxLength="500" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="500" />
+    <Property Name="SessionId" Type="nvarchar(max)" />
+    <Property Name="PricePer" Type="nvarchar" MaxLength="500" />
+    <Property Name="Note" Type="nvarchar" MaxLength="500" />
+    <Property Name="TimeStamp" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblOrder">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="company_oe" Type="varchar" MaxLength="500" />
+    <Property Name="order_ext" Type="varchar" MaxLength="500" />
+    <Property Name="notes" Type="varchar(max)" />
+    <Property Name="ship_via_acct" Type="varchar" MaxLength="500" />
+    <Property Name="wanted_date" Type="varchar" MaxLength="500" />
+    <Property Name="customer" Type="varchar" MaxLength="500" />
+    <Property Name="warehouse" Type="varchar" MaxLength="500" />
+    <Property Name="s_adr1" Type="varchar" MaxLength="200" />
+    <Property Name="s_adr2" Type="varchar" MaxLength="200" />
+    <Property Name="s_adr3" Type="varchar" MaxLength="200" />
+    <Property Name="s_adr4" Type="varchar" MaxLength="200" />
+    <Property Name="s_adr5" Type="varchar" MaxLength="200" />
+    <Property Name="s_adr6" Type="varchar" MaxLength="200" />
+    <Property Name="stat" Type="varchar" MaxLength="200" />
+    <Property Name="rec_type" Type="varchar" MaxLength="100" />
+    <Property Name="ship_id" Type="varchar" MaxLength="100" />
+    <Property Name="auth_amount" Type="varchar" MaxLength="200" />
+    <Property Name="source_code" Type="varchar" MaxLength="500" />
+    <Property Name="pay_amount" Type="varchar" MaxLength="200" />
+    <Property Name="tot_code" Type="varchar" MaxLength="200" />
+    <Property Name="tot_code_amt" Type="varchar" MaxLength="200" />
+    <Property Name="pay_code" Type="varchar" MaxLength="200" />
+    <Property Name="pay_cd" Type="varchar" MaxLength="200" />
+    <Property Name="pay_code_ref" Type="varchar" MaxLength="200" />
+    <Property Name="pay_code_amount" Type="varchar" MaxLength="200" />
+    <Property Name="pay_code_card" Type="varchar" MaxLength="200" />
+    <Property Name="pay_code_exp" Type="varchar" MaxLength="200" />
+    <Property Name="pay_code_sec_code" Type="varchar" MaxLength="200" />
+    <Property Name="pay_code_card_length" Type="varchar" MaxLength="100" />
+    <Property Name="blind_ship" Type="varchar" MaxLength="100" />
+    <Property Name="tax_amount" Type="varchar" MaxLength="200" />
+    <Property Name="disp_where" Type="varchar" MaxLength="500" />
+    <Property Name="disp_method" Type="varchar" MaxLength="500" />
+    <Property Name="print_where" Type="varchar" MaxLength="500" />
+    <Property Name="s_st" Type="varchar" MaxLength="200" />
+    <Property Name="s_postal_code" Type="varchar" MaxLength="200" />
+    <Property Name="s_country_code" Type="varchar" MaxLength="200" />
+    <Property Name="tax_code" Type="varchar" MaxLength="200" />
+    <Property Name="s_name" Type="varchar" MaxLength="200" />
+    <Property Name="order_by" Type="varchar" MaxLength="200" />
+    <Property Name="cu_po" Type="varchar" MaxLength="200" />
+    <Property Name="email_address" Type="varchar" MaxLength="250" />
+    <Property Name="s_phone" Type="varchar" MaxLength="100" />
+    <Property Name="ship_atn" Type="varchar" MaxLength="200" />
+    <Property Name="company_cu" Type="varchar" MaxLength="200" />
+    <Property Name="ord_class" Type="varchar" MaxLength="250" />
+    <Property Name="s_phone_ext" Type="varchar" MaxLength="50" />
+    <Property Name="ship_via_code" Type="varchar" MaxLength="100" />
+    <Property Name="terms_code" Type="varchar" MaxLength="200" />
+    <Property Name="salesman1" Type="varchar" MaxLength="200" />
+    <Property Name="disc_amount" Type="varchar" MaxLength="200" />
+    <Property Name="Cred_card" Type="varchar" MaxLength="100" />
+    <Property Name="Cred_card_exp" Type="varchar" MaxLength="100" />
+    <Property Name="Cred_card_type" Type="varchar" MaxLength="100" />
+    <Property Name="Auth_type" Type="varchar" MaxLength="100" />
+    <Property Name="Auth_asv" Type="varchar" MaxLength="200" />
+    <Property Name="Auth_date" Type="varchar" MaxLength="100" />
+    <Property Name="Auth_time" Type="varchar" MaxLength="100" />
+    <Property Name="Auth_memo" Type="varchar" MaxLength="200" />
+    <Property Name="Auth_number" Type="varchar" MaxLength="100" />
+    <Property Name="Auth_trans_number" Type="varchar" MaxLength="500" />
+    <Property Name="atn" Type="varchar" MaxLength="500" />
+    <Property Name="ttable" Type="varchar" MaxLength="500" />
+    <Property Name="triggers" Type="varchar" MaxLength="500" />
+    <Property Name="IsProcessed" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblOrderProduct">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="order_ext" Type="varchar" MaxLength="200" />
+    <Property Name="notes" Type="varchar" MaxLength="500" />
+    <Property Name="customer" Type="varchar" MaxLength="200" />
+    <Property Name="company_oe" Type="varchar" MaxLength="200" />
+    <Property Name="company_cu" Type="varchar" MaxLength="200" />
+    <Property Name="company_it" Type="varchar" MaxLength="200" />
+    <Property Name="warehouse" Type="varchar" MaxLength="200" />
+    <Property Name="line" Type="varchar" MaxLength="200" />
+    <Property Name="item" Type="varchar" MaxLength="200" />
+    <Property Name="qty_ord" Type="varchar" MaxLength="100" />
+    <Property Name="unit_price" Type="varchar" MaxLength="200" />
+    <Property Name="um_o" Type="varchar" MaxLength="100" />
+    <Property Name="IsProcessed" Type="bit" />
+  </EntityType>
+  <EntityType Name="usershippingmapping">
+    <Key>
+      <PropertyRef Name="usershipmappingid" />
+    </Key>
+    <Property Name="usershipmappingid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="shipid" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="customer" Type="varchar" MaxLength="500" />
+    <Property Name="Company_cu" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="ve_contact">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="birthday" Type="varchar" MaxLength="500" />
+    <Property Name="titled" Type="varchar" MaxLength="500" />
+    <Property Name="company_ve" Type="varchar" MaxLength="500" />
+    <Property Name="email" Type="varchar" MaxLength="500" />
+    <Property Name="fax" Type="varchar" MaxLength="500" />
+    <Property Name="job_code" Type="varchar" MaxLength="500" />
+    <Property Name="name" Type="varchar" MaxLength="500" />
+    <Property Name="phone" Type="varchar" MaxLength="500" />
+    <Property Name="phone_ext" Type="varchar" MaxLength="500" />
+    <Property Name="vendor" Type="varchar" MaxLength="500" />
+    <Property Name="note" Type="varchar" MaxLength="1000" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vendor">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="company_ve" Type="varchar" MaxLength="500" />
+    <Property Name="vendor" Type="varchar" MaxLength="500" />
+    <Property Name="fax" Type="varchar" MaxLength="500" />
+    <Property Name="deliv_terms" Type="varchar" MaxLength="500" />
+    <Property Name="sy_lookup" Type="varchar" MaxLength="500" />
+    <Property Name="gl" Type="varchar" MaxLength="500" />
+    <Property Name="addl_gl" Type="varchar" MaxLength="500" />
+    <Property Name="ve_acct_class" Type="varchar" MaxLength="500" />
+    <Property Name="name" Type="varchar" MaxLength="500" />
+    <Property Name="state" Type="varchar" MaxLength="500" />
+    <Property Name="postal_code" Type="varchar" MaxLength="500" />
+    <Property Name="phone" Type="varchar" MaxLength="500" />
+    <Property Name="fob" Type="varchar" MaxLength="500" />
+    <Property Name="ord_class" Type="varchar" MaxLength="500" />
+    <Property Name="ve_group" Type="varchar" MaxLength="500" />
+    <Property Name="last_po_amount" Type="float" />
+    <Property Name="last_po_date" Type="varchar" MaxLength="500" />
+    <Property Name="last_ap_amount" Type="float" />
+    <Property Name="last_ap_date" Type="varchar" MaxLength="500" />
+    <Property Name="last_pay_amount" Type="float" />
+    <Property Name="last_pay_date" Type="varchar" MaxLength="500" />
+    <Property Name="terms_code" Type="varchar" MaxLength="500" />
+    <Property Name="ten99_flag" Type="bit" />
+    <Property Name="atn" Type="varchar" MaxLength="500" />
+    <Property Name="profile" Type="nvarchar(max)" />
+    <Property Name="addl_disc" Type="float" />
+    <Property Name="addl_disc_gl" Type="varchar" MaxLength="500" />
+    <Property Name="safety_pct" Type="float" />
+    <Property Name="review_days" Type="float" />
+    <Property Name="review_days_s" Type="float" />
+    <Property Name="season_adj" Type="float" />
+    <Property Name="dflt_ldtm_days" Type="float" />
+    <Property Name="dflt_ldtm_flag" Type="bit" />
+    <Property Name="ln_type" Type="varchar" MaxLength="500" />
+    <Property Name="ln_amount" Type="float" />
+    <Property Name="buy_type" Type="varchar" MaxLength="500" />
+    <Property Name="ship_via_code" Type="varchar" MaxLength="500" />
+    <Property Name="po_req" Type="bit" />
+    <Property Name="buyer_code" Type="varchar" MaxLength="500" />
+    <Property Name="our_customer" Type="varchar" MaxLength="500" />
+    <Property Name="add_code" Type="nvarchar(max)" />
+    <Property Name="add_fact" Type="nvarchar(max)" />
+    <Property Name="buying_group" Type="nvarchar(max)" />
+    <Property Name="buy_group_pct" Type="nvarchar(max)" />
+    <Property Name="fed_tax_id" Type="varchar" MaxLength="500" />
+    <Property Name="avg_pay_days" Type="float" />
+    <Property Name="ap_vendor" Type="varchar" MaxLength="500" />
+    <Property Name="broker_fax" Type="varchar" MaxLength="500" />
+    <Property Name="broker_phone" Type="varchar" MaxLength="500" />
+    <Property Name="user_code" Type="nvarchar(max)" />
+    <Property Name="source_code" Type="varchar" MaxLength="500" />
+    <Property Name="phone_ext" Type="varchar" MaxLength="500" />
+    <Property Name="broker_ext" Type="varchar" MaxLength="500" />
+    <Property Name="currency_code" Type="varchar" MaxLength="500" />
+    <Property Name="item_descr_line" Type="float" />
+    <Property Name="email_address" Type="varchar" MaxLength="500" />
+    <Property Name="web_page" Type="varchar" MaxLength="500" />
+    <Property Name="label_code" Type="varchar" MaxLength="500" />
+    <Property Name="allow_po" Type="bit" />
+    <Property Name="broker" Type="varchar" MaxLength="500" />
+    <Property Name="broker_email" Type="varchar" MaxLength="500" />
+    <Property Name="po_atn_email" Type="varchar" MaxLength="500" />
+    <Property Name="edi_vend" Type="bit" />
+    <Property Name="purch_min" Type="float" />
+    <Property Name="manuf_id" Type="float" />
+    <Property Name="web" Type="bit" />
+    <Property Name="review_b4_rel" Type="float" />
+    <Property Name="adr" Type="nvarchar(max)" />
+    <Property Name="country_code" Type="varchar" MaxLength="500" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="residential" Type="bit" />
+    <Property Name="stat" Type="bit" />
+    <Property Name="bo_flag" Type="bit" />
+    <Property Name="ship_via_acct" Type="varchar" MaxLength="500" />
+    <Property Name="bank_account" Type="varchar" MaxLength="500" />
+    <Property Name="ve_tax_code" Type="varchar" MaxLength="500" />
+    <Property Name="web_passwd" Type="varchar" MaxLength="500" />
+    <Property Name="form_po_dest" Type="varchar" MaxLength="500" />
+    <Property Name="it_transit_flag" Type="bit" />
+    <Property Name="ten99_income_code" Type="float" />
+    <Property Name="bank_routing" Type="varchar" MaxLength="500" />
+    <Property Name="bank_name" Type="varchar" MaxLength="500" />
+    <Property Name="bank_transfer" Type="bit" />
+    <Property Name="bank_type" Type="varchar" MaxLength="500" />
+    <Property Name="ach_process" Type="bit" />
+    <Property Name="ach_email" Type="varchar" MaxLength="500" />
+    <Property Name="ach_attention" Type="varchar" MaxLength="500" />
+    <Property Name="ach_preauth" Type="bit" />
+    <Property Name="ach_id" Type="varchar" MaxLength="500" />
+    <Property Name="warehouse" Type="varchar" MaxLength="500" />
+    <Property Name="ach_stat" Type="varchar" MaxLength="500" />
+    <Property Name="form_file_po" Type="varchar" MaxLength="500" />
+    <Property Name="gl_ap" Type="varchar" MaxLength="500" />
+    <Property Name="handling_base" Type="varchar" MaxLength="500" />
+    <Property Name="storage_base" Type="varchar" MaxLength="500" />
+    <Property Name="handling_charge" Type="float" />
+    <Property Name="storage_charge" Type="float" />
+    <Property Name="storage_min_item" Type="float" />
+    <Property Name="storage_min_inv" Type="float" />
+    <Property Name="storage_min_recv" Type="float" />
+    <Property Name="profile2" Type="nvarchar(max)" />
+    <Property Name="profile3" Type="nvarchar(max)" />
+    <Property Name="last_update" Type="varchar" MaxLength="500" />
+    <Property Name="ve_restrict_group" Type="varchar" MaxLength="500" />
+    <Property Name="hold_vouchers" Type="bit" />
+    <Property Name="restricted" Type="bit" />
+    <Property Name="cash_disc_pct" Type="float" />
+    <Property Name="license" Type="varchar" MaxLength="500" />
+    <Property Name="license_exp_date" Type="varchar" MaxLength="500" />
+    <Property Name="license_recv_date" Type="varchar" MaxLength="500" />
+    <Property Name="license_lookup" Type="varchar" MaxLength="500" />
+    <Property Name="bank_institution" Type="varchar" MaxLength="500" />
+    <Property Name="tot_payments" Type="varchar" MaxLength="500" />
+    <Property Name="tot_days_to_pay" Type="varchar" MaxLength="500" />
+    <Property Name="pickup_route" Type="varchar" MaxLength="500" />
+    <Property Name="stop" Type="float" />
+    <Property Name="pickup_route_wd" Type="nvarchar(max)" />
+    <Property Name="stop_wd" Type="nvarchar(max)" />
+    <Property Name="freight_zone" Type="varchar" MaxLength="500" />
+    <Property Name="cancel_days" Type="float" />
+    <Property Name="gl_exp" Type="nvarchar(max)" />
+    <Property Name="gl_exp_pct" Type="nvarchar(max)" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="wa_item">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="wa_item_warehouse" Type="varchar" MaxLength="500" />
+    <Property Name="wa_item_item" Type="varchar" MaxLength="500" />
+    <Property Name="wa_item_list_price" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="wa_item_list_price_per" Type="varchar" MaxLength="500" />
+    <Property Name="wa_item_um_alwd" Type="nvarchar(max)" />
+    <Property Name="wa_item_qty_cmtd" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="wa_item_qty_oh" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="wa_item_purch_min_qty" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="wa_item_max" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="wa_item_purchasing_mult" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="wa_item_web_um_display" Type="varchar" MaxLength="500" />
+    <Property Name="wa_item_web_min" Type="int" />
+    <Property Name="wa_item_web_max" Type="int" />
+    <Property Name="wa_item_web_mult" Type="int" />
+    <Property Name="wa_item_web_um_alwd" Type="varchar" MaxLength="1000" />
+    <Property Name="wa_item_drop_ship" Type="bit" />
+    <Property Name="retail_price" Type="varchar" MaxLength="500" />
+    <Property Name="item_company_it" Type="varchar" MaxLength="500" />
+    <Property Name="avg_lead_time" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="qty_transfer_req_in" Type="int" />
+    <Property Name="wa_item_qty_bo" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="wa_item_qty_po" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="warehouse">
+    <Key>
+      <PropertyRef Name="__seq" />
+    </Key>
+    <Property Name="ack_prntr" Type="varchar" MaxLength="500" />
+    <Property Name="ack_prntr_auto" Type="bit" />
+    <Property Name="atn" Type="varchar" MaxLength="500" />
+    <Property Name="company_it" Type="varchar" MaxLength="500" />
+    <Property Name="def_loc" Type="varchar" MaxLength="500" />
+    <Property Name="def_loc_flag" Type="bit" />
+    <Property Name="po_prntr" Type="varchar" MaxLength="500" />
+    <Property Name="po_prntr_auto" Type="bit" />
+    <Property Name="it_ship_prntr" Type="varchar" MaxLength="500" />
+    <Property Name="it_ship_prntr_auto" Type="bit" />
+    <Property Name="Laptop" Type="bit" />
+    <Property Name="lb_prntr" Type="varchar" MaxLength="500" />
+    <Property Name="lb_prntr_auto" Type="bit" />
+    <Property Name="loc_flag" Type="bit" />
+    <Property Name="name" Type="varchar" MaxLength="500" />
+    <Property Name="o_prntr" Type="varchar" MaxLength="500" />
+    <Property Name="o_prntr_auto" Type="bit" />
+    <Property Name="org" Type="varchar" MaxLength="500" />
+    <Property Name="phone" Type="varchar" MaxLength="500" />
+    <Property Name="pt_prntr" Type="varchar" MaxLength="500" />
+    <Property Name="pt_prntr_auto" Type="bit" />
+    <Property Name="qt_prntr" Type="varchar" MaxLength="500" />
+    <Property Name="qt_prntr_auto" Type="bit" />
+    <Property Name="ship_loc" Type="varchar" MaxLength="500" />
+    <Property Name="ship_loc_flag" Type="bit" />
+    <Property Name="state" Type="varchar" MaxLength="500" />
+    <Property Name="warehouse" Type="varchar" MaxLength="500" />
+    <Property Name="wo_prntr" Type="varchar" MaxLength="500" />
+    <Property Name="wo_prntr_auto" Type="bit" />
+    <Property Name="postal_code" Type="varchar" MaxLength="500" />
+    <Property Name="fax" Type="varchar" MaxLength="500" />
+    <Property Name="image" Type="varchar" MaxLength="500" />
+    <Property Name="adr" Type="nvarchar(max)" />
+    <Property Name="country_code" Type="varchar" MaxLength="500" />
+    <Property Name="it_acct_class" Type="varchar" MaxLength="500" />
+    <Property Name="residential" Type="bit" />
+    <Property Name="it_req_prntr" Type="varchar" MaxLength="500" />
+    <Property Name="it_req_prntr_auto" Type="bit" />
+    <Property Name="it_aprv_prntr" Type="varchar" MaxLength="500" />
+    <Property Name="it_recv_prntr" Type="varchar" MaxLength="500" />
+    <Property Name="it_aprv_prntr_auto" Type="bit" />
+    <Property Name="it_recv_prntr_auto" Type="bit" />
+    <Property Name="inventory_gl" Type="varchar" MaxLength="500" />
+    <Property Name="export_key" Type="varchar" MaxLength="500" />
+    <Property Name="customer" Type="varchar" MaxLength="500" />
+    <Property Name="consignment_wh" Type="bit" />
+    <Property Name="email_address" Type="varchar" MaxLength="500" />
+    <Property Name="in_transit_wh" Type="bit" />
+    <Property Name="sp_warehouse_flag" Type="bit" />
+    <Property Name="sp_vendor" Type="varchar" MaxLength="500" />
+    <Property Name="allow_neg_avail" Type="bit" />
+    <Property Name="c_tot_code" Type="nvarchar(max)" />
+    <Property Name="user_code" Type="nvarchar(max)" />
+    <Property Name="buyer_code" Type="varchar" MaxLength="500" />
+    <Property Name="price_customer" Type="varchar" MaxLength="500" />
+    <Property Name="ci_prntr" Type="varchar" MaxLength="500" />
+    <Property Name="ci_prntr_auto" Type="bit" />
+    <Property Name="cs_prntr" Type="varchar" MaxLength="500" />
+    <Property Name="cs_prntr_auto" Type="bit" />
+    <Property Name="ro_prntr" Type="varchar" MaxLength="500" />
+    <Property Name="ro_prntr_auto" Type="bit" />
+    <Property Name="note" Type="varchar" MaxLength="1500" />
+    <Property Name="form_file_xfer" Type="varchar" MaxLength="500" />
+    <Property Name="lot_alloc_date" Type="varchar" MaxLength="500" />
+    <Property Name="ship_via_acct" Type="varchar" MaxLength="500" />
+    <Property Name="__rowids" Type="varchar" MaxLength="500" />
+    <Property Name="__seq" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="wishlistheaders">
+    <Key>
+      <PropertyRef Name="WishlistID" />
+    </Key>
+    <Property Name="WishlistID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WishlistName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="shipto" Type="varchar" MaxLength="500" />
+    <Property Name="type" Type="int" />
+  </EntityType>
+  <EntityType Name="wishlistproducts">
+    <Key>
+      <PropertyRef Name="WishlistitemID" />
+    </Key>
+    <Property Name="WishlistitemID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WishlistID" Type="bigint" Nullable="false" />
+    <Property Name="item" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+  </EntityType>
+  <Function Name="AdvanceSerch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="keywords" Type="varchar(max)" Mode="In" />
+    <Parameter Name="keytype" Type="int" Mode="In" />
+    <Parameter Name="Itemnumbers" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ProductLines" Type="varchar(max)" Mode="In" />
+    <Parameter Name="treenodes" Type="varchar(max)" Mode="In" />
+    <Parameter Name="customer" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Otype" Type="int" Mode="In" />
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="company_cu" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+    <Parameter Name="pageno" Type="int" Mode="In" />
+    <Parameter Name="pagesize" Type="int" Mode="In" />
+    <Parameter Name="satagsdetails" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="AdvanceSerchcount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="keywords" Type="varchar(max)" Mode="In" />
+    <Parameter Name="keytype" Type="int" Mode="In" />
+    <Parameter Name="Itemnumbers" Type="varchar(max)" Mode="In" />
+    <Parameter Name="ProductLines" Type="varchar(max)" Mode="In" />
+    <Parameter Name="treenodes" Type="varchar(max)" Mode="In" />
+    <Parameter Name="customer" Type="varchar(max)" Mode="In" />
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="company_cu" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+    <Parameter Name="satagsdetails" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="CapitalizeFirstLetter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="string" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ClearAllTables" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="createatreetable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CreatenewItemSummery" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Createunpivotforproductlisting" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="createvalidateurlfile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DeleteCuUserShipMapping" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userid" Type="varchar" Mode="In" />
+    <Parameter Name="shipid" Type="varchar" Mode="In" />
+    <Parameter Name="customer" Type="varchar" Mode="In" />
+    <Parameter Name="Company_cu" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="DeleteExtraRows" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetActivityLog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="logtype" Type="varchar" Mode="In" />
+    <Parameter Name="searchkeyword" Type="varchar" Mode="In" />
+    <Parameter Name="custid" Type="varchar(max)" Mode="In" />
+    <Parameter Name="subuserid" Type="varchar(max)" Mode="In" />
+    <Parameter Name="clientip" Type="varchar(max)" Mode="In" />
+    <Parameter Name="fromdate" Type="date" Mode="In" />
+    <Parameter Name="todate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="GetAllRealtedItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="item" Type="nvarchar" Mode="In" />
+    <Parameter Name="warehouse" Type="nvarchar" Mode="In" />
+    <Parameter Name="company" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetBrandCounts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="ProdLine" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetBrandListForProductsMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="customer" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+    <Parameter Name="company_cu" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetChildItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ItemName" Type="varchar" Mode="In" />
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="customer" Type="varchar" Mode="In" />
+    <Parameter Name="company_cu" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetcustomerListbySalesman" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="salesman" Type="varchar" Mode="In" />
+    <Parameter Name="company_cu" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Getimagebyword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="types" Type="varchar" Mode="In" />
+    <Parameter Name="maj_class" Type="varchar" Mode="In" />
+    <Parameter Name="product_line" Type="varchar" Mode="In" />
+    <Parameter Name="treenode" Type="varchar" Mode="In" />
+    <Parameter Name="item" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetitemdetailsbyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ItemName" Type="varchar" Mode="In" />
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="customer" Type="varchar" Mode="In" />
+    <Parameter Name="company_cu" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetitemdetailsbyName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ItemName" Type="varchar" Mode="In" />
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="customer" Type="varchar" Mode="In" />
+    <Parameter Name="company_cu" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetitemdetailsbyNameForXref" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ItemName" Type="varchar" Mode="In" />
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="customer" Type="varchar" Mode="In" />
+    <Parameter Name="company_cu" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetItemlistforimageProcess" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pageno" Type="int" Mode="In" />
+    <Parameter Name="pagesize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetItemMetaList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="filterQuery" Type="varchar" Mode="In" />
+    <Parameter Name="pageno" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetittreenodelistforimageProcess" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pageno" Type="int" Mode="In" />
+    <Parameter Name="pagesize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Getmaj_class_details_for_list_page" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MajClass" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetmajclasslistforimageProcess" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pageno" Type="int" Mode="In" />
+    <Parameter Name="pagesize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetMajClsMetaList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="filterQuery" Type="varchar" Mode="In" />
+    <Parameter Name="pageno" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetMenuListForDisplay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="treenode" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+    <Parameter Name="customer" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetMenuListForDisplayfornewtheme" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetMenuListForDisplaynew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="treenode" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+    <Parameter Name="customer" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Getparenttreenode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="tree" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetProdLineMetaList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="filterQuery" Type="varchar" Mode="In" />
+    <Parameter Name="pageno" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Getprodlines_details_for_list_page" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="prod_line" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetproductlinelistforimageProcess" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pageno" Type="int" Mode="In" />
+    <Parameter Name="pagesize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetSitemapdata" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetTreeCounts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="tree" Type="varchar" Mode="In" />
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetTreenode_details_for_list_page" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="treenode" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Gettreenodeforadvancesearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetTreeNodeMetaList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="filterQuery" Type="varchar" Mode="In" />
+    <Parameter Name="pageno" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetUrlsforvisiblesitemap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetUserCartItemDetailReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ItemName" Type="varchar" Mode="In" />
+    <Parameter Name="UserId" Type="varchar" Mode="In" />
+    <Parameter Name="Customer" Type="varchar" Mode="In" />
+    <Parameter Name="FromDate" Type="varchar" Mode="In" />
+    <Parameter Name="ToDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetUserDefaultvalues" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="varchar" Mode="In" />
+    <Parameter Name="subuserid" Type="varchar" Mode="In" />
+    <Parameter Name="userType" Type="varchar" Mode="In" />
+    <Parameter Name="company_cu" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetVendorNameByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="vendor" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Insert_AllImages_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_AllImages_Data_Change" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_cu_prcitem_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_cu_prospect_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_cu_taxmst_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_it_compl__Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="Insert_it_compl _Data">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_it_component_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_it_majcls_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_it_prodline_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_it_sales_restriction_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_it_tree_link_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_it_tree_node_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_it_xref_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_ItemSummery__Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="Insert_ItemSummery _Data">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_oe_class_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_oe_totcodes_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_price_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_price_sale_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_salesman_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_sy_codes_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_sy_company_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_sy_contact_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_sy_country_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_sy_currency_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_sy_default_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_sy_numctrl_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_sy_param_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_sy_paycodes_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_sy_postal_code_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_sy_prof_label_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_sy_shipvia_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_sy_States_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_sy_terms_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_sy_trans_notes_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_ve_contact_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_vendor_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_wa_item_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insert_warehouse_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insertcu_contactData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Insertcu_shiptoData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="InsertcustomerData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="InsertCuUserShipMapping" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userid" Type="varchar" Mode="In" />
+    <Parameter Name="shipid" Type="varchar" Mode="In" />
+    <Parameter Name="customer" Type="varchar" Mode="In" />
+    <Parameter Name="Company_cu" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="InsertItemImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="item" Type="varchar" Mode="In" />
+    <Parameter Name="img" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="InsertitemrData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="InsertTreeNodeImage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="treenode" Type="varchar" Mode="In" />
+    <Parameter Name="img" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="removesfromend" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="String" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ReverseByspace" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="Source" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SearchAllTables" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="words" Type="nvarchar" Mode="In" />
+    <Parameter Name="warehouse" Type="nvarchar" Mode="In" />
+    <Parameter Name="customer" Type="nvarchar" Mode="In" />
+    <Parameter Name="stype" Type="int" Mode="In" />
+    <Parameter Name="pageno" Type="int" Mode="In" />
+    <Parameter Name="pagesize" Type="int" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+    <Parameter Name="company_cu" Type="varchar" Mode="In" />
+    <Parameter Name="hideunavail" Type="bit" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+    <Parameter Name="satagsdetails" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="SearchAllTablesCounts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="words" Type="nvarchar" Mode="In" />
+    <Parameter Name="warehouse" Type="nvarchar" Mode="In" />
+    <Parameter Name="customer" Type="nvarchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+    <Parameter Name="company_cu" Type="varchar" Mode="In" />
+    <Parameter Name="hideunavail" Type="bit" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+    <Parameter Name="satagsdetails" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="SearchAllTablesforheader" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="words" Type="nvarchar" Mode="In" />
+    <Parameter Name="warehouse" Type="nvarchar" Mode="In" />
+    <Parameter Name="customer" Type="nvarchar" Mode="In" />
+    <Parameter Name="stype" Type="int" Mode="In" />
+    <Parameter Name="pageno" Type="int" Mode="In" />
+    <Parameter Name="pagesize" Type="int" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+    <Parameter Name="company_cu" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SetOtherImages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Get_sa_Lables_Filter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="maj_class" Type="varchar" Mode="In" />
+    <Parameter Name="prodline" Type="varchar" Mode="In" />
+    <Parameter Name="treenode" Type="varchar" Mode="In" />
+    <Parameter Name="satagsdetails" Type="varchar(max)" Mode="In" />
+    <Parameter Name="words" Type="varchar(max)" Mode="In" />
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="customer" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+    <Parameter Name="company_cu" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_GetProductListsToDisplay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Menuname" Type="varchar" Mode="In" />
+    <Parameter Name="BrandProduct" Type="varchar" Mode="In" />
+    <Parameter Name="pageno" Type="int" Mode="In" />
+    <Parameter Name="pagesize" Type="int" Mode="In" />
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="customer" Type="varchar" Mode="In" />
+    <Parameter Name="stype" Type="int" Mode="In" />
+    <Parameter Name="companyit" Type="varchar" Mode="In" />
+    <Parameter Name="companycu" Type="varchar" Mode="In" />
+    <Parameter Name="satagsdetails" Type="varchar(max)" Mode="In" />
+    <Parameter Name="hideunavail" Type="bit" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_GetProductListsToDisplayCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Menuname" Type="varchar" Mode="In" />
+    <Parameter Name="BrandProduct" Type="varchar" Mode="In" />
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="customer" Type="varchar" Mode="In" />
+    <Parameter Name="companyit" Type="varchar" Mode="In" />
+    <Parameter Name="companycu" Type="varchar" Mode="In" />
+    <Parameter Name="satagsdetails" Type="varchar(max)" Mode="In" />
+    <Parameter Name="hideunavail" Type="bit" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SplitString" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Input" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Character" Type="char" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Item" Type="nvarchar" MaxLength="1000" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="TrimChars" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="TEXT" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UFN_SEPARATES_COLUMNS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="TEXT" Type="varchar" Mode="In" />
+    <Parameter Name="COLUMN" Type="tinyint" Mode="In" />
+    <Parameter Name="SEPARATOR" Type="char" Mode="In" />
+  </Function>
+  <Function Name="Update_it_tree_node_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Update_item_meta_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Update_majcls_meta_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Update_prodline_meta_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="jsondata" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="UrlEncode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+    <Parameter Name="url" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="usp_GetBrandList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="customer" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+    <Parameter Name="company_cu" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_GetBrandProductWithItemCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MajClass" Type="varchar" Mode="In" />
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+    <Parameter Name="customer" Type="varchar" Mode="In" />
+    <Parameter Name="usercode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_GetCartItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="varchar" Mode="In" />
+    <Parameter Name="subuserid" Type="varchar" Mode="In" />
+    <Parameter Name="warehouse" Type="varchar" Mode="In" />
+    <Parameter Name="company_it" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_GetCUuserList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="customer" Type="varchar(max)" Mode="In" />
+    <Parameter Name="company" Type="varchar(max)" Mode="In" />
+    <Parameter Name="column" Type="varchar(max)" Mode="In" />
+    <Parameter Name="condition" Type="varchar(max)" Mode="In" />
+    <Parameter Name="value" Type="varchar(max)" Mode="In" />
+    <Parameter Name="PageNumber" Type="varchar(max)" Mode="In" />
+    <Parameter Name="RowsOfPage" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="usp_GetHelpDeskFilterData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_GetTerritoryAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="usp_UpdateCartItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SessionID" Type="varchar" Mode="In" />
+    <Parameter Name="UserID" Type="varchar" Mode="In" />
+    <Parameter Name="subuserid" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="ClientModelStoreContainer">
+    <EntitySet Name="ActivityLog" EntityType="Self.ActivityLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AllImages" EntityType="Self.AllImages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="businesstypes" EntityType="Self.businesstypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CardDetail" EntityType="Self.CardDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CardTypes" EntityType="Self.CardTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ColorConfigurations" EntityType="Self.ColorConfigurations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanySettingForMulti" EntityType="Self.CompanySettingForMulti" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Configs" EntityType="Self.Configs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cu_contact" EntityType="Self.cu_contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cu_prcitem" EntityType="Self.cu_prcitem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cu_prospect" EntityType="Self.cu_prospect" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cu_shipto" EntityType="Self.cu_shipto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cu_taxmst" EntityType="Self.cu_taxmst" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cu_user" EntityType="Self.cu_user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customermethodname" EntityType="Self.customermethodname" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DynamicPages" EntityType="Self.DynamicPages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMailTemplates" EntityType="Self.EMailTemplates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="errorlog" EntityType="Self.errorlog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="headerlinks" EntityType="Self.headerlinks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="it_compl" EntityType="Self.it_compl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="it_component" EntityType="Self.it_component" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="it_majcls" EntityType="Self.it_majcls" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="it_prodline" EntityType="Self.it_prodline" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="it_sales_restriction" EntityType="Self.it_sales_restriction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="it_tree_link" EntityType="Self.it_tree_link" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="it_tree_node" EntityType="Self.it_tree_node" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="it_xref" EntityType="Self.it_xref" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="item" EntityType="Self.item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="itemdetails" EntityType="Self.itemdetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemSummery" EntityType="Self.ItemSummery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MailConfigs" EntityType="Self.MailConfigs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="oe_class" EntityType="Self.oe_class" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="oe_totcodes" EntityType="Self.oe_totcodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ordereditems" EntityType="Self.ordereditems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orderhead" EntityType="Self.orderhead" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ordermethod" EntityType="Self.ordermethod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="payment" EntityType="Self.payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="price" EntityType="Self.price" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="price_sale" EntityType="Self.price_sale" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PunchoutSessionDetail" EntityType="Self.PunchoutSessionDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PunchOutTerritory" EntityType="Self.PunchOutTerritory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegistrationControls" EntityType="Self.RegistrationControls" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="safilterorder" EntityType="Self.safilterorder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="salesman" EntityType="Self.salesman" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ship_rates" EntityType="Self.ship_rates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="shipvia_mapping" EntityType="Self.shipvia_mapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SouthernPunchOutSession" EntityType="Self.SouthernPunchOutSession" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="states" EntityType="Self.states" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sy_codes" EntityType="Self.sy_codes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sy_company" EntityType="Self.sy_company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sy_contact" EntityType="Self.sy_contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sy_country" EntityType="Self.sy_country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sy_currency" EntityType="Self.sy_currency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sy_default" EntityType="Self.sy_default" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sy_notes" EntityType="Self.sy_notes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sy_numctrl" EntityType="Self.sy_numctrl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sy_param" EntityType="Self.sy_param" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sy_paycodes" EntityType="Self.sy_paycodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sy_postal_code" EntityType="Self.sy_postal_code" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sy_prof_label" EntityType="Self.sy_prof_label" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sy_shipvia" EntityType="Self.sy_shipvia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sy_terms" EntityType="Self.sy_terms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sy_trans_notes" EntityType="Self.sy_trans_notes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sy_url_alias" EntityType="Self.sy_url_alias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblBanner" EntityType="Self.tblBanner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblCart" EntityType="Self.tblCart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOrder" EntityType="Self.tblOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOrderProduct" EntityType="Self.tblOrderProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usershippingmapping" EntityType="Self.usershippingmapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ve_contact" EntityType="Self.ve_contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vendor" EntityType="Self.vendor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wa_item" EntityType="Self.wa_item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="warehouse" EntityType="Self.warehouse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wishlistheaders" EntityType="Self.wishlistheaders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wishlistproducts" EntityType="Self.wishlistproducts" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

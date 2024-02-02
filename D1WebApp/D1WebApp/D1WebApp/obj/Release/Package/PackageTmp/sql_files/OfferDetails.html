@@ -1,0 +1,50 @@
+<html>
+<head><title>Purchase Order / Quatation Details</title>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+<div style="width:1000px;max-width:1000px;">
+<h1>Offer Details</h1>
+<table Style="border:1;width:100%;">
+<tr bgcolor="#FCF8E3">
+<td>
+Vendor ID:{{vendor}}<br />
+Ship To:{{ship_ID}} <br />
+Ship Via: {{ship_via_code}} <br />
+Ship To Name: {{name}} <br />
+Ship To Attention: {{ship_atn}} <br />
+Ship to Address: {{adr}} <br />
+Ship To State: {{state}} <br />
+Ship To Postal Code: {{postal_code}} <br />
+Country: {{country_code}} <br />
+Phone: {{phone}} <br />
+Phone Ext: {{phone_ext}}<br />
+Fax: {{fax}} <br />
+Email: {{email}} <br /> 
+</td>
+<td>
+Quote: {{PO}}<br />
+Date Ordered: {{ord_date}}<br />
+Date Wanted: {{wanted_date}} <br />
+Follow Up Date: {{follow_up_date}} <br />
+Follow Up Code: {{follow_up_code}} <br />
+Currency: {{currency_code}} <br />
+Exchange Rate: {{exchange_rate}} <br />
+Delivery Terms: {{Delivey_terms}} <br />
+Entered By: {{enter_by}} <br />
+
+</td>
+</tr>
+<tr bgcolor="#F5F5F5">
+<td colspan=2> 
+<table Style="border:1;width:100%;">
+{{ProductDetailsLines}}
+</table>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

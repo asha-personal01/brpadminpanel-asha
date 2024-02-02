@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="D1WebAppModelStoreContainer" CdmEntityContainer="D1WebAppEntities">
+    <EntitySetMapping Name="Configurations">
+      <EntityTypeMapping TypeName="D1WebAppModel.Configuration">
+        <MappingFragment StoreEntitySet="Configuration">
+          <ScalarProperty Name="ConfigurationValue" ColumnName="ConfigurationValue" />
+          <ScalarProperty Name="ConfigurationKey" ColumnName="ConfigurationKey" />
+          <ScalarProperty Name="ConfigurationID" ColumnName="ConfigurationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ErrorLogs">
+      <EntityTypeMapping TypeName="D1WebAppModel.ErrorLog">
+        <MappingFragment StoreEntitySet="ErrorLog">
+          <ScalarProperty Name="IsError" ColumnName="IsError" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="ErrorType" ColumnName="ErrorType" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ErrorLogTimestamp" ColumnName="ErrorLogTimestamp" />
+          <ScalarProperty Name="ErrorLogID" ColumnName="ErrorLogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="D1WebAppModel.Notification">
+        <MappingFragment StoreEntitySet="Notification">
+          <ScalarProperty Name="Parameters" ColumnName="Parameters" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Controller" ColumnName="Controller" />
+          <ScalarProperty Name="NotificationStyle" ColumnName="NotificationStyle" />
+          <ScalarProperty Name="ToUserID" ColumnName="ToUserID" />
+          <ScalarProperty Name="FromUserID" ColumnName="FromUserID" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="NotificationType" ColumnName="NotificationType" />
+          <ScalarProperty Name="NotificationTimeStamp" ColumnName="NotificationTimeStamp" />
+          <ScalarProperty Name="NotificationID" ColumnName="NotificationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProcessTimes">
+      <EntityTypeMapping TypeName="D1WebAppModel.ProcessTime">
+        <MappingFragment StoreEntitySet="ProcessTimes">
+          <ScalarProperty Name="ProcessTimeName" ColumnName="ProcessTimeName" />
+          <ScalarProperty Name="ProcessTimeID" ColumnName="ProcessTimeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectTypes">
+      <EntityTypeMapping TypeName="D1WebAppModel.ProjectType">
+        <MappingFragment StoreEntitySet="ProjectTypes">
+          <ScalarProperty Name="ProjectType1" ColumnName="ProjectType" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuditTrailMasters">
+      <EntityTypeMapping TypeName="D1WebAppModel.AuditTrailMaster">
+        <MappingFragment StoreEntitySet="AuditTrailMaster">
+          <ScalarProperty Name="AuditTrailName" ColumnName="AuditTrailName" />
+          <ScalarProperty Name="AuditTrailID" ColumnName="AuditTrailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuditTrails">
+      <EntityTypeMapping TypeName="D1WebAppModel.AuditTrail">
+        <MappingFragment StoreEntitySet="AuditTrails">
+          <ScalarProperty Name="RecordType" ColumnName="RecordType" />
+          <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+          <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+          <ScalarProperty Name="AuditTrailID" ColumnName="AuditTrailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SchedulerConfigs">
+      <EntityTypeMapping TypeName="D1WebAppModel.SchedulerConfig">
+        <MappingFragment StoreEntitySet="SchedulerConfig">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SchedulerTables" ColumnName="SchedulerTables" />
+          <ScalarProperty Name="SchedulerTime" ColumnName="SchedulerTime" />
+          <ScalarProperty Name="SchedulerName" ColumnName="SchedulerName" />
+          <ScalarProperty Name="SchedulerConfigId" ColumnName="SchedulerConfigId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MailBoxes">
+      <EntityTypeMapping TypeName="D1WebAppModel.MailBox">
+        <MappingFragment StoreEntitySet="MailBoxes">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ReplyTo" ColumnName="ReplyTo" />
+          <ScalarProperty Name="MailFrom" ColumnName="MailFrom" />
+          <ScalarProperty Name="IsSSL" ColumnName="IsSSL" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="SMTPPort" ColumnName="SMTPPort" />
+          <ScalarProperty Name="SMTPServer" ColumnName="SMTPServer" />
+          <ScalarProperty Name="MailBoxName" ColumnName="MailBoxName" />
+          <ScalarProperty Name="MailBoxID" ColumnName="MailBoxID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MailQueues">
+      <EntityTypeMapping TypeName="D1WebAppModel.MailQueue">
+        <MappingFragment StoreEntitySet="MailQueue">
+          <ScalarProperty Name="ReplyTo" ColumnName="ReplyTo" />
+          <ScalarProperty Name="SentOn" ColumnName="SentOn" />
+          <ScalarProperty Name="ProccessedOn" ColumnName="ProccessedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
+          <ScalarProperty Name="IsProccessed" ColumnName="IsProccessed" />
+          <ScalarProperty Name="MailBoxID" ColumnName="MailBoxID" />
+          <ScalarProperty Name="MailSendDate" ColumnName="MailSendDate" />
+          <ScalarProperty Name="MailMessage" ColumnName="MailMessage" />
+          <ScalarProperty Name="MailSubject" ColumnName="MailSubject" />
+          <ScalarProperty Name="MailRecipient" ColumnName="MailRecipient" />
+          <ScalarProperty Name="MailQueueID" ColumnName="MailQueueID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MailTemplates">
+      <EntityTypeMapping TypeName="D1WebAppModel.MailTemplate">
+        <MappingFragment StoreEntitySet="MailTemplates">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="MailTemplateContent" ColumnName="MailTemplateContent" />
+          <ScalarProperty Name="MailTemplateSubject" ColumnName="MailTemplateSubject" />
+          <ScalarProperty Name="MailTemplateName" ColumnName="MailTemplateName" />
+          <ScalarProperty Name="MailTemplateID" ColumnName="MailTemplateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserMailBoxes">
+      <EntityTypeMapping TypeName="D1WebAppModel.UserMailBox">
+        <MappingFragment StoreEntitySet="UserMailBoxes">
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ReplyTo" ColumnName="ReplyTo" />
+          <ScalarProperty Name="MailFrom" ColumnName="MailFrom" />
+          <ScalarProperty Name="IsSSL" ColumnName="IsSSL" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="SMTPPort" ColumnName="SMTPPort" />
+          <ScalarProperty Name="SMTPServer" ColumnName="SMTPServer" />
+          <ScalarProperty Name="MailBoxName" ColumnName="MailBoxName" />
+          <ScalarProperty Name="MailBoxID" ColumnName="MailBoxID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RightGroups">
+      <EntityTypeMapping TypeName="D1WebAppModel.RightGroup">
+        <MappingFragment StoreEntitySet="RightGroups">
+          <ScalarProperty Name="RightGroupName" ColumnName="RightGroupName" />
+          <ScalarProperty Name="RightGroupID" ColumnName="RightGroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RightRoleMappings">
+      <EntityTypeMapping TypeName="D1WebAppModel.RightRoleMapping">
+        <MappingFragment StoreEntitySet="RightRoleMapping">
+          <ScalarProperty Name="LohaLive" ColumnName="LohaLive" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RightID" ColumnName="RightID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rights">
+      <EntityTypeMapping TypeName="D1WebAppModel.Right">
+        <MappingFragment StoreEntitySet="Rights">
+          <ScalarProperty Name="ApplicableTo" ColumnName="ApplicableTo" />
+          <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RightURL" ColumnName="RightURL" />
+          <ScalarProperty Name="RightGroupID" ColumnName="RightGroupID" />
+          <ScalarProperty Name="RightName" ColumnName="RightName" />
+          <ScalarProperty Name="RightID" ColumnName="RightID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="D1WebAppModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="ApplicableTo" ColumnName="ApplicableTo" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SettingMasters">
+      <EntityTypeMapping TypeName="D1WebAppModel.SettingMaster">
+        <MappingFragment StoreEntitySet="SettingMaster">
+          <ScalarProperty Name="SystemDefault" ColumnName="SystemDefault" />
+          <ScalarProperty Name="SettingDatatypeName" ColumnName="SettingDatatypeName" />
+          <ScalarProperty Name="SettingName" ColumnName="SettingName" />
+          <ScalarProperty Name="SettingID" ColumnName="SettingID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UniqueSessions">
+      <EntityTypeMapping TypeName="D1WebAppModel.UniqueSession">
+        <MappingFragment StoreEntitySet="UniqueSession">
+          <ScalarProperty Name="Browser" ColumnName="Browser" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="MemRefNo" ColumnName="MemRefNo" />
+          <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
+          <ScalarProperty Name="UniqueSessionID" ColumnName="UniqueSessionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLogs">
+      <EntityTypeMapping TypeName="D1WebAppModel.UserLog">
+        <MappingFragment StoreEntitySet="UserLog">
+          <ScalarProperty Name="isSuccessful" ColumnName="isSuccessful" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="ScreenResolution" ColumnName="ScreenResolution" />
+          <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
+          <ScalarProperty Name="Browser" ColumnName="Browser" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="UserActionDescription" ColumnName="UserActionDescription" />
+          <ScalarProperty Name="UserAction" ColumnName="UserAction" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserLogTimestamp" ColumnName="UserLogTimestamp" />
+          <ScalarProperty Name="UserLogID" ColumnName="UserLogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProcessTimes">
+      <EntityTypeMapping TypeName="D1WebAppModel.UserProcessTime">
+        <MappingFragment StoreEntitySet="UserProcessTimes">
+          <ScalarProperty Name="ProcessTimeID" ColumnName="ProcessTimeID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserProcessTimeID" ColumnName="UserProcessTimeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProjectMappings">
+      <EntityTypeMapping TypeName="D1WebAppModel.UserProjectMapping">
+        <MappingFragment StoreEntitySet="UserProjectMapping">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ProjectTypeID" ColumnName="ProjectTypeID" />
+          <ScalarProperty Name="UserProjectID" ColumnName="UserProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="D1WebAppModel.UserRole">
+        <MappingFragment StoreEntitySet="UserRoles">
+          <ScalarProperty Name="TabAccess" ColumnName="TabAccess" />
+          <ScalarProperty Name="UserParent" ColumnName="UserParent" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="D1WebAppModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ApiToken" ColumnName="ApiToken" />
+          <ScalarProperty Name="ApiEndPoint" ColumnName="ApiEndPoint" />
+          <ScalarProperty Name="NotificationEmails" ColumnName="NotificationEmails" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="ApiPwd" ColumnName="ApiPwd" />
+          <ScalarProperty Name="ApiUserName" ColumnName="ApiUserName" />
+          <ScalarProperty Name="HostName" ColumnName="HostName" />
+          <ScalarProperty Name="SessionCount" ColumnName="SessionCount" />
+          <ScalarProperty Name="IsRemember" ColumnName="IsRemember" />
+          <ScalarProperty Name="MemberRefNo" ColumnName="MemberRefNo" />
+          <ScalarProperty Name="TokenExpirsOn" ColumnName="TokenExpirsOn" />
+          <ScalarProperty Name="AuthenticationToken" ColumnName="AuthenticationToken" />
+          <ScalarProperty Name="GUIDCode" ColumnName="GUIDCode" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+          <ScalarProperty Name="LastLoggedOn" ColumnName="LastLoggedOn" />
+          <ScalarProperty Name="LockedOn" ColumnName="LockedOn" />
+          <ScalarProperty Name="FailedAttemptCount" ColumnName="FailedAttemptCount" />
+          <ScalarProperty Name="IsPasswordReset" ColumnName="IsPasswordReset" />
+          <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSessions">
+      <EntityTypeMapping TypeName="D1WebAppModel.UserSession">
+        <MappingFragment StoreEntitySet="UserSession">
+          <ScalarProperty Name="Browser" ColumnName="Browser" />
+          <ScalarProperty Name="IpAddresss" ColumnName="IpAddresss" />
+          <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="AuthenticationToken" ColumnName="AuthenticationToken" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserVisits">
+      <EntityTypeMapping TypeName="D1WebAppModel.UserVisit">
+        <MappingFragment StoreEntitySet="UserVisits">
+          <ScalarProperty Name="VisitTime" ColumnName="VisitTime" />
+          <ScalarProperty Name="Browser" ColumnName="Browser" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="MemRefNo" ColumnName="MemRefNo" />
+          <ScalarProperty Name="UrlName" ColumnName="UrlName" />
+          <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
+          <ScalarProperty Name="UserVisitID" ColumnName="UserVisitID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VendorUserLoginDetails">
+      <EntityTypeMapping TypeName="D1WebAppModel.VendorUserLoginDetail">
+        <MappingFragment StoreEntitySet="VendorUserLoginDetails">
+          <ScalarProperty Name="C__seq" ColumnName="__seq" />
+          <ScalarProperty Name="C__rowids" ColumnName="__rowids" />
+          <ScalarProperty Name="web_passwd" ColumnName="web_passwd" />
+          <ScalarProperty Name="vendor" ColumnName="vendor" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserSubUserID" ColumnName="UserSubUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

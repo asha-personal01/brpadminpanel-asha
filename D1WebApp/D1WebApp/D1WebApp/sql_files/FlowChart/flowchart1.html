@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Flowchart</title>
+
+ <script src="./js/jquery-1.9.1.js"></script>
+<meta charset="UTF-8">
+<script src="./js/flowchart.js"></script>
+<script src="./js/flowchartcustom.js"></script>
+
+<script src="./js/DragZoomingTool.js"></script>
+<script src="./js/DragCreatingTool.js"></script>
+<script src="./js/ResizeMultipleTool.js"></script>
+<script src="./js/RotateMultipleTool.js"></script>
+<script src="./js/FreehandDrawingTool.js"></script>
+<script src="./js/GeometryReshapingTool.js"></script>
+<script src="./js/GuidedDraggingTool.js"></script>
+<script src='./js/spectrum.js'></script>
+<link rel='stylesheet' href='./css/flowchart.css' />
+  <link rel='stylesheet' href='./css/spectrum.css' />
+  <link rel='stylesheet' href='./css/DebugInspector.css' />
+<script src="./js/DebugInspector.js"></script>
+<script src="./js/ExtendedBrush.js"></script>
+<link rel='stylesheet' href='./css/DataInspector.css' />
+<script src="./js/DataInspector.js"></script>
+
+
+
+</head>
+<body id="flow">
+<div id="sample" onload="init()">
+  
+
+  <div id="main">
+    <span id="op">
+	<div id="myOverviewDiv"></div>  
+      <div id="myDiagramDiv"></div>	
+    </span>
+	 <div id="Inspec">
+	 <table>
+	 <tr>
+	 <td>
+      <div id = "myInspector" class = "inspector"> </div>      
+	  </td>
+	  <td style="vertical-align: top;">
+      <div id="myInspectorDiv" class="inspector"> </div><br/>
+	  </td>
+	  </tr>
+	  </table>
+	 </div>
+	
+	
+  </div>
+  
+  
+   <span id='cntnr'> 
+      <div id="myPaletteDiv"></div>
+	  <img src="images/Flowchart-Save.bmp" name="Save" id="save"  />
+	  
+     </span>
+
+<button name="Save" style="display:none;" value="save" id="Load" onclick="load()">Load Diagram</button>
+
+
+
+
+  <div style="display:none;">
+  Diagram Model saved in JSON format:
+  <textarea id="mySavedModel" style="width:100%;height:300px">
+{ 
+  "nodeDataArray": [
+
+ ],
+  "linkDataArray": [
+]}
+  </textarea>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,888 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6136F591-20A7-4489-B479-6FB23CFA53D5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>D1WebApp</RootNamespace>
+    <AssemblyName>D1WebApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CsvHelper, Version=30.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.30.0.1\lib\net47\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.0.0\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Administration, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="RestSharp, Version=106.2.2.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.2.2\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.0\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.4\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.4\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Classes\ApiResponse.cs" />
+    <Compile Include="Classes\ErrorLog.cs" />
+    <Compile Include="Classes\ErrorMessge.cs" />
+    <Compile Include="Classes\GeneralConfiguration.cs" />
+    <Compile Include="Classes\Hostingcls.cs" />
+    <Compile Include="Classes\Mail.cs" />
+    <Compile Include="Classes\MemoryCacher.cs" />
+    <Compile Include="Classes\Miscellaneous.cs" />
+    <Compile Include="Classes\Security.cs" />
+    <Compile Include="Classes\UserLogs.cs" />
+    <Compile Include="Classes\WebApiRequest.cs" />
+    <Compile Include="ClientModel\ActivityLog.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\AllImage.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\businesstype.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\CardDetail.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\CardType.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\ClientModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\ClientModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\ClientModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\ColorConfiguration.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\CompanySettingForMulti.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\Config.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\customer.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\customermethodname.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\cu_contact.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\cu_prcitem.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\cu_prospect.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\cu_shipto.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\cu_taxmst.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\cu_user.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\DynamicPage.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\EMailTemplate.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\errorlog.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetActivityLog_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetAllRealtedItems_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetBrandListForProductsMenu_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetcustomerListbySalesman_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetitemdetailsbyID_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetitemdetailsbyNameForXref_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetitemdetailsbyName_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetItemMetaList_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetMajClsMetaList_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\Getmaj_class_details_for_list_page_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetMenuListForDisplaynew_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetMenuListForDisplay_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetProdLineMetaList_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\Getprodlines_details_for_list_page_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\Gettreenodeforadvancesearch_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetTreeNodeMetaList_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetTreenode_details_for_list_page_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetUrlsforvisiblesitemap_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetUserCartItemDetailReport_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\GetUserDefaultvalues_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\headerlink.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\item.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\itemdetail.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\ItemSummery.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\it_compl.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\it_component.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\it_majcls.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\it_prodline.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\it_sales_restriction.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\it_tree_link.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\it_tree_node.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\it_xref.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\MailConfig.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\oe_class.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\oe_totcodes.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\order.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\ordereditem.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\orderhead.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\ordermethod.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\OrderProduct.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\payment.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\Permission.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\price.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\price_sale.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\PunchoutSessionDetail.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\PunchOutTerritory.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\RegistrationControl.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\safilterorder.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\salesman.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\SearchAllTables_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\shipvia_mapping.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\ship_rates.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\SouthernPunchOutSession.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\SplitString_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\SP_GetProductListsToDisplay_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\state.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\sy_codes.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\sy_company.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\sy_contact.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\sy_country.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\sy_currency.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\sy_default.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\sy_notes.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\sy_numctrl.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\sy_param.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\sy_paycodes.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\sy_postal_code.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\sy_prof_label.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\sy_shipvia.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\sy_terms.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\sy_trans_notes.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\sy_url_alias.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\tblBanner.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\tblCart.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\tblOrder.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\tblOrderProduct.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\usershippingmapping.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\usp_GetBrandList_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\usp_GetBrandProductWithItemCount_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\usp_GetCartItems_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\usp_GetCUuserList_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\usp_GetHelpDeskFilterData_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\usp_GetTerritoryAccount_Result.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\vendor.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\ve_contact.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\warehouse.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\wa_item.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\wishlistheader.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClientModel\wishlistproduct.cs">
+      <DependentUpon>ClientModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\DistOneAPiController.cs" />
+    <Compile Include="Controllers\SEOManagementController.cs" />
+    <Compile Include="Controllers\UserMailBoxController.cs" />
+    <Compile Include="Controllers\CompanyProfileController.cs" />
+    <Compile Include="Controllers\EndUserController.cs" />
+    <Compile Include="Controllers\SubUsersController.cs" />
+    <Compile Include="Controllers\UserMenuController.cs" />
+    <Compile Include="Controllers\BannersController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="InterfaceRepositories\IAuditTrailsRepository.cs" />
+    <Compile Include="InterfaceRepositories\IApiForVendorPortalRepository.cs" />
+    <Compile Include="InterfaceRepositories\ISEORepository.cs" />
+    <Compile Include="InterfaceRepositories\IUserMailBoxRepository.cs" />
+    <Compile Include="InterfaceRepositories\ICompanyProfileRepository.cs" />
+    <Compile Include="InterfaceRepositories\IEndUserRepository.cs" />
+    <Compile Include="InterfaceRepositories\IMailBoxMasterRepository.cs" />
+    <Compile Include="InterfaceRepositories\IMailBoxRepository.cs" />
+    <Compile Include="InterfaceRepositories\IMailMasterTemplateRepository.cs" />
+    <Compile Include="InterfaceRepositories\IMailQueueRepository.cs" />
+    <Compile Include="InterfaceRepositories\IMailTempleteRepository.cs" />
+    <Compile Include="InterfaceRepositories\INotificationRepository.cs" />
+    <Compile Include="InterfaceRepositories\IUserMenuRepository.cs" />
+    <Compile Include="InterfaceRepositories\IErrorLogRepository.cs" />
+    <Compile Include="InterfaceRepositories\IUserLogRepository.cs" />
+    <Compile Include="InterfaceRepositories\IBannersRepository.cs" />
+    <Compile Include="InterfaceRepositories\IUserProcessTimesRepository.cs" />
+    <Compile Include="InterfaceRepositories\ISubUsersRepository.cs" />
+    <Compile Include="InterfaceRepositories\IUserRepository.cs" />
+    <Compile Include="Managers\SEOManager.cs" />
+    <Compile Include="Managers\UserMailBoxManager.cs" />
+    <Compile Include="Managers\CompanyProfileManager.cs" />
+    <Compile Include="Managers\EndUserManager.cs" />
+    <Compile Include="Managers\SubUsersManager.cs" />
+    <Compile Include="Managers\UserMenuManager.cs" />
+    <Compile Include="Managers\BannersManager.cs" />
+    <Compile Include="Managers\UserManager.cs" />
+    <Compile Include="Models\AuditTrail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditTrailMaster.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Configuration.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ErrorLog.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MailBox.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MailQueue.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MailTemplate.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Notification.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProcessTime.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProjectType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Right.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RightGroup.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RightRoleMapping.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SchedulerConfig.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SettingMaster.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UniqueSession.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserLog.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserMailBox.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserProcessTime.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserProjectMapping.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserRole.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserSession.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserVisit.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VendorUserLoginDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Partial\ConfigurationPartial.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AuditTrailsRepository.cs" />
+    <Compile Include="Repositories\SEORepository.cs" />
+    <Compile Include="Repositories\UserMailBoxRepository.cs" />
+    <Compile Include="Repositories\CompanyProfileRepository.cs" />
+    <Compile Include="Repositories\EndUserRepository.cs" />
+    <Compile Include="Repositories\MailBoxMasterRepository.cs" />
+    <Compile Include="Repositories\MailBoxRepository.cs" />
+    <Compile Include="Repositories\MailMasterTemplateRepository.cs" />
+    <Compile Include="Repositories\MailQueueRepository.cs" />
+    <Compile Include="Repositories\MailTempleteRepository.cs" />
+    <Compile Include="Repositories\NotificationRepository.cs" />
+    <Compile Include="Repositories\UserMenuRepository.cs" />
+    <Compile Include="Repositories\ErrorLogRepository.cs" />
+    <Compile Include="Repositories\UserLogRepository.cs" />
+    <Compile Include="Repositories\BannersRepository.cs" />
+    <Compile Include="Repositories\ApiForVendorPortalRepository.cs" />
+    <Compile Include="Repositories\UserProcessTimesRepository.cs" />
+    <Compile Include="Repositories\SubUsersRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="ViewModels\AuditTrailViewModel.cs" />
+    <Compile Include="ViewModels\CompanyProfileViewModel.cs" />
+    <Compile Include="ViewModels\EndUserViewModel.cs" />
+    <Compile Include="ViewModels\Itemavaibi.cs" />
+    <Compile Include="ViewModels\SubusersViewModel.cs" />
+    <Compile Include="ViewModels\SEOViewModel.cs" />
+    <Compile Include="ViewModels\ItemDetailsViewModel.cs" />
+    <Compile Include="ViewModels\MailBoxAPIMasterViewModel.cs" />
+    <Compile Include="ViewModels\MailBoxMasterViewModel.cs" />
+    <Compile Include="ViewModels\MailBoxViewModel.cs" />
+    <Compile Include="ViewModels\MailMasterTemplateViewModel.cs" />
+    <Compile Include="ViewModels\MailQueueViewModel.cs" />
+    <Compile Include="ViewModels\MailTemplateAPIMasterViewModel.cs" />
+    <Compile Include="ViewModels\MailTemplateViewModel.cs" />
+    <Compile Include="ViewModels\NotificationDisplayViewModel.cs" />
+    <Compile Include="ViewModels\NotificationToastViewModel.cs" />
+    <Compile Include="ViewModels\NotificationViewModel.cs" />
+    <Compile Include="ViewModels\POTrackingViewModel.cs" />
+    <Compile Include="ViewModels\POViewModel.cs" />
+    <Compile Include="ViewModels\ProjectTypeViewModel.cs" />
+    <Compile Include="ViewModels\PurchaseOrderDetailsViewModel.cs" />
+    <Compile Include="ViewModels\PurchaseOrderProductdetailsViewModel.cs" />
+    <Compile Include="ViewModels\UserMenuViewModel.cs" />
+    <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModels\Constants.cs" />
+    <Compile Include="ViewModels\ErrorLogViewModel.cs" />
+    <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
+    <Compile Include="ViewModels\LoginResponse.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Message.cs" />
+    <Compile Include="ViewModels\BannersViewModel.cs" />
+    <Compile Include="ViewModels\RolesViewModel.cs" />
+    <Compile Include="ViewModels\UniqueSessionViewModel.cs" />
+    <Compile Include="ViewModels\UserLogViewModel.cs" />
+    <Compile Include="ViewModels\UserSystemDetails.cs" />
+    <Compile Include="UserInsertViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="ViewModels\UserVisitViewModel.cs" />
+    <Compile Include="ViewModels\VendorLoginDetailsViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClientModel\ClientModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ClientModel.edmx</DependentUpon>
+      <LastGenOutput>ClientModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ClientModel\ClientModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ClientModel.edmx</DependentUpon>
+      <LastGenOutput>ClientModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="ClientModel\ClientModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ClientModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="ClientModel\ClientModel.edmx.diagram">
+      <DependentUpon>ClientModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="sql_files\OfferDetails.html" />
+    <Content Include="sql_files\ProductDetails.html" />
+    <Content Include="sql_files\script.sql" />
+    <Content Include="sql_files\script1.sql" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="sql_files\VendorPortal.zip" />
+    <Content Include="sql_files\D1WebApp.bacpac" />
+    <Content Include="sql_files\AdminPortal.zip" />
+    <Content Include="sql_files\FlowChart.zip" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>38051</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:38051/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,148 @@
+
+.scroll {
+   width:128px;
+   height: 350px;       
+   display: inline-block;
+   vertical-align: top;
+   overflow: scroll; 
+}
+
+#myPaletteDiv canvas{
+	width:185px;
+   height: 350px;   
+
+
+    /* display: inline-block;  */
+    /* vertical-align: top;  */
+    /* overflow: scroll;   */
+}
+
+
+.scroll::-webkit-scrollbar {
+    width: 12px !important;
+}
+
+.scroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3) !important; 
+    border-radius: 10px !important;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px !important;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5) !important; 
+}
+
+#op{
+	display: inline-block; 
+	vertical-align: top; 
+	 padding: 5px;  
+	 width:100%; 
+	 height:100%; 
+}
+
+#flow{
+	background-color: #4E4F51;
+}
+
+#DSave{
+/* position: absolute; */
+    z-index: 300;
+	
+    width: 200px;
+    height: 100px;
+   
+}
+
+#myDiagramDiv{
+	background-color: #4E4F51;
+	/* border: solid 1px gray;  */
+	 width:100%; 
+	 height:100%; 
+	 min-height:900px !important;
+}
+
+#myOverviewDiv {
+    position: relative;
+	float:right;
+    width: 200px;
+    height: 100px;    
+     background-color: #4E4F51;
+    z-index: 999;
+    border: solid 1px blue;
+}
+#items{
+  list-style:none;
+  margin:0px;
+  margin-top:4px;
+  padding-left:10px;
+  padding-right:10px;
+  padding-bottom:3px;
+  font-size:17px;
+  color: #333333;
+  
+}
+hr { width: 85%; 
+   background-color:#E4E4E4; 
+   border-color:#E4E4E4; 
+     color:#E4E4E4; 
+}
+#cntnr{
+  
+   position:fixed;   
+  width:185px;
+	height:350px;
+  z-index: 300;
+  top:0;
+  left:0;
+}
+
+body{
+	margin:0;
+}
+
+
+#myPaletteDiv
+{
+	 background-color: #4E4F51; 
+	 /* border: solid 1px gray;  */
+	width:185px;
+	height:350px;
+	 "display: inline-block; 
+	 position:fixed !important; 
+	z-index: 300;
+	
+}
+
+li{
+  
+  padding: 3px;
+  padding-left:10px;
+}
+
+
+#Inspec {
+     position:fixed; 
+    top: 30%;
+    left: 55%;
+    width:30em;
+    height:18em;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -15em; /*set to a negative number 1/2 of your width*/   
+     z-index: 300;
+}
+#Inspec1 {
+     position:fixed; 
+    top: 30%;
+    left: 55%;
+    width:30em;
+    height:18em;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -15em; /*set to a negative number 1/2 of your width*/   
+     z-index: 300;
+}
+
+#items :hover{
+   color: white;
+  background:#284570;
+  /* border-radius:2px; */
+}

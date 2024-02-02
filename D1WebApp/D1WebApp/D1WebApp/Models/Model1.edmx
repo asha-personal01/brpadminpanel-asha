@@ -1,0 +1,1622 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="D1WebAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="ConfigurationID" />
+          </Key>
+          <Property Name="ConfigurationID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConfigurationKey" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="ConfigurationValue" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Name="ErrorLogID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrorLogTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="ErrorType" Type="varchar" MaxLength="1000" />
+          <Property Name="ErrorMessage" Type="varchar(max)" />
+          <Property Name="Module" Type="varchar" MaxLength="1000" />
+          <Property Name="IsAdmin" Type="bit" />
+          <Property Name="IsError" Type="int" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="NotificationID" />
+          </Key>
+          <Property Name="NotificationID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NotificationTimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="NotificationType" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Remarks" Type="varchar" MaxLength="4000" Nullable="false" />
+          <Property Name="FromUserID" Type="bigint" Nullable="false" />
+          <Property Name="ToUserID" Type="bigint" Nullable="false" />
+          <Property Name="NotificationStyle" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Controller" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Parameters" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProcessTimes">
+          <Key>
+            <PropertyRef Name="ProcessTimeID" />
+          </Key>
+          <Property Name="ProcessTimeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProcessTimeName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectTypes">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectType" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuditTrailMaster">
+          <Key>
+            <PropertyRef Name="AuditTrailID" />
+          </Key>
+          <Property Name="AuditTrailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuditTrailName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuditTrails">
+          <Key>
+            <PropertyRef Name="AuditTrailID" />
+          </Key>
+          <Property Name="AuditTrailID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RecordID" Type="bigint" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="ActionType" Type="int" Nullable="false" />
+          <Property Name="ActionDate" Type="datetime" Nullable="false" />
+          <Property Name="RecordType" Type="int" />
+        </EntityType>
+        <EntityType Name="SchedulerConfig">
+          <Key>
+            <PropertyRef Name="SchedulerConfigId" />
+          </Key>
+          <Property Name="SchedulerConfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SchedulerName" Type="varchar" MaxLength="500" />
+          <Property Name="SchedulerTime" Type="varchar" MaxLength="500" />
+          <Property Name="SchedulerTables" Type="varchar(max)" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="MailBoxes">
+          <Key>
+            <PropertyRef Name="MailBoxID" />
+          </Key>
+          <Property Name="MailBoxID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MailBoxName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SMTPServer" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="SMTPPort" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsSSL" Type="bit" Nullable="false" />
+          <Property Name="MailFrom" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="ReplyTo" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MailQueue">
+          <Key>
+            <PropertyRef Name="MailQueueID" />
+          </Key>
+          <Property Name="MailQueueID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MailRecipient" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="MailSubject" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="MailMessage" Type="varchar(max)" />
+          <Property Name="MailSendDate" Type="datetime" />
+          <Property Name="MailBoxID" Type="bigint" Nullable="false" />
+          <Property Name="IsProccessed" Type="bit" Nullable="false" />
+          <Property Name="IsDelivered" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ProccessedOn" Type="datetime" />
+          <Property Name="SentOn" Type="datetime" />
+          <Property Name="ReplyTo" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="MailTemplates">
+          <Key>
+            <PropertyRef Name="MailTemplateID" />
+          </Key>
+          <Property Name="MailTemplateID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MailTemplateName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="MailTemplateSubject" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="MailTemplateContent" Type="varchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMailBoxes">
+          <Key>
+            <PropertyRef Name="MailBoxID" />
+          </Key>
+          <Property Name="MailBoxID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MailBoxName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SMTPServer" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="SMTPPort" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsSSL" Type="bit" Nullable="false" />
+          <Property Name="MailFrom" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="ReplyTo" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="500" />
+          <Property Name="Company" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="RightGroups">
+          <Key>
+            <PropertyRef Name="RightGroupID" />
+          </Key>
+          <Property Name="RightGroupID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RightGroupName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RightRoleMapping">
+          <Key>
+            <PropertyRef Name="RightID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RightID" Type="bigint" Nullable="false" />
+          <Property Name="RoleID" Type="bigint" Nullable="false" />
+          <Property Name="LohaLive" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Rights">
+          <Key>
+            <PropertyRef Name="RightID" />
+          </Key>
+          <Property Name="RightID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RightName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RightGroupID" Type="bigint" Nullable="false" />
+          <Property Name="RightURL" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsVisible" Type="bit" Nullable="false" />
+          <Property Name="ApplicableTo" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ApplicableTo" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="SettingMaster">
+          <Key>
+            <PropertyRef Name="SettingID" />
+          </Key>
+          <Property Name="SettingID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SettingName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SettingDatatypeName" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SystemDefault" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UniqueSession">
+          <Key>
+            <PropertyRef Name="UniqueSessionID" />
+          </Key>
+          <Property Name="UniqueSessionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UniqueID" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="MemRefNo" Type="bigint" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IpAddress" Type="varchar" MaxLength="250" />
+          <Property Name="Browser" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserLog">
+          <Key>
+            <PropertyRef Name="UserLogID" />
+          </Key>
+          <Property Name="UserLogID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserLogTimestamp" Type="datetime" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="UserAction" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserActionDescription" Type="varchar" MaxLength="2000" />
+          <Property Name="IPAddress" Type="varchar" MaxLength="50" />
+          <Property Name="Browser" Type="varchar" MaxLength="50" />
+          <Property Name="OperatingSystem" Type="varchar" MaxLength="50" />
+          <Property Name="ScreenResolution" Type="varchar" MaxLength="50" />
+          <Property Name="Remarks" Type="varchar" MaxLength="50" />
+          <Property Name="IsAdmin" Type="bit" />
+          <Property Name="isSuccessful" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserProcessTimes">
+          <Key>
+            <PropertyRef Name="UserProcessTimeID" />
+          </Key>
+          <Property Name="UserProcessTimeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="ProcessTimeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserProjectMapping">
+          <Key>
+            <PropertyRef Name="UserProjectID" />
+          </Key>
+          <Property Name="UserProjectID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectTypeID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="RoleID" Type="bigint" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="UserParent" Type="bigint" />
+          <Property Name="TabAccess" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="250" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="Mobile" Type="numeric" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsLocked" Type="bit" Nullable="false" />
+          <Property Name="IsPasswordReset" Type="bit" Nullable="false" />
+          <Property Name="FailedAttemptCount" Type="int" Nullable="false" />
+          <Property Name="LockedOn" Type="datetime" />
+          <Property Name="LastLoggedOn" Type="datetime" />
+          <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdatedBy" Type="bigint" Nullable="false" />
+          <Property Name="GUIDCode" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="AuthenticationToken" Type="uniqueidentifier" />
+          <Property Name="TokenExpirsOn" Type="datetime" />
+          <Property Name="MemberRefNo" Type="varchar" MaxLength="250" />
+          <Property Name="IsRemember" Type="bit" />
+          <Property Name="SessionCount" Type="tinyint" />
+          <Property Name="HostName" Type="varchar" MaxLength="1000" />
+          <Property Name="ApiUserName" Type="varchar" MaxLength="300" />
+          <Property Name="ApiPwd" Type="varchar" MaxLength="300" />
+          <Property Name="CompanyID" Type="varchar" MaxLength="250" />
+          <Property Name="NotificationEmails" Type="varchar" MaxLength="500" />
+          <Property Name="ApiEndPoint" Type="varchar" MaxLength="500" />
+          <Property Name="ApiToken" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="UserSession">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="AuthenticationToken" />
+          </Key>
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="AuthenticationToken" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="IsExpired" Type="bit" Nullable="false" />
+          <Property Name="IpAddresss" Type="varchar" MaxLength="250" />
+          <Property Name="Browser" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserVisits">
+          <Key>
+            <PropertyRef Name="UserVisitID" />
+          </Key>
+          <Property Name="UserVisitID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UniqueID" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="UrlName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="MemRefNo" Type="bigint" Nullable="false" />
+          <Property Name="IpAddress" Type="varchar" MaxLength="250" />
+          <Property Name="Browser" Type="varchar" MaxLength="50" />
+          <Property Name="VisitTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VendorUserLoginDetails">
+          <Key>
+            <PropertyRef Name="UserSubUserID" />
+          </Key>
+          <Property Name="UserSubUserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="bigint" Nullable="false" />
+          <Property Name="CompanyID" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="vendor" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="web_passwd" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="__rowids" Type="varchar" MaxLength="250" />
+          <Property Name="__seq" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_AuditTrails_AuditTrailMaster">
+          <End Role="AuditTrailMaster" Type="Self.AuditTrailMaster" Multiplicity="0..1" />
+          <End Role="AuditTrails" Type="Self.AuditTrails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AuditTrailMaster">
+              <PropertyRef Name="AuditTrailID" />
+            </Principal>
+            <Dependent Role="AuditTrails">
+              <PropertyRef Name="RecordType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AuditTrails_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="AuditTrails" Type="Self.AuditTrails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AuditTrails">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MailQueue_MailBoxes">
+          <End Role="MailBoxes" Type="Self.MailBoxes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MailQueue" Type="Self.MailQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MailBoxes">
+              <PropertyRef Name="MailBoxID" />
+            </Principal>
+            <Dependent Role="MailQueue">
+              <PropertyRef Name="MailBoxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuRoles_Menus">
+          <End Role="Rights" Type="Self.Rights" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RightRoleMapping" Type="Self.RightRoleMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rights">
+              <PropertyRef Name="RightID" />
+            </Principal>
+            <Dependent Role="RightRoleMapping">
+              <PropertyRef Name="RightID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuRoles_ModifiedBy">
+          <End Role="RightRoleMapping" Type="Self.RightRoleMapping" Multiplicity="1" />
+          <End Role="RightRoleMapping1" Type="Self.RightRoleMapping" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RightRoleMapping">
+              <PropertyRef Name="RightID" />
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="RightRoleMapping1">
+              <PropertyRef Name="RightID" />
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuRoles_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RightRoleMapping" Type="Self.RightRoleMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="RightRoleMapping">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menus_MenuGroups">
+          <End Role="RightGroups" Type="Self.RightGroups" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rights" Type="Self.Rights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RightGroups">
+              <PropertyRef Name="RightGroupID" />
+            </Principal>
+            <Dependent Role="Rights">
+              <PropertyRef Name="RightGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMailBoxes_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserMailBoxes" Type="Self.UserMailBoxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserMailBoxes">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProcessTimes_ProcessTimes">
+          <End Role="ProcessTimes" Type="Self.ProcessTimes" Multiplicity="1" />
+          <End Role="UserProcessTimes" Type="Self.UserProcessTimes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcessTimes">
+              <PropertyRef Name="ProcessTimeID" />
+            </Principal>
+            <Dependent Role="UserProcessTimes">
+              <PropertyRef Name="ProcessTimeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProcessTimes_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserProcessTimes" Type="Self.UserProcessTimes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserProcessTimes">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProjectMapping_ProjectTypes">
+          <End Role="ProjectTypes" Type="Self.ProjectTypes" Multiplicity="1" />
+          <End Role="UserProjectMapping" Type="Self.UserProjectMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectTypes">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="UserProjectMapping">
+              <PropertyRef Name="ProjectTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProjectMapping_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserProjectMapping" Type="Self.UserProjectMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserProjectMapping">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSession_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserSession" Type="Self.UserSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserSession">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorUserLoginDetails_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="VendorUserLoginDetails" Type="Self.VendorUserLoginDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="VendorUserLoginDetails">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="D1WebAppModelStoreContainer">
+          <EntitySet Name="Configuration" EntityType="Self.Configuration" Schema="Application" store:Type="Tables" />
+          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="Application" store:Type="Tables" />
+          <EntitySet Name="Notification" EntityType="Self.Notification" Schema="Application" store:Type="Tables" />
+          <EntitySet Name="ProcessTimes" EntityType="Self.ProcessTimes" Schema="Application" store:Type="Tables" />
+          <EntitySet Name="ProjectTypes" EntityType="Self.ProjectTypes" Schema="Application" store:Type="Tables" />
+          <EntitySet Name="AuditTrailMaster" EntityType="Self.AuditTrailMaster" Schema="AuditTrail" store:Type="Tables" />
+          <EntitySet Name="AuditTrails" EntityType="Self.AuditTrails" Schema="AuditTrail" store:Type="Tables" />
+          <EntitySet Name="SchedulerConfig" EntityType="Self.SchedulerConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MailBoxes" EntityType="Self.MailBoxes" Schema="Mail" store:Type="Tables" />
+          <EntitySet Name="MailQueue" EntityType="Self.MailQueue" Schema="Mail" store:Type="Tables" />
+          <EntitySet Name="MailTemplates" EntityType="Self.MailTemplates" Schema="Mail" store:Type="Tables" />
+          <EntitySet Name="UserMailBoxes" EntityType="Self.UserMailBoxes" Schema="Mail" store:Type="Tables" />
+          <EntitySet Name="RightGroups" EntityType="Self.RightGroups" Schema="Security" store:Type="Tables" />
+          <EntitySet Name="RightRoleMapping" EntityType="Self.RightRoleMapping" Schema="Security" store:Type="Tables" />
+          <EntitySet Name="Rights" EntityType="Self.Rights" Schema="Security" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="Security" store:Type="Tables" />
+          <EntitySet Name="SettingMaster" EntityType="Self.SettingMaster" Schema="Security" store:Type="Tables" />
+          <EntitySet Name="UniqueSession" EntityType="Self.UniqueSession" Schema="Security" store:Type="Tables" />
+          <EntitySet Name="UserLog" EntityType="Self.UserLog" Schema="Security" store:Type="Tables" />
+          <EntitySet Name="UserProcessTimes" EntityType="Self.UserProcessTimes" Schema="Security" store:Type="Tables" />
+          <EntitySet Name="UserProjectMapping" EntityType="Self.UserProjectMapping" Schema="Security" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="Security" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="Security" store:Type="Tables" />
+          <EntitySet Name="UserSession" EntityType="Self.UserSession" Schema="Security" store:Type="Tables" />
+          <EntitySet Name="UserVisits" EntityType="Self.UserVisits" Schema="Security" store:Type="Tables" />
+          <EntitySet Name="VendorUserLoginDetails" EntityType="Self.VendorUserLoginDetails" Schema="Security" store:Type="Tables" />
+          <AssociationSet Name="FK_AuditTrails_AuditTrailMaster" Association="Self.FK_AuditTrails_AuditTrailMaster">
+            <End Role="AuditTrailMaster" EntitySet="AuditTrailMaster" />
+            <End Role="AuditTrails" EntitySet="AuditTrails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AuditTrails_Users" Association="Self.FK_AuditTrails_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="AuditTrails" EntitySet="AuditTrails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MailQueue_MailBoxes" Association="Self.FK_MailQueue_MailBoxes">
+            <End Role="MailBoxes" EntitySet="MailBoxes" />
+            <End Role="MailQueue" EntitySet="MailQueue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuRoles_Menus" Association="Self.FK_MenuRoles_Menus">
+            <End Role="Rights" EntitySet="Rights" />
+            <End Role="RightRoleMapping" EntitySet="RightRoleMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuRoles_ModifiedBy" Association="Self.FK_MenuRoles_ModifiedBy">
+            <End Role="RightRoleMapping" EntitySet="RightRoleMapping" />
+            <End Role="RightRoleMapping1" EntitySet="RightRoleMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuRoles_Roles" Association="Self.FK_MenuRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RightRoleMapping" EntitySet="RightRoleMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menus_MenuGroups" Association="Self.FK_Menus_MenuGroups">
+            <End Role="RightGroups" EntitySet="RightGroups" />
+            <End Role="Rights" EntitySet="Rights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMailBoxes_Users" Association="Self.FK_UserMailBoxes_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserMailBoxes" EntitySet="UserMailBoxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProcessTimes_ProcessTimes" Association="Self.FK_UserProcessTimes_ProcessTimes">
+            <End Role="ProcessTimes" EntitySet="ProcessTimes" />
+            <End Role="UserProcessTimes" EntitySet="UserProcessTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProcessTimes_Users" Association="Self.FK_UserProcessTimes_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserProcessTimes" EntitySet="UserProcessTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProjectMapping_ProjectTypes" Association="Self.FK_UserProjectMapping_ProjectTypes">
+            <End Role="ProjectTypes" EntitySet="ProjectTypes" />
+            <End Role="UserProjectMapping" EntitySet="UserProjectMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProjectMapping_Users" Association="Self.FK_UserProjectMapping_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserProjectMapping" EntitySet="UserProjectMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Roles" Association="Self.FK_UserRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Users" Association="Self.FK_UserRoles_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSession_Users" Association="Self.FK_UserSession_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSession" EntitySet="UserSession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorUserLoginDetails_Users" Association="Self.FK_VendorUserLoginDetails_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="VendorUserLoginDetails" EntitySet="VendorUserLoginDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="D1WebAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="D1WebAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Configurations" EntityType="D1WebAppModel.Configuration" />
+          <EntitySet Name="ErrorLogs" EntityType="D1WebAppModel.ErrorLog" />
+          <EntitySet Name="Notifications" EntityType="D1WebAppModel.Notification" />
+          <EntitySet Name="ProcessTimes" EntityType="D1WebAppModel.ProcessTime" />
+          <EntitySet Name="ProjectTypes" EntityType="D1WebAppModel.ProjectType" />
+          <EntitySet Name="AuditTrailMasters" EntityType="D1WebAppModel.AuditTrailMaster" />
+          <EntitySet Name="AuditTrails" EntityType="D1WebAppModel.AuditTrail" />
+          <EntitySet Name="SchedulerConfigs" EntityType="D1WebAppModel.SchedulerConfig" />
+          <EntitySet Name="MailBoxes" EntityType="D1WebAppModel.MailBox" />
+          <EntitySet Name="MailQueues" EntityType="D1WebAppModel.MailQueue" />
+          <EntitySet Name="MailTemplates" EntityType="D1WebAppModel.MailTemplate" />
+          <EntitySet Name="UserMailBoxes" EntityType="D1WebAppModel.UserMailBox" />
+          <EntitySet Name="RightGroups" EntityType="D1WebAppModel.RightGroup" />
+          <EntitySet Name="RightRoleMappings" EntityType="D1WebAppModel.RightRoleMapping" />
+          <EntitySet Name="Rights" EntityType="D1WebAppModel.Right" />
+          <EntitySet Name="Roles" EntityType="D1WebAppModel.Role" />
+          <EntitySet Name="SettingMasters" EntityType="D1WebAppModel.SettingMaster" />
+          <EntitySet Name="UniqueSessions" EntityType="D1WebAppModel.UniqueSession" />
+          <EntitySet Name="UserLogs" EntityType="D1WebAppModel.UserLog" />
+          <EntitySet Name="UserProcessTimes" EntityType="D1WebAppModel.UserProcessTime" />
+          <EntitySet Name="UserProjectMappings" EntityType="D1WebAppModel.UserProjectMapping" />
+          <EntitySet Name="UserRoles" EntityType="D1WebAppModel.UserRole" />
+          <EntitySet Name="Users" EntityType="D1WebAppModel.User" />
+          <EntitySet Name="UserSessions" EntityType="D1WebAppModel.UserSession" />
+          <EntitySet Name="UserVisits" EntityType="D1WebAppModel.UserVisit" />
+          <EntitySet Name="VendorUserLoginDetails" EntityType="D1WebAppModel.VendorUserLoginDetail" />
+          <AssociationSet Name="FK_UserProcessTimes_ProcessTimes" Association="D1WebAppModel.FK_UserProcessTimes_ProcessTimes">
+            <End Role="ProcessTime" EntitySet="ProcessTimes" />
+            <End Role="UserProcessTime" EntitySet="UserProcessTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProjectMapping_ProjectTypes" Association="D1WebAppModel.FK_UserProjectMapping_ProjectTypes">
+            <End Role="ProjectType" EntitySet="ProjectTypes" />
+            <End Role="UserProjectMapping" EntitySet="UserProjectMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AuditTrails_AuditTrailMaster" Association="D1WebAppModel.FK_AuditTrails_AuditTrailMaster">
+            <End Role="AuditTrailMaster" EntitySet="AuditTrailMasters" />
+            <End Role="AuditTrail" EntitySet="AuditTrails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AuditTrails_Users" Association="D1WebAppModel.FK_AuditTrails_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="AuditTrail" EntitySet="AuditTrails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MailQueue_MailBoxes" Association="D1WebAppModel.FK_MailQueue_MailBoxes">
+            <End Role="MailBox" EntitySet="MailBoxes" />
+            <End Role="MailQueue" EntitySet="MailQueues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMailBoxes_Users" Association="D1WebAppModel.FK_UserMailBoxes_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserMailBox" EntitySet="UserMailBoxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menus_MenuGroups" Association="D1WebAppModel.FK_Menus_MenuGroups">
+            <End Role="RightGroup" EntitySet="RightGroups" />
+            <End Role="Right" EntitySet="Rights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuRoles_Menus" Association="D1WebAppModel.FK_MenuRoles_Menus">
+            <End Role="Right" EntitySet="Rights" />
+            <End Role="RightRoleMapping" EntitySet="RightRoleMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuRoles_ModifiedBy" Association="D1WebAppModel.FK_MenuRoles_ModifiedBy">
+            <End Role="RightRoleMapping" EntitySet="RightRoleMappings" />
+            <End Role="RightRoleMapping1" EntitySet="RightRoleMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuRoles_Roles" Association="D1WebAppModel.FK_MenuRoles_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="RightRoleMapping" EntitySet="RightRoleMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Roles" Association="D1WebAppModel.FK_UserRoles_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProcessTimes_Users" Association="D1WebAppModel.FK_UserProcessTimes_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserProcessTime" EntitySet="UserProcessTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProjectMapping_Users" Association="D1WebAppModel.FK_UserProjectMapping_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserProjectMapping" EntitySet="UserProjectMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Users" Association="D1WebAppModel.FK_UserRoles_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSession_Users" Association="D1WebAppModel.FK_UserSession_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserSession" EntitySet="UserSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorUserLoginDetails_Users" Association="D1WebAppModel.FK_VendorUserLoginDetails_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="VendorUserLoginDetail" EntitySet="VendorUserLoginDetails" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="ConfigurationID" />
+          </Key>
+          <Property Name="ConfigurationID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConfigurationKey" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ConfigurationValue" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Name="ErrorLogID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrorLogTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorType" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Module" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <Property Name="IsError" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="NotificationID" />
+          </Key>
+          <Property Name="NotificationID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NotificationTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NotificationType" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="FromUserID" Type="Int64" Nullable="false" />
+          <Property Name="ToUserID" Type="Int64" Nullable="false" />
+          <Property Name="NotificationStyle" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Controller" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Parameters" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProcessTime">
+          <Key>
+            <PropertyRef Name="ProcessTimeID" />
+          </Key>
+          <Property Name="ProcessTimeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProcessTimeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserProcessTimes" Relationship="D1WebAppModel.FK_UserProcessTimes_ProcessTimes" FromRole="ProcessTime" ToRole="UserProcessTime" />
+        </EntityType>
+        <EntityType Name="ProjectType">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectType1" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserProjectMappings" Relationship="D1WebAppModel.FK_UserProjectMapping_ProjectTypes" FromRole="ProjectType" ToRole="UserProjectMapping" />
+        </EntityType>
+        <EntityType Name="AuditTrailMaster">
+          <Key>
+            <PropertyRef Name="AuditTrailID" />
+          </Key>
+          <Property Name="AuditTrailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuditTrailName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AuditTrails" Relationship="D1WebAppModel.FK_AuditTrails_AuditTrailMaster" FromRole="AuditTrailMaster" ToRole="AuditTrail" />
+        </EntityType>
+        <EntityType Name="AuditTrail">
+          <Key>
+            <PropertyRef Name="AuditTrailID" />
+          </Key>
+          <Property Name="AuditTrailID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecordID" Type="Int64" Nullable="false" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="ActionType" Type="Int32" Nullable="false" />
+          <Property Name="ActionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RecordType" Type="Int32" />
+          <NavigationProperty Name="AuditTrailMaster" Relationship="D1WebAppModel.FK_AuditTrails_AuditTrailMaster" FromRole="AuditTrail" ToRole="AuditTrailMaster" />
+          <NavigationProperty Name="User" Relationship="D1WebAppModel.FK_AuditTrails_Users" FromRole="AuditTrail" ToRole="User" />
+        </EntityType>
+        <EntityType Name="SchedulerConfig">
+          <Key>
+            <PropertyRef Name="SchedulerConfigId" />
+          </Key>
+          <Property Name="SchedulerConfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SchedulerName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SchedulerTime" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SchedulerTables" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="MailBox">
+          <Key>
+            <PropertyRef Name="MailBoxID" />
+          </Key>
+          <Property Name="MailBoxID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MailBoxName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SMTPServer" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SMTPPort" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsSSL" Type="Boolean" Nullable="false" />
+          <Property Name="MailFrom" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ReplyTo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MailQueues" Relationship="D1WebAppModel.FK_MailQueue_MailBoxes" FromRole="MailBox" ToRole="MailQueue" />
+        </EntityType>
+        <EntityType Name="MailQueue">
+          <Key>
+            <PropertyRef Name="MailQueueID" />
+          </Key>
+          <Property Name="MailQueueID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MailRecipient" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="MailSubject" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="MailMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MailSendDate" Type="DateTime" Precision="3" />
+          <Property Name="MailBoxID" Type="Int64" Nullable="false" />
+          <Property Name="IsProccessed" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelivered" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ProccessedOn" Type="DateTime" Precision="3" />
+          <Property Name="SentOn" Type="DateTime" Precision="3" />
+          <Property Name="ReplyTo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MailBox" Relationship="D1WebAppModel.FK_MailQueue_MailBoxes" FromRole="MailQueue" ToRole="MailBox" />
+        </EntityType>
+        <EntityType Name="MailTemplate">
+          <Key>
+            <PropertyRef Name="MailTemplateID" />
+          </Key>
+          <Property Name="MailTemplateID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MailTemplateName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="MailTemplateSubject" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="MailTemplateContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMailBox">
+          <Key>
+            <PropertyRef Name="MailBoxID" />
+          </Key>
+          <Property Name="MailBoxID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MailBoxName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SMTPServer" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SMTPPort" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsSSL" Type="Boolean" Nullable="false" />
+          <Property Name="MailFrom" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ReplyTo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="D1WebAppModel.FK_UserMailBoxes_Users" FromRole="UserMailBox" ToRole="User" />
+        </EntityType>
+        <EntityType Name="RightGroup">
+          <Key>
+            <PropertyRef Name="RightGroupID" />
+          </Key>
+          <Property Name="RightGroupID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RightGroupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Rights" Relationship="D1WebAppModel.FK_Menus_MenuGroups" FromRole="RightGroup" ToRole="Right" />
+        </EntityType>
+        <EntityType Name="RightRoleMapping">
+          <Key>
+            <PropertyRef Name="RightID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RightID" Type="Int64" Nullable="false" />
+          <Property Name="RoleID" Type="Int64" Nullable="false" />
+          <Property Name="LohaLive" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Right" Relationship="D1WebAppModel.FK_MenuRoles_Menus" FromRole="RightRoleMapping" ToRole="Right" />
+          <NavigationProperty Name="RightRoleMapping1" Relationship="D1WebAppModel.FK_MenuRoles_ModifiedBy" FromRole="RightRoleMapping" ToRole="RightRoleMapping1" />
+          <NavigationProperty Name="RightRoleMapping2" Relationship="D1WebAppModel.FK_MenuRoles_ModifiedBy" FromRole="RightRoleMapping1" ToRole="RightRoleMapping" />
+          <NavigationProperty Name="Role" Relationship="D1WebAppModel.FK_MenuRoles_Roles" FromRole="RightRoleMapping" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Right">
+          <Key>
+            <PropertyRef Name="RightID" />
+          </Key>
+          <Property Name="RightID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RightName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RightGroupID" Type="Int64" Nullable="false" />
+          <Property Name="RightURL" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsVisible" Type="Boolean" Nullable="false" />
+          <Property Name="ApplicableTo" Type="Byte" />
+          <NavigationProperty Name="RightGroup" Relationship="D1WebAppModel.FK_Menus_MenuGroups" FromRole="Right" ToRole="RightGroup" />
+          <NavigationProperty Name="RightRoleMappings" Relationship="D1WebAppModel.FK_MenuRoles_Menus" FromRole="Right" ToRole="RightRoleMapping" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ApplicableTo" Type="Byte" />
+          <NavigationProperty Name="RightRoleMappings" Relationship="D1WebAppModel.FK_MenuRoles_Roles" FromRole="Role" ToRole="RightRoleMapping" />
+          <NavigationProperty Name="UserRoles" Relationship="D1WebAppModel.FK_UserRoles_Roles" FromRole="Role" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="SettingMaster">
+          <Key>
+            <PropertyRef Name="SettingID" />
+          </Key>
+          <Property Name="SettingID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SettingName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SettingDatatypeName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SystemDefault" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UniqueSession">
+          <Key>
+            <PropertyRef Name="UniqueSessionID" />
+          </Key>
+          <Property Name="UniqueSessionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UniqueID" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="MemRefNo" Type="Int64" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IpAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Browser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserLog">
+          <Key>
+            <PropertyRef Name="UserLogID" />
+          </Key>
+          <Property Name="UserLogID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserLogTimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="UserAction" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserActionDescription" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Browser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OperatingSystem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ScreenResolution" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <Property Name="isSuccessful" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="UserProcessTime">
+          <Key>
+            <PropertyRef Name="UserProcessTimeID" />
+          </Key>
+          <Property Name="UserProcessTimeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="ProcessTimeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProcessTime" Relationship="D1WebAppModel.FK_UserProcessTimes_ProcessTimes" FromRole="UserProcessTime" ToRole="ProcessTime" />
+          <NavigationProperty Name="User" Relationship="D1WebAppModel.FK_UserProcessTimes_Users" FromRole="UserProcessTime" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserProjectMapping">
+          <Key>
+            <PropertyRef Name="UserProjectID" />
+          </Key>
+          <Property Name="UserProjectID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectTypeID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="ProjectType" Relationship="D1WebAppModel.FK_UserProjectMapping_ProjectTypes" FromRole="UserProjectMapping" ToRole="ProjectType" />
+          <NavigationProperty Name="User" Relationship="D1WebAppModel.FK_UserProjectMapping_Users" FromRole="UserProjectMapping" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="RoleID" Type="Int64" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Role" Relationship="D1WebAppModel.FK_UserRoles_Roles" FromRole="UserRole" ToRole="Role" />
+          <NavigationProperty Name="User" Relationship="D1WebAppModel.FK_UserRoles_Users" FromRole="UserRole" ToRole="User" />
+          <Property Name="UserParent" Type="Int64" />
+          <Property Name="TabAccess" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="Decimal" Nullable="false" Precision="15" Scale="0" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsLocked" Type="Boolean" Nullable="false" />
+          <Property Name="IsPasswordReset" Type="Boolean" Nullable="false" />
+          <Property Name="FailedAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="LockedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastLoggedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Int64" Nullable="false" />
+          <Property Name="GUIDCode" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="AuthenticationToken" Type="Guid" />
+          <Property Name="TokenExpirsOn" Type="DateTime" Precision="3" />
+          <Property Name="MemberRefNo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IsRemember" Type="Boolean" />
+          <Property Name="SessionCount" Type="Byte" />
+          <Property Name="HostName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ApiUserName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ApiPwd" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyID" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="NotificationEmails" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ApiEndPoint" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ApiToken" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AuditTrails" Relationship="D1WebAppModel.FK_AuditTrails_Users" FromRole="User" ToRole="AuditTrail" />
+          <NavigationProperty Name="UserMailBoxes" Relationship="D1WebAppModel.FK_UserMailBoxes_Users" FromRole="User" ToRole="UserMailBox" />
+          <NavigationProperty Name="UserProcessTimes" Relationship="D1WebAppModel.FK_UserProcessTimes_Users" FromRole="User" ToRole="UserProcessTime" />
+          <NavigationProperty Name="UserProjectMappings" Relationship="D1WebAppModel.FK_UserProjectMapping_Users" FromRole="User" ToRole="UserProjectMapping" />
+          <NavigationProperty Name="UserRoles" Relationship="D1WebAppModel.FK_UserRoles_Users" FromRole="User" ToRole="UserRole" />
+          <NavigationProperty Name="UserSessions" Relationship="D1WebAppModel.FK_UserSession_Users" FromRole="User" ToRole="UserSession" />
+          <NavigationProperty Name="VendorUserLoginDetails" Relationship="D1WebAppModel.FK_VendorUserLoginDetails_Users" FromRole="User" ToRole="VendorUserLoginDetail" />
+        </EntityType>
+        <EntityType Name="UserSession">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="AuthenticationToken" />
+          </Key>
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="AuthenticationToken" Type="Guid" Nullable="false" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsExpired" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddresss" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Browser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="D1WebAppModel.FK_UserSession_Users" FromRole="UserSession" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserVisit">
+          <Key>
+            <PropertyRef Name="UserVisitID" />
+          </Key>
+          <Property Name="UserVisitID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UniqueID" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="UrlName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="MemRefNo" Type="Int64" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Browser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VisitTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="VendorUserLoginDetail">
+          <Key>
+            <PropertyRef Name="UserSubUserID" />
+          </Key>
+          <Property Name="UserSubUserID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="CompanyID" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="vendor" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="web_passwd" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="C__rowids" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="C__seq" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="D1WebAppModel.FK_VendorUserLoginDetails_Users" FromRole="VendorUserLoginDetail" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UserProcessTimes_ProcessTimes">
+          <End Type="D1WebAppModel.ProcessTime" Role="ProcessTime" Multiplicity="1" />
+          <End Type="D1WebAppModel.UserProcessTime" Role="UserProcessTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcessTime">
+              <PropertyRef Name="ProcessTimeID" />
+            </Principal>
+            <Dependent Role="UserProcessTime">
+              <PropertyRef Name="ProcessTimeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProjectMapping_ProjectTypes">
+          <End Type="D1WebAppModel.ProjectType" Role="ProjectType" Multiplicity="1" />
+          <End Type="D1WebAppModel.UserProjectMapping" Role="UserProjectMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectType">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="UserProjectMapping">
+              <PropertyRef Name="ProjectTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AuditTrails_AuditTrailMaster">
+          <End Type="D1WebAppModel.AuditTrailMaster" Role="AuditTrailMaster" Multiplicity="0..1" />
+          <End Type="D1WebAppModel.AuditTrail" Role="AuditTrail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AuditTrailMaster">
+              <PropertyRef Name="AuditTrailID" />
+            </Principal>
+            <Dependent Role="AuditTrail">
+              <PropertyRef Name="RecordType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AuditTrails_Users">
+          <End Type="D1WebAppModel.User" Role="User" Multiplicity="1" />
+          <End Type="D1WebAppModel.AuditTrail" Role="AuditTrail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AuditTrail">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MailQueue_MailBoxes">
+          <End Type="D1WebAppModel.MailBox" Role="MailBox" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="D1WebAppModel.MailQueue" Role="MailQueue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MailBox">
+              <PropertyRef Name="MailBoxID" />
+            </Principal>
+            <Dependent Role="MailQueue">
+              <PropertyRef Name="MailBoxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMailBoxes_Users">
+          <End Type="D1WebAppModel.User" Role="User" Multiplicity="1" />
+          <End Type="D1WebAppModel.UserMailBox" Role="UserMailBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserMailBox">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menus_MenuGroups">
+          <End Type="D1WebAppModel.RightGroup" Role="RightGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="D1WebAppModel.Right" Role="Right" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RightGroup">
+              <PropertyRef Name="RightGroupID" />
+            </Principal>
+            <Dependent Role="Right">
+              <PropertyRef Name="RightGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuRoles_Menus">
+          <End Type="D1WebAppModel.Right" Role="Right" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="D1WebAppModel.RightRoleMapping" Role="RightRoleMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Right">
+              <PropertyRef Name="RightID" />
+            </Principal>
+            <Dependent Role="RightRoleMapping">
+              <PropertyRef Name="RightID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuRoles_ModifiedBy">
+          <End Type="D1WebAppModel.RightRoleMapping" Role="RightRoleMapping" Multiplicity="1" />
+          <End Type="D1WebAppModel.RightRoleMapping" Role="RightRoleMapping1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RightRoleMapping">
+              <PropertyRef Name="RightID" />
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="RightRoleMapping1">
+              <PropertyRef Name="RightID" />
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuRoles_Roles">
+          <End Type="D1WebAppModel.Role" Role="Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="D1WebAppModel.RightRoleMapping" Role="RightRoleMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="RightRoleMapping">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Roles">
+          <End Type="D1WebAppModel.Role" Role="Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="D1WebAppModel.UserRole" Role="UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProcessTimes_Users">
+          <End Type="D1WebAppModel.User" Role="User" Multiplicity="1" />
+          <End Type="D1WebAppModel.UserProcessTime" Role="UserProcessTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserProcessTime">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProjectMapping_Users">
+          <End Type="D1WebAppModel.User" Role="User" Multiplicity="1" />
+          <End Type="D1WebAppModel.UserProjectMapping" Role="UserProjectMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserProjectMapping">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Users">
+          <End Type="D1WebAppModel.User" Role="User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="D1WebAppModel.UserRole" Role="UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSession_Users">
+          <End Type="D1WebAppModel.User" Role="User" Multiplicity="1" />
+          <End Type="D1WebAppModel.UserSession" Role="UserSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserSession">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorUserLoginDetails_Users">
+          <End Type="D1WebAppModel.User" Role="User" Multiplicity="1" />
+          <End Type="D1WebAppModel.VendorUserLoginDetail" Role="VendorUserLoginDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="VendorUserLoginDetail">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="D1WebAppModelStoreContainer" CdmEntityContainer="D1WebAppEntities">
+          <EntitySetMapping Name="Configurations">
+            <EntityTypeMapping TypeName="D1WebAppModel.Configuration">
+              <MappingFragment StoreEntitySet="Configuration">
+                <ScalarProperty Name="ConfigurationValue" ColumnName="ConfigurationValue" />
+                <ScalarProperty Name="ConfigurationKey" ColumnName="ConfigurationKey" />
+                <ScalarProperty Name="ConfigurationID" ColumnName="ConfigurationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorLogs">
+            <EntityTypeMapping TypeName="D1WebAppModel.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLog">
+                <ScalarProperty Name="IsError" ColumnName="IsError" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="Module" ColumnName="Module" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="ErrorType" ColumnName="ErrorType" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ErrorLogTimestamp" ColumnName="ErrorLogTimestamp" />
+                <ScalarProperty Name="ErrorLogID" ColumnName="ErrorLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="D1WebAppModel.Notification">
+              <MappingFragment StoreEntitySet="Notification">
+                <ScalarProperty Name="Parameters" ColumnName="Parameters" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Controller" ColumnName="Controller" />
+                <ScalarProperty Name="NotificationStyle" ColumnName="NotificationStyle" />
+                <ScalarProperty Name="ToUserID" ColumnName="ToUserID" />
+                <ScalarProperty Name="FromUserID" ColumnName="FromUserID" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="NotificationType" ColumnName="NotificationType" />
+                <ScalarProperty Name="NotificationTimeStamp" ColumnName="NotificationTimeStamp" />
+                <ScalarProperty Name="NotificationID" ColumnName="NotificationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcessTimes">
+            <EntityTypeMapping TypeName="D1WebAppModel.ProcessTime">
+              <MappingFragment StoreEntitySet="ProcessTimes">
+                <ScalarProperty Name="ProcessTimeName" ColumnName="ProcessTimeName" />
+                <ScalarProperty Name="ProcessTimeID" ColumnName="ProcessTimeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectTypes">
+            <EntityTypeMapping TypeName="D1WebAppModel.ProjectType">
+              <MappingFragment StoreEntitySet="ProjectTypes">
+                <ScalarProperty Name="ProjectType1" ColumnName="ProjectType" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuditTrailMasters">
+            <EntityTypeMapping TypeName="D1WebAppModel.AuditTrailMaster">
+              <MappingFragment StoreEntitySet="AuditTrailMaster">
+                <ScalarProperty Name="AuditTrailName" ColumnName="AuditTrailName" />
+                <ScalarProperty Name="AuditTrailID" ColumnName="AuditTrailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuditTrails">
+            <EntityTypeMapping TypeName="D1WebAppModel.AuditTrail">
+              <MappingFragment StoreEntitySet="AuditTrails">
+                <ScalarProperty Name="RecordType" ColumnName="RecordType" />
+                <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+                <ScalarProperty Name="AuditTrailID" ColumnName="AuditTrailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SchedulerConfigs">
+            <EntityTypeMapping TypeName="D1WebAppModel.SchedulerConfig">
+              <MappingFragment StoreEntitySet="SchedulerConfig">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SchedulerTables" ColumnName="SchedulerTables" />
+                <ScalarProperty Name="SchedulerTime" ColumnName="SchedulerTime" />
+                <ScalarProperty Name="SchedulerName" ColumnName="SchedulerName" />
+                <ScalarProperty Name="SchedulerConfigId" ColumnName="SchedulerConfigId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MailBoxes">
+            <EntityTypeMapping TypeName="D1WebAppModel.MailBox">
+              <MappingFragment StoreEntitySet="MailBoxes">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ReplyTo" ColumnName="ReplyTo" />
+                <ScalarProperty Name="MailFrom" ColumnName="MailFrom" />
+                <ScalarProperty Name="IsSSL" ColumnName="IsSSL" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SMTPPort" ColumnName="SMTPPort" />
+                <ScalarProperty Name="SMTPServer" ColumnName="SMTPServer" />
+                <ScalarProperty Name="MailBoxName" ColumnName="MailBoxName" />
+                <ScalarProperty Name="MailBoxID" ColumnName="MailBoxID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MailQueues">
+            <EntityTypeMapping TypeName="D1WebAppModel.MailQueue">
+              <MappingFragment StoreEntitySet="MailQueue">
+                <ScalarProperty Name="ReplyTo" ColumnName="ReplyTo" />
+                <ScalarProperty Name="SentOn" ColumnName="SentOn" />
+                <ScalarProperty Name="ProccessedOn" ColumnName="ProccessedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
+                <ScalarProperty Name="IsProccessed" ColumnName="IsProccessed" />
+                <ScalarProperty Name="MailBoxID" ColumnName="MailBoxID" />
+                <ScalarProperty Name="MailSendDate" ColumnName="MailSendDate" />
+                <ScalarProperty Name="MailMessage" ColumnName="MailMessage" />
+                <ScalarProperty Name="MailSubject" ColumnName="MailSubject" />
+                <ScalarProperty Name="MailRecipient" ColumnName="MailRecipient" />
+                <ScalarProperty Name="MailQueueID" ColumnName="MailQueueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MailTemplates">
+            <EntityTypeMapping TypeName="D1WebAppModel.MailTemplate">
+              <MappingFragment StoreEntitySet="MailTemplates">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="MailTemplateContent" ColumnName="MailTemplateContent" />
+                <ScalarProperty Name="MailTemplateSubject" ColumnName="MailTemplateSubject" />
+                <ScalarProperty Name="MailTemplateName" ColumnName="MailTemplateName" />
+                <ScalarProperty Name="MailTemplateID" ColumnName="MailTemplateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMailBoxes">
+            <EntityTypeMapping TypeName="D1WebAppModel.UserMailBox">
+              <MappingFragment StoreEntitySet="UserMailBoxes">
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ReplyTo" ColumnName="ReplyTo" />
+                <ScalarProperty Name="MailFrom" ColumnName="MailFrom" />
+                <ScalarProperty Name="IsSSL" ColumnName="IsSSL" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SMTPPort" ColumnName="SMTPPort" />
+                <ScalarProperty Name="SMTPServer" ColumnName="SMTPServer" />
+                <ScalarProperty Name="MailBoxName" ColumnName="MailBoxName" />
+                <ScalarProperty Name="MailBoxID" ColumnName="MailBoxID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RightGroups">
+            <EntityTypeMapping TypeName="D1WebAppModel.RightGroup">
+              <MappingFragment StoreEntitySet="RightGroups">
+                <ScalarProperty Name="RightGroupName" ColumnName="RightGroupName" />
+                <ScalarProperty Name="RightGroupID" ColumnName="RightGroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RightRoleMappings">
+            <EntityTypeMapping TypeName="D1WebAppModel.RightRoleMapping">
+              <MappingFragment StoreEntitySet="RightRoleMapping">
+                <ScalarProperty Name="LohaLive" ColumnName="LohaLive" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RightID" ColumnName="RightID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rights">
+            <EntityTypeMapping TypeName="D1WebAppModel.Right">
+              <MappingFragment StoreEntitySet="Rights">
+                <ScalarProperty Name="ApplicableTo" ColumnName="ApplicableTo" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RightURL" ColumnName="RightURL" />
+                <ScalarProperty Name="RightGroupID" ColumnName="RightGroupID" />
+                <ScalarProperty Name="RightName" ColumnName="RightName" />
+                <ScalarProperty Name="RightID" ColumnName="RightID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="D1WebAppModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="ApplicableTo" ColumnName="ApplicableTo" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SettingMasters">
+            <EntityTypeMapping TypeName="D1WebAppModel.SettingMaster">
+              <MappingFragment StoreEntitySet="SettingMaster">
+                <ScalarProperty Name="SystemDefault" ColumnName="SystemDefault" />
+                <ScalarProperty Name="SettingDatatypeName" ColumnName="SettingDatatypeName" />
+                <ScalarProperty Name="SettingName" ColumnName="SettingName" />
+                <ScalarProperty Name="SettingID" ColumnName="SettingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UniqueSessions">
+            <EntityTypeMapping TypeName="D1WebAppModel.UniqueSession">
+              <MappingFragment StoreEntitySet="UniqueSession">
+                <ScalarProperty Name="Browser" ColumnName="Browser" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="MemRefNo" ColumnName="MemRefNo" />
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
+                <ScalarProperty Name="UniqueSessionID" ColumnName="UniqueSessionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogs">
+            <EntityTypeMapping TypeName="D1WebAppModel.UserLog">
+              <MappingFragment StoreEntitySet="UserLog">
+                <ScalarProperty Name="isSuccessful" ColumnName="isSuccessful" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ScreenResolution" ColumnName="ScreenResolution" />
+                <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
+                <ScalarProperty Name="Browser" ColumnName="Browser" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="UserActionDescription" ColumnName="UserActionDescription" />
+                <ScalarProperty Name="UserAction" ColumnName="UserAction" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserLogTimestamp" ColumnName="UserLogTimestamp" />
+                <ScalarProperty Name="UserLogID" ColumnName="UserLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProcessTimes">
+            <EntityTypeMapping TypeName="D1WebAppModel.UserProcessTime">
+              <MappingFragment StoreEntitySet="UserProcessTimes">
+                <ScalarProperty Name="ProcessTimeID" ColumnName="ProcessTimeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserProcessTimeID" ColumnName="UserProcessTimeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProjectMappings">
+            <EntityTypeMapping TypeName="D1WebAppModel.UserProjectMapping">
+              <MappingFragment StoreEntitySet="UserProjectMapping">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProjectTypeID" ColumnName="ProjectTypeID" />
+                <ScalarProperty Name="UserProjectID" ColumnName="UserProjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="D1WebAppModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="TabAccess" ColumnName="TabAccess" />
+                <ScalarProperty Name="UserParent" ColumnName="UserParent" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="D1WebAppModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ApiToken" ColumnName="ApiToken" />
+                <ScalarProperty Name="ApiEndPoint" ColumnName="ApiEndPoint" />
+                <ScalarProperty Name="NotificationEmails" ColumnName="NotificationEmails" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="ApiPwd" ColumnName="ApiPwd" />
+                <ScalarProperty Name="ApiUserName" ColumnName="ApiUserName" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="SessionCount" ColumnName="SessionCount" />
+                <ScalarProperty Name="IsRemember" ColumnName="IsRemember" />
+                <ScalarProperty Name="MemberRefNo" ColumnName="MemberRefNo" />
+                <ScalarProperty Name="TokenExpirsOn" ColumnName="TokenExpirsOn" />
+                <ScalarProperty Name="AuthenticationToken" ColumnName="AuthenticationToken" />
+                <ScalarProperty Name="GUIDCode" ColumnName="GUIDCode" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+                <ScalarProperty Name="LastLoggedOn" ColumnName="LastLoggedOn" />
+                <ScalarProperty Name="LockedOn" ColumnName="LockedOn" />
+                <ScalarProperty Name="FailedAttemptCount" ColumnName="FailedAttemptCount" />
+                <ScalarProperty Name="IsPasswordReset" ColumnName="IsPasswordReset" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSessions">
+            <EntityTypeMapping TypeName="D1WebAppModel.UserSession">
+              <MappingFragment StoreEntitySet="UserSession">
+                <ScalarProperty Name="Browser" ColumnName="Browser" />
+                <ScalarProperty Name="IpAddresss" ColumnName="IpAddresss" />
+                <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="AuthenticationToken" ColumnName="AuthenticationToken" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserVisits">
+            <EntityTypeMapping TypeName="D1WebAppModel.UserVisit">
+              <MappingFragment StoreEntitySet="UserVisits">
+                <ScalarProperty Name="VisitTime" ColumnName="VisitTime" />
+                <ScalarProperty Name="Browser" ColumnName="Browser" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="MemRefNo" ColumnName="MemRefNo" />
+                <ScalarProperty Name="UrlName" ColumnName="UrlName" />
+                <ScalarProperty Name="UniqueID" ColumnName="UniqueID" />
+                <ScalarProperty Name="UserVisitID" ColumnName="UserVisitID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VendorUserLoginDetails">
+            <EntityTypeMapping TypeName="D1WebAppModel.VendorUserLoginDetail">
+              <MappingFragment StoreEntitySet="VendorUserLoginDetails">
+                <ScalarProperty Name="C__seq" ColumnName="__seq" />
+                <ScalarProperty Name="C__rowids" ColumnName="__rowids" />
+                <ScalarProperty Name="web_passwd" ColumnName="web_passwd" />
+                <ScalarProperty Name="vendor" ColumnName="vendor" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserSubUserID" ColumnName="UserSubUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

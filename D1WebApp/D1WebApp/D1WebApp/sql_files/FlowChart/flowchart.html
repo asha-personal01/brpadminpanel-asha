@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Flowchart</title>
+
+ <script src="./js/jquery-1.9.1.js"></script>
+<meta charset="UTF-8">
+<script src="./js/flowchart.js"></script>
+<script src="./js/flowchartcustom1.js"></script>
+<script src="./js/DragZoomingTool.js"></script>
+<script src="./js/DragCreatingTool.js"></script>
+<script src="./js/ResizeMultipleTool.js"></script>
+<script src="./js/RotateMultipleTool.js"></script>
+<script src="./js/FreehandDrawingTool.js"></script>
+<script src="./js/GeometryReshapingTool.js"></script>
+<script src="./js/GuidedDraggingTool.js"></script>
+<script src='./js/spectrum.js'></script>
+<link rel='stylesheet' href='./css/flowchart.css' />
+  <link rel='stylesheet' href='./css/spectrum.css' />
+  <link rel='stylesheet' href='./css/DebugInspector.css' />
+<script src="./js/DebugInspector.js"></script>
+<script src="./js/ExtendedBrush.js"></script>
+<link rel='stylesheet' href='./css/DataInspector.css' />
+<script src="./js/DataInspector.js"></script>
+
+
+
+</head>
+<body id="flow">
+<div id="sample" onload="init()">
+  <div id="main1">
+  
+    <span id="op">
+	<div id="myOverviewDiv"></div>  
+      <div id="myDiagramDiv"></div>	
+    </span>
+  </div>
+<div id="myPaletteDiv"></div> 
+  <div style="display:none;">
+  Diagram Model saved in JSON format:
+  <textarea id="mySavedModel" style="width:100%;height:300px">
+{ "class": "go.GraphLinksModel",
+  "nodeDataArray": [ 
+{"category":"cashreceipt", "text":"cash payments", "key":-1, "loc":"-722 -317", "Comments":"undefined"},
+{"category":"credit", "text":"credit payments", "key":-2, "loc":"500 -110", "Comments":"undefined"}
+ ],
+  "linkDataArray": [ {"from":-1, "to":-2} ]}
+  </textarea>
+  </div>
+</div>
+</body>
+</html>

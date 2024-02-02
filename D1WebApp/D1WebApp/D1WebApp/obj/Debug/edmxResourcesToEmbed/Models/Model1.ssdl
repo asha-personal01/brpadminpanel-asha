@@ -1,0 +1,611 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="D1WebAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Configuration">
+    <Key>
+      <PropertyRef Name="ConfigurationID" />
+    </Key>
+    <Property Name="ConfigurationID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ConfigurationKey" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="ConfigurationValue" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="ErrorLogID" />
+    </Key>
+    <Property Name="ErrorLogID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ErrorLogTimestamp" Type="datetime" Nullable="false" />
+    <Property Name="UserID" Type="bigint" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="ErrorType" Type="varchar" MaxLength="1000" />
+    <Property Name="ErrorMessage" Type="varchar(max)" />
+    <Property Name="Module" Type="varchar" MaxLength="1000" />
+    <Property Name="IsAdmin" Type="bit" />
+    <Property Name="IsError" Type="int" />
+  </EntityType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="NotificationID" />
+    </Key>
+    <Property Name="NotificationID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NotificationTimeStamp" Type="datetime" Nullable="false" />
+    <Property Name="NotificationType" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Remarks" Type="varchar" MaxLength="4000" Nullable="false" />
+    <Property Name="FromUserID" Type="bigint" Nullable="false" />
+    <Property Name="ToUserID" Type="bigint" Nullable="false" />
+    <Property Name="NotificationStyle" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Controller" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Action" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Parameters" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProcessTimes">
+    <Key>
+      <PropertyRef Name="ProcessTimeID" />
+    </Key>
+    <Property Name="ProcessTimeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProcessTimeName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectTypes">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectType" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AuditTrailMaster">
+    <Key>
+      <PropertyRef Name="AuditTrailID" />
+    </Key>
+    <Property Name="AuditTrailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AuditTrailName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AuditTrails">
+    <Key>
+      <PropertyRef Name="AuditTrailID" />
+    </Key>
+    <Property Name="AuditTrailID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecordID" Type="bigint" Nullable="false" />
+    <Property Name="UserID" Type="bigint" Nullable="false" />
+    <Property Name="ActionType" Type="int" Nullable="false" />
+    <Property Name="ActionDate" Type="datetime" Nullable="false" />
+    <Property Name="RecordType" Type="int" />
+  </EntityType>
+  <EntityType Name="SchedulerConfig">
+    <Key>
+      <PropertyRef Name="SchedulerConfigId" />
+    </Key>
+    <Property Name="SchedulerConfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SchedulerName" Type="varchar" MaxLength="500" />
+    <Property Name="SchedulerTime" Type="varchar" MaxLength="500" />
+    <Property Name="SchedulerTables" Type="varchar(max)" />
+    <Property Name="UserId" Type="bigint" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <EntityType Name="MailBoxes">
+    <Key>
+      <PropertyRef Name="MailBoxID" />
+    </Key>
+    <Property Name="MailBoxID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MailBoxName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SMTPServer" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="SMTPPort" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsSSL" Type="bit" Nullable="false" />
+    <Property Name="MailFrom" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="ReplyTo" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MailQueue">
+    <Key>
+      <PropertyRef Name="MailQueueID" />
+    </Key>
+    <Property Name="MailQueueID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MailRecipient" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="MailSubject" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="MailMessage" Type="varchar(max)" />
+    <Property Name="MailSendDate" Type="datetime" />
+    <Property Name="MailBoxID" Type="bigint" Nullable="false" />
+    <Property Name="IsProccessed" Type="bit" Nullable="false" />
+    <Property Name="IsDelivered" Type="bit" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ProccessedOn" Type="datetime" />
+    <Property Name="SentOn" Type="datetime" />
+    <Property Name="ReplyTo" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="MailTemplates">
+    <Key>
+      <PropertyRef Name="MailTemplateID" />
+    </Key>
+    <Property Name="MailTemplateID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MailTemplateName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="MailTemplateSubject" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="MailTemplateContent" Type="varchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserMailBoxes">
+    <Key>
+      <PropertyRef Name="MailBoxID" />
+    </Key>
+    <Property Name="MailBoxID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MailBoxName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SMTPServer" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="SMTPPort" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsSSL" Type="bit" Nullable="false" />
+    <Property Name="MailFrom" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="ReplyTo" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="UserID" Type="bigint" Nullable="false" />
+    <Property Name="DisplayName" Type="varchar" MaxLength="500" />
+    <Property Name="Company" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="RightGroups">
+    <Key>
+      <PropertyRef Name="RightGroupID" />
+    </Key>
+    <Property Name="RightGroupID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RightGroupName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RightRoleMapping">
+    <Key>
+      <PropertyRef Name="RightID" />
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RightID" Type="bigint" Nullable="false" />
+    <Property Name="RoleID" Type="bigint" Nullable="false" />
+    <Property Name="LohaLive" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Rights">
+    <Key>
+      <PropertyRef Name="RightID" />
+    </Key>
+    <Property Name="RightID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RightName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RightGroupID" Type="bigint" Nullable="false" />
+    <Property Name="RightURL" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsVisible" Type="bit" Nullable="false" />
+    <Property Name="ApplicableTo" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="ApplicableTo" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="SettingMaster">
+    <Key>
+      <PropertyRef Name="SettingID" />
+    </Key>
+    <Property Name="SettingID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SettingName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SettingDatatypeName" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SystemDefault" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UniqueSession">
+    <Key>
+      <PropertyRef Name="UniqueSessionID" />
+    </Key>
+    <Property Name="UniqueSessionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UniqueID" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="MemRefNo" Type="bigint" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="IpAddress" Type="varchar" MaxLength="250" />
+    <Property Name="Browser" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserLog">
+    <Key>
+      <PropertyRef Name="UserLogID" />
+    </Key>
+    <Property Name="UserLogID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserLogTimestamp" Type="datetime" Nullable="false" />
+    <Property Name="UserID" Type="bigint" Nullable="false" />
+    <Property Name="UserAction" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserActionDescription" Type="varchar" MaxLength="2000" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="50" />
+    <Property Name="Browser" Type="varchar" MaxLength="50" />
+    <Property Name="OperatingSystem" Type="varchar" MaxLength="50" />
+    <Property Name="ScreenResolution" Type="varchar" MaxLength="50" />
+    <Property Name="Remarks" Type="varchar" MaxLength="50" />
+    <Property Name="IsAdmin" Type="bit" />
+    <Property Name="isSuccessful" Type="bit" />
+  </EntityType>
+  <EntityType Name="UserProcessTimes">
+    <Key>
+      <PropertyRef Name="UserProcessTimeID" />
+    </Key>
+    <Property Name="UserProcessTimeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="bigint" Nullable="false" />
+    <Property Name="ProcessTimeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserProjectMapping">
+    <Key>
+      <PropertyRef Name="UserProjectID" />
+    </Key>
+    <Property Name="UserProjectID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectTypeID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRoles">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="UserID" Type="bigint" Nullable="false" />
+    <Property Name="RoleID" Type="bigint" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="UserParent" Type="bigint" />
+    <Property Name="TabAccess" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="250" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="250" />
+    <Property Name="Mobile" Type="numeric" Precision="15" Scale="0" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsLocked" Type="bit" Nullable="false" />
+    <Property Name="IsPasswordReset" Type="bit" Nullable="false" />
+    <Property Name="FailedAttemptCount" Type="int" Nullable="false" />
+    <Property Name="LockedOn" Type="datetime" />
+    <Property Name="LastLoggedOn" Type="datetime" />
+    <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdatedBy" Type="bigint" Nullable="false" />
+    <Property Name="GUIDCode" Type="numeric" Precision="4" Scale="0" />
+    <Property Name="AuthenticationToken" Type="uniqueidentifier" />
+    <Property Name="TokenExpirsOn" Type="datetime" />
+    <Property Name="MemberRefNo" Type="varchar" MaxLength="250" />
+    <Property Name="IsRemember" Type="bit" />
+    <Property Name="SessionCount" Type="tinyint" />
+    <Property Name="HostName" Type="varchar" MaxLength="1000" />
+    <Property Name="ApiUserName" Type="varchar" MaxLength="300" />
+    <Property Name="ApiPwd" Type="varchar" MaxLength="300" />
+    <Property Name="CompanyID" Type="varchar" MaxLength="250" />
+    <Property Name="NotificationEmails" Type="varchar" MaxLength="500" />
+    <Property Name="ApiEndPoint" Type="varchar" MaxLength="500" />
+    <Property Name="ApiToken" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="UserSession">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="AuthenticationToken" />
+    </Key>
+    <Property Name="UserID" Type="bigint" Nullable="false" />
+    <Property Name="AuthenticationToken" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+    <Property Name="IsExpired" Type="bit" Nullable="false" />
+    <Property Name="IpAddresss" Type="varchar" MaxLength="250" />
+    <Property Name="Browser" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserVisits">
+    <Key>
+      <PropertyRef Name="UserVisitID" />
+    </Key>
+    <Property Name="UserVisitID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UniqueID" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="UrlName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="MemRefNo" Type="bigint" Nullable="false" />
+    <Property Name="IpAddress" Type="varchar" MaxLength="250" />
+    <Property Name="Browser" Type="varchar" MaxLength="50" />
+    <Property Name="VisitTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VendorUserLoginDetails">
+    <Key>
+      <PropertyRef Name="UserSubUserID" />
+    </Key>
+    <Property Name="UserSubUserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="bigint" Nullable="false" />
+    <Property Name="CompanyID" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="vendor" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="web_passwd" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="__rowids" Type="varchar" MaxLength="250" />
+    <Property Name="__seq" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <Association Name="FK_AuditTrails_AuditTrailMaster">
+    <End Role="AuditTrailMaster" Type="Self.AuditTrailMaster" Multiplicity="0..1" />
+    <End Role="AuditTrails" Type="Self.AuditTrails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AuditTrailMaster">
+        <PropertyRef Name="AuditTrailID" />
+      </Principal>
+      <Dependent Role="AuditTrails">
+        <PropertyRef Name="RecordType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuditTrails_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="AuditTrails" Type="Self.AuditTrails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="AuditTrails">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MailQueue_MailBoxes">
+    <End Role="MailBoxes" Type="Self.MailBoxes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MailQueue" Type="Self.MailQueue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MailBoxes">
+        <PropertyRef Name="MailBoxID" />
+      </Principal>
+      <Dependent Role="MailQueue">
+        <PropertyRef Name="MailBoxID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuRoles_Menus">
+    <End Role="Rights" Type="Self.Rights" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RightRoleMapping" Type="Self.RightRoleMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rights">
+        <PropertyRef Name="RightID" />
+      </Principal>
+      <Dependent Role="RightRoleMapping">
+        <PropertyRef Name="RightID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuRoles_ModifiedBy">
+    <End Role="RightRoleMapping" Type="Self.RightRoleMapping" Multiplicity="1" />
+    <End Role="RightRoleMapping1" Type="Self.RightRoleMapping" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="RightRoleMapping">
+        <PropertyRef Name="RightID" />
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="RightRoleMapping1">
+        <PropertyRef Name="RightID" />
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MenuRoles_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RightRoleMapping" Type="Self.RightRoleMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="RightRoleMapping">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Menus_MenuGroups">
+    <End Role="RightGroups" Type="Self.RightGroups" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Rights" Type="Self.Rights" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RightGroups">
+        <PropertyRef Name="RightGroupID" />
+      </Principal>
+      <Dependent Role="Rights">
+        <PropertyRef Name="RightGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserMailBoxes_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UserMailBoxes" Type="Self.UserMailBoxes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserMailBoxes">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserProcessTimes_ProcessTimes">
+    <End Role="ProcessTimes" Type="Self.ProcessTimes" Multiplicity="1" />
+    <End Role="UserProcessTimes" Type="Self.UserProcessTimes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProcessTimes">
+        <PropertyRef Name="ProcessTimeID" />
+      </Principal>
+      <Dependent Role="UserProcessTimes">
+        <PropertyRef Name="ProcessTimeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserProcessTimes_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UserProcessTimes" Type="Self.UserProcessTimes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserProcessTimes">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserProjectMapping_ProjectTypes">
+    <End Role="ProjectTypes" Type="Self.ProjectTypes" Multiplicity="1" />
+    <End Role="UserProjectMapping" Type="Self.UserProjectMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectTypes">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="UserProjectMapping">
+        <PropertyRef Name="ProjectTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserProjectMapping_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UserProjectMapping" Type="Self.UserProjectMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserProjectMapping">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRoles_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRoles_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSession_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UserSession" Type="Self.UserSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserSession">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VendorUserLoginDetails_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="VendorUserLoginDetails" Type="Self.VendorUserLoginDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="VendorUserLoginDetails">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="D1WebAppModelStoreContainer">
+    <EntitySet Name="Configuration" EntityType="Self.Configuration" Schema="Application" store:Type="Tables" />
+    <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="Application" store:Type="Tables" />
+    <EntitySet Name="Notification" EntityType="Self.Notification" Schema="Application" store:Type="Tables" />
+    <EntitySet Name="ProcessTimes" EntityType="Self.ProcessTimes" Schema="Application" store:Type="Tables" />
+    <EntitySet Name="ProjectTypes" EntityType="Self.ProjectTypes" Schema="Application" store:Type="Tables" />
+    <EntitySet Name="AuditTrailMaster" EntityType="Self.AuditTrailMaster" Schema="AuditTrail" store:Type="Tables" />
+    <EntitySet Name="AuditTrails" EntityType="Self.AuditTrails" Schema="AuditTrail" store:Type="Tables" />
+    <EntitySet Name="SchedulerConfig" EntityType="Self.SchedulerConfig" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MailBoxes" EntityType="Self.MailBoxes" Schema="Mail" store:Type="Tables" />
+    <EntitySet Name="MailQueue" EntityType="Self.MailQueue" Schema="Mail" store:Type="Tables" />
+    <EntitySet Name="MailTemplates" EntityType="Self.MailTemplates" Schema="Mail" store:Type="Tables" />
+    <EntitySet Name="UserMailBoxes" EntityType="Self.UserMailBoxes" Schema="Mail" store:Type="Tables" />
+    <EntitySet Name="RightGroups" EntityType="Self.RightGroups" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="RightRoleMapping" EntityType="Self.RightRoleMapping" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="Rights" EntityType="Self.Rights" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="SettingMaster" EntityType="Self.SettingMaster" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="UniqueSession" EntityType="Self.UniqueSession" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="UserLog" EntityType="Self.UserLog" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="UserProcessTimes" EntityType="Self.UserProcessTimes" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="UserProjectMapping" EntityType="Self.UserProjectMapping" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="UserSession" EntityType="Self.UserSession" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="UserVisits" EntityType="Self.UserVisits" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="VendorUserLoginDetails" EntityType="Self.VendorUserLoginDetails" Schema="Security" store:Type="Tables" />
+    <AssociationSet Name="FK_AuditTrails_AuditTrailMaster" Association="Self.FK_AuditTrails_AuditTrailMaster">
+      <End Role="AuditTrailMaster" EntitySet="AuditTrailMaster" />
+      <End Role="AuditTrails" EntitySet="AuditTrails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuditTrails_Users" Association="Self.FK_AuditTrails_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="AuditTrails" EntitySet="AuditTrails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MailQueue_MailBoxes" Association="Self.FK_MailQueue_MailBoxes">
+      <End Role="MailBoxes" EntitySet="MailBoxes" />
+      <End Role="MailQueue" EntitySet="MailQueue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuRoles_Menus" Association="Self.FK_MenuRoles_Menus">
+      <End Role="Rights" EntitySet="Rights" />
+      <End Role="RightRoleMapping" EntitySet="RightRoleMapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuRoles_ModifiedBy" Association="Self.FK_MenuRoles_ModifiedBy">
+      <End Role="RightRoleMapping" EntitySet="RightRoleMapping" />
+      <End Role="RightRoleMapping1" EntitySet="RightRoleMapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MenuRoles_Roles" Association="Self.FK_MenuRoles_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="RightRoleMapping" EntitySet="RightRoleMapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menus_MenuGroups" Association="Self.FK_Menus_MenuGroups">
+      <End Role="RightGroups" EntitySet="RightGroups" />
+      <End Role="Rights" EntitySet="Rights" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserMailBoxes_Users" Association="Self.FK_UserMailBoxes_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserMailBoxes" EntitySet="UserMailBoxes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserProcessTimes_ProcessTimes" Association="Self.FK_UserProcessTimes_ProcessTimes">
+      <End Role="ProcessTimes" EntitySet="ProcessTimes" />
+      <End Role="UserProcessTimes" EntitySet="UserProcessTimes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserProcessTimes_Users" Association="Self.FK_UserProcessTimes_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserProcessTimes" EntitySet="UserProcessTimes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserProjectMapping_ProjectTypes" Association="Self.FK_UserProjectMapping_ProjectTypes">
+      <End Role="ProjectTypes" EntitySet="ProjectTypes" />
+      <End Role="UserProjectMapping" EntitySet="UserProjectMapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserProjectMapping_Users" Association="Self.FK_UserProjectMapping_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserProjectMapping" EntitySet="UserProjectMapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRoles_Roles" Association="Self.FK_UserRoles_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRoles_Users" Association="Self.FK_UserRoles_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSession_Users" Association="Self.FK_UserSession_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserSession" EntitySet="UserSession" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VendorUserLoginDetails_Users" Association="Self.FK_VendorUserLoginDetails_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="VendorUserLoginDetails" EntitySet="VendorUserLoginDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

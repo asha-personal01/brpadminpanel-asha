@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d4297d03f30d41e099c4990f1712a0f4" Name="Diagram1" ZoomLevel="75">
+        <EntityTypeShape EntityType="ClientModel.ActivityLog" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.AllImage" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.businesstype" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ClientModel.CardDetail" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.CardType" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.ColorConfiguration" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ClientModel.CompanySettingForMulti" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ClientModel.Config" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ClientModel.cu_contact" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ClientModel.cu_prcitem" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ClientModel.cu_prospect" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.cu_shipto" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.cu_taxmst" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="ClientModel.cu_user" Width="1.5" PointX="6.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ClientModel.customer" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.customermethodname" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.DynamicPage" Width="1.5" PointX="14.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ClientModel.EMailTemplate" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ClientModel.errorlog" Width="1.5" PointX="14.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ClientModel.headerlink" Width="1.5" PointX="14.75" PointY="13.75" />
+        <EntityTypeShape EntityType="ClientModel.it_compl" Width="1.5" PointX="0.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ClientModel.it_component" Width="1.5" PointX="2.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ClientModel.it_majcls" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.it_prodline" Width="1.5" PointX="16.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ClientModel.it_sales_restriction" Width="1.5" PointX="14.75" PointY="16.75" />
+        <EntityTypeShape EntityType="ClientModel.it_tree_link" Width="1.5" PointX="16.75" PointY="15.75" />
+        <EntityTypeShape EntityType="ClientModel.it_tree_node" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.it_xref" Width="1.5" PointX="4.75" PointY="18.75" />
+        <EntityTypeShape EntityType="ClientModel.item" Width="1.5" PointX="18.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ClientModel.ItemSummery" Width="1.5" PointX="6.75" PointY="18.75" />
+        <EntityTypeShape EntityType="ClientModel.MailConfig" Width="1.5" PointX="20.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.oe_class" Width="1.5" PointX="0.75" PointY="20.75" />
+        <EntityTypeShape EntityType="ClientModel.oe_totcodes" Width="1.5" PointX="20.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ClientModel.ordereditem" Width="1.5" PointX="8.75" PointY="20.75" />
+        <EntityTypeShape EntityType="ClientModel.orderhead" Width="1.5" PointX="20.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ClientModel.ordermethod" Width="1.5" PointX="20.75" PointY="19.75" />
+        <EntityTypeShape EntityType="ClientModel.OrderProduct" Width="1.5" PointX="22.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.order" Width="1.5" PointX="22.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ClientModel.payment" Width="1.5" PointX="14.75" PointY="22.75" />
+        <EntityTypeShape EntityType="ClientModel.Permission" Width="1.5" PointX="22.75" PointY="18.75" />
+        <EntityTypeShape EntityType="ClientModel.price" Width="1.5" PointX="20.75" PointY="22.75" />
+        <EntityTypeShape EntityType="ClientModel.price_sale" Width="1.5" PointX="22.75" PointY="21.75" />
+        <EntityTypeShape EntityType="ClientModel.PunchoutSessionDetail" Width="1.5" PointX="24.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.PunchOutTerritory" Width="1.5" PointX="2.75" PointY="24.75" />
+        <EntityTypeShape EntityType="ClientModel.RegistrationControl" Width="1.5" PointX="24.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ClientModel.safilterorder" Width="1.5" PointX="4.75" PointY="24.75" />
+        <EntityTypeShape EntityType="ClientModel.salesman" Width="1.5" PointX="24.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ClientModel.ship_rates" Width="1.5" PointX="24.75" PointY="17.75" />
+        <EntityTypeShape EntityType="ClientModel.shipvia_mapping" Width="1.5" PointX="24.75" PointY="20.75" />
+        <EntityTypeShape EntityType="ClientModel.SouthernPunchOutSession" Width="1.5" PointX="24.75" PointY="23.75" />
+        <EntityTypeShape EntityType="ClientModel.state" Width="1.5" PointX="6.75" PointY="25.75" />
+        <EntityTypeShape EntityType="ClientModel.sy_codes" Width="1.5" PointX="8.75" PointY="25.75" />
+        <EntityTypeShape EntityType="ClientModel.sy_company" Width="1.5" PointX="26.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.sy_contact" Width="1.5" PointX="26.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ClientModel.sy_country" Width="1.5" PointX="26.75" PointY="22.75" />
+        <EntityTypeShape EntityType="ClientModel.sy_currency" Width="1.5" PointX="2.75" PointY="27.75" />
+        <EntityTypeShape EntityType="ClientModel.sy_default" Width="1.5" PointX="14.75" PointY="27.75" />
+        <EntityTypeShape EntityType="ClientModel.sy_notes" Width="1.5" PointX="28.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.sy_numctrl" Width="1.5" PointX="28.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ClientModel.sy_param" Width="1.5" PointX="4.75" PointY="28.75" />
+        <EntityTypeShape EntityType="ClientModel.sy_paycodes" Width="1.5" PointX="28.75" PointY="7.75" />
+        <EntityTypeShape EntityType="ClientModel.sy_postal_code" Width="1.5" PointX="28.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ClientModel.sy_prof_label" Width="1.5" PointX="28.75" PointY="17.75" />
+        <EntityTypeShape EntityType="ClientModel.sy_shipvia" Width="1.5" PointX="28.75" PointY="21.75" />
+        <EntityTypeShape EntityType="ClientModel.sy_terms" Width="1.5" PointX="24.75" PointY="28.75" />
+        <EntityTypeShape EntityType="ClientModel.sy_trans_notes" Width="1.5" PointX="6.75" PointY="29.75" />
+        <EntityTypeShape EntityType="ClientModel.sy_url_alias" Width="1.5" PointX="8.75" PointY="29.75" />
+        <EntityTypeShape EntityType="ClientModel.tblBanner" Width="1.5" PointX="30.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.tblCart" Width="1.5" PointX="30.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ClientModel.tblOrder" Width="1.5" PointX="30.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ClientModel.tblOrderProduct" Width="1.5" PointX="30.75" PointY="23.75" />
+        <EntityTypeShape EntityType="ClientModel.usershippingmapping" Width="1.5" PointX="30.75" PointY="28.75" />
+        <EntityTypeShape EntityType="ClientModel.ve_contact" Width="1.5" PointX="30.75" PointY="31.75" />
+        <EntityTypeShape EntityType="ClientModel.vendor" Width="1.5" PointX="32.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClientModel.wa_item" Width="1.5" PointX="0.75" PointY="32.75" />
+        <EntityTypeShape EntityType="ClientModel.warehouse" Width="1.5" PointX="8.75" PointY="32.75" />
+        <EntityTypeShape EntityType="ClientModel.wishlistheader" Width="1.5" PointX="14.75" PointY="32.75" />
+        <EntityTypeShape EntityType="ClientModel.wishlistproduct" Width="1.5" PointX="32.75" PointY="26.75" />
+        <EntityTypeShape EntityType="ClientModel.itemdetail" Width="1.5" PointX="27.375" PointY="32.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
