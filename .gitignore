@@ -1,0 +1,17 @@
+# Ignore Visual Studio files
+.vs/
+v17/.suo
+obj/
+bin/
+
+# Ignore .NET Core files
+*.sln.ide
+*.csproj.user
+*.csproj.user.*
+*.user
+*.suo
+*.cache
+
+# Ignore specific files
+applicationhost.config
+FileContentIndex
