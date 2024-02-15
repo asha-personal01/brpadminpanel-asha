@@ -20,6 +20,10 @@ using HttpGetAttribute = System.Web.Http.HttpGetAttribute;
 using System.Web.UI.WebControls;
 using D1WebApp.ClientModel;
 using System.Globalization;
+using CsvHelper;
+using CsvHelper.Configuration;
+using System.Threading.Tasks;
+using System.Net.Http.Formatting;
 
 namespace D1WebApp.BussinessLogicLayer.Controllers
 {
@@ -387,6 +391,129 @@ namespace D1WebApp.BussinessLogicLayer.Controllers
             }
             return records;
         }
+        [HttpGet]
+        public dynamic GetExternalItemDocFiles(string memRefNo)
+        {
+            return CompanyProfilemanager.GetExternalItemDocFiles(memRefNo);
+        }
+
+        [HttpPost]
+        public dynamic UpdateExternalItemDocumentList()
+        {
+            string FileName = "";
+            Dictionary<string, object> dict = new Dictionary<string, object>();
+            try
+            {
+                var httpRequest = HttpContext.Current.Request;
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+
+                List<ItemDetailsViewModel> documentList = new List<ItemDetailsViewModel>();
+
+                var memRefNo = httpRequest.Form["memRefNo"];
+                var IMType = Convert.ToBoolean(httpRequest.Form["IMType"]);
+
+                foreach (string file in httpRequest.Files)
+                {
+                    var postedFile = httpRequest.Files[file];
+                    if (postedFile != null && postedFile.ContentLength > 0)
+                    {
+                        FileName = httpRequest.Form["FileName"];
+
+                        IList<string> AllowedFileExtensions = new List<string> { ".csv" };
+                        var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
+                        var extension = ext.ToLower();
+                        if (!AllowedFileExtensions.Contains(extension))
+                        {
+                            var message = string.Format("Please Upload csv file");
+                            dict.Add("error", message);
+                            return Request.CreateResponse(HttpStatusCode.BadRequest, dict);
+                        }
+                        else
+                        {
+                            documentList = ReadCsvDataForExternalItemDocument(postedFile.InputStream);
+                        }
+                    }
+                }
+               
+                return CompanyProfilemanager.UpdateExternalItemDocument(memRefNo, documentList, IMType, FileName);
+            }
+            catch (Exception ex)
+            {
+                //var res = string.Format("some Message");
+                dict.Add("error", ex.ToString());
+                return Request.CreateResponse(HttpStatusCode.NotFound, dict);
+            }
+        }
+
+        private List<ItemDetailsViewModel> ReadCsvDataForExternalItemDocument(Stream inputStream)
+        {
+            var records = new List<ItemDetailsViewModel>();
+
+            using (var reader = new StreamReader(inputStream))
+            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                HasHeaderRecord = true,
+                Delimiter = ",",
+                IgnoreBlankLines = true,
+                TrimOptions = TrimOptions.Trim
+            }))
+            {
+                csv.Read();
+                csv.ReadHeader();
+
+                while (csv.Read())
+                {
+                    var item = new ItemDetailsViewModel
+                    {
+                        Item = csv.GetField("Item"),
+                        DocType = csv.GetField("Type"),
+                        DocName = csv.GetField("Name"),
+                        DocDetailsUrl = csv.GetField("DocDetailsUrl")
+                    };
+                    records.Add(item);
+                }
+            }
+
+            return records;
+        }
+
+        //private List<ItemDetailsViewModel> ReadCsvDataForExternalItemDocument(Stream inputStream)
+        //{
+        //    var records = new List<ItemDetailsViewModel>();
+
+        //    using (var reader = new StreamReader(inputStream))
+        //    {
+        //        bool isFirstLine = true;
+        //        while (!reader.EndOfStream)
+        //        {
+        //            var line = reader.ReadLine();
+        //            if (string.IsNullOrEmpty(line))
+        //                continue;
+
+        //            if (isFirstLine)
+        //            {
+        //                isFirstLine = false;
+        //                continue; // Skip the header line
+        //            }
+
+        //            var values = line.Split(',');
+        //            if (values.Length >= 2)
+        //            {
+        //                var ItemDocDetailsViewModel = new ItemDetailsViewModel
+        //                {
+        //                    Item = values[0],
+        //                    DocType = values[1],
+        //                    DocName = values[2],
+        //                    DocDetailsUrl = values[3],
+        //                    //Sequence = Convert.ToInt32(values[4]),
+        //                };
+        //                records.Add(ItemDocDetailsViewModel);
+        //            }
+        //        }
+        //    }
+        //    return records;
+        //}
+
 
         [HttpPost]
         public dynamic UpdateItemDocumentList()
@@ -438,37 +565,33 @@ namespace D1WebApp.BussinessLogicLayer.Controllers
             var records = new List<ItemDetailsViewModel>();
 
             using (var reader = new StreamReader(inputStream))
+            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
             {
-                bool isFirstLine = true;
-                while (!reader.EndOfStream)
+                HasHeaderRecord = true,
+                Delimiter = ",",
+                IgnoreBlankLines = true,
+                TrimOptions = TrimOptions.Trim
+            }))
+            {
+                csv.Read();
+                csv.ReadHeader();
+
+                while (csv.Read())
                 {
-                    var line = reader.ReadLine();
-                    if (string.IsNullOrEmpty(line))
-                        continue;
-
-                    if (isFirstLine)
+                    var item = new ItemDetailsViewModel
                     {
-                        isFirstLine = false;
-                        continue; // Skip the header line
-                    }
-
-                    var values = line.Split(',');
-                    if (values.Length >= 2)
-                    {
-                        var ItemDocDetailsViewModel = new ItemDetailsViewModel
-                        {
-                            Item = values[0],
-                            DocType = values[1],
-                            DocName = values[2],
-                            DocDetailsUrl = values[3],
-                            Sequence = Convert.ToInt32(values[4]),
-                        };
-                        records.Add(ItemDocDetailsViewModel);
-                    }
+                        Item = csv.GetField("Item"),
+                        DocType = csv.GetField("Type"),
+                        DocName = csv.GetField("Name"),
+                        DocDetailsUrl = csv.GetField("DocDetailsUrl"),
+                        Sequence = Convert.ToInt32(csv.GetField("Sequence"))
+                    };
+                    records.Add(item);
                 }
             }
             return records;
         }
+        
         [HttpPost]
         public dynamic UpdateItemDocument()
         {

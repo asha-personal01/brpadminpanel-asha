@@ -5,12 +5,14 @@ using D1WebApp.BusinessLogicLayer.ViewModels;
 using D1WebApp.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace D1WebApp.DataAccessLayer.Repositories
 {
     public interface ICompanyProfileRepository : IDisposable
     {
+        dynamic GetExternalItemDocFiles(string memRefNo);
         dynamic Deletedynamicpage(string memRefNo, int pageID);
         dynamic Updatesynamicpage(dynamicpageviewmodel dynamicpage);
         dynamic GetdynamicpageByID(string memRefNo, int pageID);
@@ -28,6 +30,7 @@ namespace D1WebApp.DataAccessLayer.Repositories
         dynamic AddAndUpdateBanners(ClientBannerViewModel ClientBannerView);
         dynamic AddUpdateItemDocument(ItemDetailsViewModel ItemDetailsViewModel);
         dynamic UpdateItemPriceBulk(string memRefNo, List<ItemPriceListModel> itemDetailsViewModel);
+        dynamic UpdateExternalItemDocument(string memRefNo, List<ItemDetailsViewModel> itemDocuemntViewModel, bool IMType,string FileName);
         dynamic UpdateItemDocumentBulk(string memRefNo, List<ItemDetailsViewModel> itemDocumentViewModel, bool IMType);
         dynamic GetMailTemplateList(string memRefNo);
         dynamic GetMailTemplateByID(string memRefNo, int MailTemplateID);

@@ -47,11 +47,19 @@ namespace D1WebApp.Utilities
         {
             return CompanyProfilerepository.UpdateItemPriceBulk(memRefNo,itemDetailsViewModel);
         }
+
+        public dynamic GetExternalItemDocFiles(string memRefNo)
+        {
+            return CompanyProfilerepository.GetExternalItemDocFiles(memRefNo);
+        }
         public dynamic UpdateItemDocumentBulk(string memRefNo, List<ItemDetailsViewModel> itemDocuemntViewModel,bool IMType)
         {
             return CompanyProfilerepository.UpdateItemDocumentBulk(memRefNo, itemDocuemntViewModel, IMType);
         }
-
+        public dynamic UpdateExternalItemDocument(string memRefNo, List<ItemDetailsViewModel> itemDocuemntViewModel, bool IMType,string FileName)
+        {
+            return CompanyProfilerepository.UpdateExternalItemDocument(memRefNo, itemDocuemntViewModel, IMType, FileName);
+        }
         public bool AddConfiguations(string UserMemRefNo, string Key, string keyvalue)
         {
             return CompanyProfilerepository.AddConfiguations(UserMemRefNo, Key, keyvalue);

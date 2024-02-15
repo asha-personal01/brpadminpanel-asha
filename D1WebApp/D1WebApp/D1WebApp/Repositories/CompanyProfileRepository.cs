@@ -25,6 +25,15 @@ using System.Linq.Expressions;
 using Antlr.Runtime.Misc;
 using System.Web.Http.Results;
 using System.Xml.Linq;
+using System.Net.Http;
+using System.Web.Hosting;
+using System.Threading.Tasks;
+using System.Net;
+using CsvHelper;
+using System.Globalization;
+using System.Drawing;
+using System.Threading;
+using System.Net.NetworkInformation;
 
 namespace D1WebApp.DataAccessLayer.Repositories
 {
@@ -34,7 +43,9 @@ namespace D1WebApp.DataAccessLayer.Repositories
 
         public CompanyProfileRepository()
         {
-
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
         }
 
         public dynamic GetsafiltersortList(string memRefNo)
@@ -907,6 +918,245 @@ namespace D1WebApp.DataAccessLayer.Repositories
                 return ed.InnerException.ToString();
             }
             return documentTypes;
+        }
+        public dynamic UpdateExternalItemDocument(string memRefNo, List<ItemDetailsViewModel> itemDocuemntViewModel, bool IMType,string FileName)
+        {
+            try
+            {
+                //string csvFilePath = Path.Combine("D:\\filesuploaded\\", FileName);
+
+                List<ItemDocUploadStatusViewModel> itemDocStatusList = new List<ItemDocUploadStatusViewModel>();
+                string Status, Reason;
+                var context = new ClientEntities(ErrorLogs.BuildConnectionString(memRefNo));
+                if (itemDocuemntViewModel.Count > 0)
+                {
+                    Dictionary<string, int> itemCounts = new Dictionary<string, int>();
+                    List<string> itemNames = itemDocuemntViewModel.Select(item => item.Item).ToList();
+                    foreach (var record in itemDocuemntViewModel)
+                    {
+                        //bool IsFileDownloadSuccess = true;
+                        bool IsFileDownloadSuccess =  DownloadDocumentFromExternalURLAsync(record.DocDetailsUrl, memRefNo);
+                        if (IsFileDownloadSuccess)
+                        {
+                            int sequence = 0;
+                            if (record.DocType.ToLower() == "image")
+                            {
+                                int seq = itemCounts.ContainsKey(record.Item) ? itemCounts[record.Item] + 1 : 1;
+                                itemCounts[record.Item] = seq;
+                                sequence = seq;
+                            }
+                            if (record.DocType.ToLower() == "doc")
+                            {
+                                bool isValidDocName = CheckIfDocNameIsValid(memRefNo, record.DocName);
+                                if (!isValidDocName)
+                                {
+                                    continue;
+                                }
+                                sequence = GetSequenceForDocType(memRefNo, record.DocName);
+                            }
+                            else if (record.DocType.ToLower() == "text" || record.DocType.ToLower() == "video")
+                            {
+                                string documentTypes = context.Configs.Where(p => p.ConfigKey == "DocumentSequence").Select(p => p.ConfigValue).FirstOrDefault();
+                                List<KeyValuePair<string, string>> documentTypeList = JsonConvert.DeserializeObject<List<KeyValuePair<string, string>>>(documentTypes);
+                                // Find the entry with the specified docType
+                                var docTypeEntry = documentTypeList.FirstOrDefault(entry => entry.Key == record.DocType);
+                                if (!string.IsNullOrEmpty(docTypeEntry.Value))
+                                {
+                                    sequence = int.Parse(docTypeEntry.Value);
+                                }
+                            }
+                            else
+                            {
+                                sequence = Convert.ToInt32(record.Sequence);
+                            }
+                            var getpath = D1WebApp.Utilities.GeneralConfiguration.GeneralConfiguration.CheckConfiguration("domainpath");
+                            string getdocpath = getpath.ConfigurationValue + "/" + memRefNo + "Api" + "/Content/ItemDetails/" + FileName.Replace(" ", "") + "?v=" + DateTime.Now.ToShortDateString();
+
+                            var existingItems = context.itemdetails.Where(item => item.item == record.Item && item.type == record.DocType && item.name == record.DocName && item.IMType == IMType).ToList();
+                            if (existingItems != null && existingItems.Count > 0)
+                            {
+                                foreach (var existingItem in existingItems)
+                                {
+                                    existingItem.details_or_url = record.DocDetailsUrl;
+                                    existingItem.sequence = sequence;
+                                }
+                                context.SaveChanges();
+                            }
+                            else
+                            {
+                                itemdetail f12 = new itemdetail();
+                                f12.item = record.Item; ;
+                                f12.type = record.DocType;
+                                f12.name = record.DocName;
+                                f12.details_or_url = getdocpath;
+                                f12.IMType = IMType;
+                                f12.sequence = sequence;
+                                context.itemdetails.Add(f12);
+                                context.SaveChanges();
+                            }
+                            Status = "Completed";
+                            Reason = "Success";
+                        }
+                        else
+                        {
+                            Status = "Not Completed";
+                            Reason = "File Download Fail";
+                        }
+                        ItemDocUploadStatusViewModel status = new ItemDocUploadStatusViewModel();
+                        status.Item = record.Item;
+                        status.Type = record.DocType;
+                        status.Name = record.DocName;
+                        status.DocDetailsUrl = record.DocDetailsUrl;
+                        status.Status = Status;
+                        status.Reason = Reason;
+                        itemDocStatusList.Add(status);
+                    }
+                    WriteToCSV(itemDocStatusList, memRefNo, FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
+        }
+        public dynamic GetExternalItemDocFiles(string memRefNo)
+        {
+            string[] fileNames;
+            try
+            {
+                var targetURL = D1WebApp.Utilities.GeneralConfiguration.GeneralConfiguration.CheckConfiguration("targetDirectory");
+
+                string targetDirectory = Path.Combine(targetURL.ConfigurationValue, "AdminPanelAPI", "Content", memRefNo, "ExternalItemDocFiles");
+                fileNames = Directory.GetFiles(targetDirectory);
+                
+                for (int i = 0; i < fileNames.Length; i++)
+                {
+                    fileNames[i] = Path.GetFileName(fileNames[i]);
+                }
+            }
+            catch (Exception ed)
+            {
+                ErrorLogs.ErrorLog(0, "GetExternalItemDocFiles", DateTime.Now, "GetExternalItemDocFiles", ed.ToString(), "GetItemPriceByItem", 2);
+                return ed.InnerException.ToString();
+            }
+            return fileNames;
+        }
+        private void WriteToCSV(List<ItemDocUploadStatusViewModel> itemDocStatusList,string memRefNo, string fileName)
+        {
+            string fileExtension = Path.GetExtension(fileName);
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
+            string currentTime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            string newFileName = $"{fileNameWithoutExtension}_{currentTime}{fileExtension}";
+
+
+            var targetURL = D1WebApp.Utilities.GeneralConfiguration.GeneralConfiguration.CheckConfiguration("targetDirectory");
+
+            string targetDirectory = Path.Combine(targetURL.ConfigurationValue, "AdminPanelAPI", "Content", memRefNo , "ExternalItemDocFiles");
+            
+            if (!Directory.Exists(targetDirectory))
+            {
+                Directory.CreateDirectory(targetDirectory);
+            }
+            string csvFilePath = Path.Combine(targetDirectory, newFileName);
+
+            using (var writer = new StreamWriter(csvFilePath))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                // Write header row
+                csv.WriteField("Item");
+                csv.WriteField("Type");
+                csv.WriteField("Name");
+                csv.WriteField("DocDetailsUrl");
+                csv.WriteField("Status");
+                csv.WriteField("Reason");
+                csv.NextRecord();
+
+                // Write records
+                foreach (var status in itemDocStatusList)
+                {
+                    csv.WriteRecord(status);
+                    csv.NextRecord();
+                }
+            }
+        }
+        private bool DownloadDocumentFromExternalURLAsync(string url, string memRefNo)
+        {
+            bool IsDownloadSuccess = false;
+            try
+            {
+                string filename = Path.GetFileName(new Uri(url).AbsolutePath);
+
+                var targetURL = D1WebApp.Utilities.GeneralConfiguration.GeneralConfiguration.CheckConfiguration("targetDirEcom");
+
+                string targetDirectory = targetURL.ConfigurationValue + memRefNo;
+                string UIpath = Path.Combine(targetDirectory, memRefNo + "Api", "Content", "ItemDetails", filename);
+
+                if (!Directory.Exists(Path.GetDirectoryName(UIpath)))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(UIpath));
+                }
+                Uri uri = new Uri(url);
+                WebClient webClient = new WebClient();
+                webClient.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; " +
+                "Windows NT 5.2; .NET CLR 1.0.3705;)");
+
+                // Start a timer to track the timeout
+                var timer = new System.Timers.Timer(30000); // 30 seconds
+                timer.Elapsed += (sender, e) =>
+                {
+                    // Timeout occurred
+                    webClient.CancelAsync(); // Cancel the download
+                    Console.WriteLine("Download timed out for URL: " + url);
+                };
+                timer.AutoReset = false; // Ensure the timer fires only once
+                timer.Start();
+
+                // Start the download
+                webClient.DownloadFile(url, UIpath);
+                IsDownloadSuccess = true; // Set download success flag
+
+                timer.Stop(); // Stop the timer since download completed within the timeout
+
+                //Uri uri = new Uri(url);
+                //WebClient webClient = new WebClient();
+                //webClient.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; " +
+                //"Windows NT 5.2; .NET CLR 1.0.3705;)");
+                //webClient.DownloadFileCompleted += WebClient_DownloadFileCompleted;
+                //webClient.DownloadProgressChanged += WebClient_DownloadProgressChanged;
+                ////webClient.DownloadFile("https://multimedia.3m.com/mws/media/66235O/3m-electrically-conductive-adhesive-transfer-tape-9703.pdf?&fn=38371_R2.pdf", "D:\\filesuploaded\\" + filename);
+                //webClient.DownloadFile(url, UIpath);
+                //IsDownloadSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception
+                IsDownloadSuccess = false;
+                Console.WriteLine("Error downloading file: " + ex.Message);
+            }
+            return IsDownloadSuccess;
+        }
+        private void WebClient_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            // Handle the download completion event here
+            if (e.Error != null)
+            {
+                Console.WriteLine("Error downloading file: " + e.Error.Message);
+            }
+            else if (e.Cancelled)
+            {
+                Console.WriteLine("File download was canceled.");
+            }
+            else
+            {
+                Console.WriteLine("File download completed successfully.");
+            }
+        }
+
+        private void WebClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            // Handle the download progress changed event here
+            Console.WriteLine($"Download progress: {e.ProgressPercentage}%");
         }
         public dynamic UpdateItemDocumentBulk(string memRefNo, List<ItemDetailsViewModel> itemDocumentViewModel,bool IMType)
         {

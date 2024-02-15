@@ -18,6 +18,17 @@ namespace D1WebApp.BusinessLogicLayer.ViewModels
         public int? Sequence { get; set; }
         public bool IMType { get; set; }
     }
+
+    public class ItemDocUploadStatusViewModel
+    {
+        public string Item { get; set; }
+        public string Type { get; set; }
+        public string Name { get; set; }
+        public string DocDetailsUrl { get; set; }
+        public string Status { get; set; }
+        public string Reason { get; set; }
+    }
+
     public class ManufracturerParamViewModel
     {
         public string memRefNo { get; set; }
