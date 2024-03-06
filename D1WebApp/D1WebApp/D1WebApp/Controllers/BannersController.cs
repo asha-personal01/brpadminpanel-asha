@@ -68,7 +68,7 @@ namespace D1WebApp.BussinessLogicLayer.Controllers
 
                     string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(postedFile.FileName);
                     postedFile.SaveAs(filePath);
-                    string exctractPath = UIpath + "\\" + fileNameWithoutExtension + "_" + DateTime.Now.ToString("dd-MM-yyyy");
+                    string exctractPath = UIpath + fileNameWithoutExtension + "_" + DateTime.Now.ToString("dd-MM-yyyy");
 
                     //UIPath1 = UIPath1 + "\\" + fileNameWithoutExtension + "_" + DateTime.Now.ToShortDateString();
 

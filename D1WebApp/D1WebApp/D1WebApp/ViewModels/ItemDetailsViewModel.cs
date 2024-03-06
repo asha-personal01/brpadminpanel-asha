@@ -28,7 +28,11 @@ namespace D1WebApp.BusinessLogicLayer.ViewModels
         public string Status { get; set; }
         public string Reason { get; set; }
     }
-
+    public class DownloadResult
+    {
+        public bool IsDownloadSuccess { get; set; }
+        public string FileNameOut { get; set; }
+    }
     public class ManufracturerParamViewModel
     {
         public string memRefNo { get; set; }

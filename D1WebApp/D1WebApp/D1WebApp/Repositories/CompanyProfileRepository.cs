@@ -935,7 +935,11 @@ namespace D1WebApp.DataAccessLayer.Repositories
                     foreach (var record in itemDocuemntViewModel)
                     {
                         //bool IsFileDownloadSuccess = true;
-                        bool IsFileDownloadSuccess =  DownloadDocumentFromExternalURLAsync(record.DocDetailsUrl, memRefNo);
+
+                        var result =  DownloadDocumentFromExternalURLAsync(record.DocDetailsUrl, memRefNo);
+                        bool IsFileDownloadSuccess = result.IsDownloadSuccess;
+                        string FileNameOut = result.FileNameOut;
+
                         if (IsFileDownloadSuccess)
                         {
                             int sequence = 0;
@@ -945,7 +949,7 @@ namespace D1WebApp.DataAccessLayer.Repositories
                                 itemCounts[record.Item] = seq;
                                 sequence = seq;
                             }
-                            if (record.DocType.ToLower() == "doc")
+                            else if (record.DocType.ToLower() == "doc")
                             {
                                 bool isValidDocName = CheckIfDocNameIsValid(memRefNo, record.DocName);
                                 if (!isValidDocName)
@@ -970,7 +974,7 @@ namespace D1WebApp.DataAccessLayer.Repositories
                                 sequence = Convert.ToInt32(record.Sequence);
                             }
                             var getpath = D1WebApp.Utilities.GeneralConfiguration.GeneralConfiguration.CheckConfiguration("domainpath");
-                            string getdocpath = getpath.ConfigurationValue + "/" + memRefNo + "Api" + "/Content/ItemDetails/" + FileName.Replace(" ", "") + "?v=" + DateTime.Now.ToShortDateString();
+                            string getdocpath = getpath.ConfigurationValue + "/" + memRefNo + "Api" + "/Content/ItemDetails/" + FileNameOut.Replace(" ", "") + "?v=" + DateTime.Now.ToShortDateString();
 
                             var existingItems = context.itemdetails.Where(item => item.item == record.Item && item.type == record.DocType && item.name == record.DocName && item.IMType == IMType).ToList();
                             if (existingItems != null && existingItems.Count > 0)
@@ -1080,17 +1084,24 @@ namespace D1WebApp.DataAccessLayer.Repositories
                 }
             }
         }
-        private bool DownloadDocumentFromExternalURLAsync(string url, string memRefNo)
+        private DownloadResult DownloadDocumentFromExternalURLAsync(string url, string memRefNo)
         {
             bool IsDownloadSuccess = false;
+            string FileNameOut = "";
             try
             {
                 string filename = Path.GetFileName(new Uri(url).AbsolutePath);
-
+                string extension = Path.GetExtension(filename);
+                if(string.IsNullOrEmpty(extension))
+                {
+                    filename = GetFilenameFromUrl(url);
+                }
+                FileNameOut = filename;
                 var targetURL = D1WebApp.Utilities.GeneralConfiguration.GeneralConfiguration.CheckConfiguration("targetDirEcom");
 
                 string targetDirectory = targetURL.ConfigurationValue + memRefNo;
                 string UIpath = Path.Combine(targetDirectory, memRefNo + "Api", "Content", "ItemDetails", filename);
+                //string UIpath = Path.Combine("D:\\filesuploaded\\", filename);
 
                 if (!Directory.Exists(Path.GetDirectoryName(UIpath)))
                 {
@@ -1115,18 +1126,7 @@ namespace D1WebApp.DataAccessLayer.Repositories
                 // Start the download
                 webClient.DownloadFile(url, UIpath);
                 IsDownloadSuccess = true; // Set download success flag
-
-                timer.Stop(); // Stop the timer since download completed within the timeout
-
-                //Uri uri = new Uri(url);
-                //WebClient webClient = new WebClient();
-                //webClient.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; " +
-                //"Windows NT 5.2; .NET CLR 1.0.3705;)");
-                //webClient.DownloadFileCompleted += WebClient_DownloadFileCompleted;
-                //webClient.DownloadProgressChanged += WebClient_DownloadProgressChanged;
-                ////webClient.DownloadFile("https://multimedia.3m.com/mws/media/66235O/3m-electrically-conductive-adhesive-transfer-tape-9703.pdf?&fn=38371_R2.pdf", "D:\\filesuploaded\\" + filename);
-                //webClient.DownloadFile(url, UIpath);
-                //IsDownloadSuccess = true;
+                timer.Stop();
             }
             catch (Exception ex)
             {
@@ -1134,7 +1134,36 @@ namespace D1WebApp.DataAccessLayer.Repositories
                 IsDownloadSuccess = false;
                 Console.WriteLine("Error downloading file: " + ex.Message);
             }
-            return IsDownloadSuccess;
+            return new DownloadResult { IsDownloadSuccess = IsDownloadSuccess, FileNameOut = FileNameOut };
+        }
+        static string GetFilenameFromUrl(string url)
+        {
+            int queryIndex = url.IndexOf('?');
+            string cleanUrl = (queryIndex != -1) ? url.Substring(0, queryIndex) : url;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(cleanUrl);
+            request.Method = "HEAD"; 
+
+            string filenameWithExt = "";
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            {
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    string contentType = response.ContentType;
+                    if (!string.IsNullOrEmpty(contentType))
+                    {
+                        int index = contentType.LastIndexOf('/') + 1; 
+                        string fileExtension = "." + contentType.Substring(index);
+                        string filename = Path.GetFileNameWithoutExtension(cleanUrl);
+                        filenameWithExt = filename + fileExtension;
+                    }
+                    return filenameWithExt;
+                }
+                else
+                {
+                    throw new Exception("Failed to retrieve the file.");
+                }
+            }
         }
         private void WebClient_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
